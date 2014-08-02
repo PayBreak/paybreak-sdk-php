@@ -1,0 +1,10 @@
+{
+    "name": "graham/graham",
+    "description": "Graham",
+    "autoload": {
+        "psr-4": {
+            "Graham\\": "lib"
+        }
+    },
+    "minimum-stability": "dev"
+}
