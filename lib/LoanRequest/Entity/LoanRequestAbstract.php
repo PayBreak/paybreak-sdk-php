@@ -25,8 +25,8 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $orderReference;
     protected $orderAmount;
     protected $orderValidity;
-    protected $orderExtendable;
-    protected $additionalData;
+    protected $orderExtendable = false;
+    protected $additionalData = [];
     protected $requestDate;
 
     /**
