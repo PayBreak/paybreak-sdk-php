@@ -18,6 +18,20 @@ namespace Graham\StandardInterface;
 interface EntityInterface
 {
     /**
+     * Entity unique ID
+     *
+     * @param  mixed $id
+     * @return mixed
+     */
+    public function setId($id);
+
+    /**
+     * Entity Unique ID
+     *
+     * @return mixed
+     */
+    public function getId();
+    /**
      * Returns entity as array
      *
      * @return array
