@@ -20,7 +20,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $id;
     protected $checkoutVersion;
     protected $checkoutType;
-    protected $merchantReference;
+    protected $merchantInstallation;
     protected $orderDescription;
     protected $orderReference;
     protected $orderAmount;
@@ -74,12 +74,12 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     /**
      * Set Merchant Reference
      *
-     * @param  string $merchantReference
+     * @param  string $merchantInstallation
      * @return string
      */
-    public function setMerchantReference($merchantReference)
+    public function setMerchantInstallation($merchantInstallation)
     {
-        return $this->merchantReference = $merchantReference;
+        return $this->merchantInstallation = $merchantInstallation;
     }
 
     /**
@@ -87,9 +87,9 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
      *
      * @return string
      */
-    public function getMerchantReference()
+    public function getMerchantInstallation()
     {
-        return $this->merchantReference;
+        return $this->merchantInstallation;
     }
 
     /**
@@ -250,7 +250,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
             'id' => $this->getId(),
             'checkout_version' => $this->getCheckoutVersion(),
             'checkout_type' => $this->getCheckoutType(),
-            'merchant_reference' => $this->getMerchantReference(),
+            'merchant_installation' => $this->getMerchantInstallation(),
             'order_description' => $this->getOrderDescription(),
             'order_reference' => $this->getOrderReference(),
             'order_amount' => $this->getOrderAmount(),

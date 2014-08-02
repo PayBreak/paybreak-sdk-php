@@ -50,14 +50,14 @@ interface LoanRequestInterface extends EntityInterface
      * @param  string $merchantInstallation
      * @return string
      */
-    public function setMerchantReference($merchantReference);
+    public function setMerchantInstallation($merchantInstallation);
 
     /**
      * Get Merchant Reference
      *
      * @return string
      */
-    public function getMerchantReference();
+    public function getMerchantInstallation();
 
     /**
      * Set Order Description
