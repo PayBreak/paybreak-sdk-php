@@ -13,11 +13,21 @@ namespace Graham\LoanRequest;
 use Graham\HashGenerator;
 use Graham\StandardInterface\ConfigurationInterface;
 
+/**
+ * Class MakeRequest
+ *
+ * @package Graham\LoanRequest
+ */
 class MakeRequest
 {
     protected $loanRequest;
     protected $configuration;
 
+    /**
+     * @throws \InvalidArgumentException
+     * @param int $type
+     * @param ConfigurationInterface $configuration
+     */
     public function __construct($type, ConfigurationInterface $configuration)
     {
         $this->configuration = $configuration;
@@ -35,41 +45,89 @@ class MakeRequest
         $this->loanRequest->setCheckoutVersion($configuration->getCheckoutVersion());
     }
 
+    /**
+     * Make Simple Loan Request
+     *
+     * @param ConfigurationInterface $configuration
+     * @return static
+     */
     public static function makeSimple(ConfigurationInterface $configuration)
     {
         return new static(Entity\LoanRequestInterface::TYPE_SIMPLE, $configuration);
     }
 
+    /**
+     * Make Extended Loan Request
+     *
+     * @param ConfigurationInterface $configuration
+     * @return static
+     */
     public static function makeExtended(ConfigurationInterface $configuration)
     {
         return new static(Entity\LoanRequestInterface::TYPE_EXTENDED, $configuration);
     }
 
+    /**
+     * Set Amount
+     *
+     * @param int $amount
+     * @return int
+     */
     public function setAmount($amount)
     {
         return $this->loanRequest->setOrderAmount($amount);
     }
 
+    /**
+     * Set Reference
+     * @param $reference
+     * @return string
+     */
     public function setReference($reference)
     {
         return $this->loanRequest->setOrderReference($reference);
     }
 
+    /**
+     * Set Description
+     *
+     * @param $description
+     * @return string
+     */
     public function setDescription($description)
     {
         return $this->loanRequest->setOrderDescription($description);
     }
 
+    /**
+     * Set Extendable
+     *
+     * @param bool $extendable
+     * @return bool
+     */
     public function setExtendable($extendable=true)
     {
         return $this->loanRequest->setOrderExtendable($extendable);
     }
 
+    /**
+     * Set Validity
+     * @param $validity
+     * @return int
+     */
     public function setValidity($validity)
     {
         return $this->loanRequest->setOrderValidity($validity);
     }
 
+    /**
+     * Prepare Loan Request
+     *
+     * Returns array containing ready Loan Request
+     *
+     * @return array
+     * @throws \Exception
+     */
     public function prepareRequest()
     {
         if ($this->loanRequest->getOrderAmount() < 1)
@@ -84,13 +142,16 @@ class MakeRequest
         if ($this->loanRequest->getOrderReference() == '')
             $this->loanRequest->setOrderReference(rand(10,99) . time());
 
-        $ar = $this->loanRequest->toArray();
+        $ar = [];
 
-        $ar['order_validity'] = date("c", $ar['order_validity']);
-
-        $ar['order_extendable'] = (int) $ar['order_extendable'];
-
-        unset($ar['additional_data'], $ar['id'],$ar['request_date']);
+        $ar['checkout_version'] = $this->loanRequest->getCheckoutVersion();
+        $ar['checkout_type'] = $this->loanRequest->getCheckoutType();
+        $ar['merchant_installation'] = $this->loanRequest->getMerchantInstallation();
+        $ar['order_description'] = $this->loanRequest->getOrderDescription();
+        $ar['order_reference'] = $this->loanRequest->getOrderReference();
+        $ar['order_amount'] = $this->loanRequest->getOrderAmount();
+        $ar['order_validity'] = date("c", $this->loanRequest->getOrderValidity());
+        $ar['order_extendable'] = (int) $this->loanRequest->getOrderExtendable();
 
         $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
 
