@@ -25,8 +25,8 @@ class MakeRequest
 
     /**
      * @throws \InvalidArgumentException
-     * @param int $type
-     * @param ConfigurationInterface $configuration
+     * @param  int                       $type
+     * @param  ConfigurationInterface    $configuration
      */
     public function __construct($type, ConfigurationInterface $configuration)
     {
@@ -48,7 +48,7 @@ class MakeRequest
     /**
      * Make Simple Loan Request
      *
-     * @param ConfigurationInterface $configuration
+     * @param  ConfigurationInterface $configuration
      * @return static
      */
     public static function makeSimple(ConfigurationInterface $configuration)
@@ -59,7 +59,7 @@ class MakeRequest
     /**
      * Make Extended Loan Request
      *
-     * @param ConfigurationInterface $configuration
+     * @param  ConfigurationInterface $configuration
      * @return static
      */
     public static function makeExtended(ConfigurationInterface $configuration)
@@ -70,7 +70,7 @@ class MakeRequest
     /**
      * Set Amount
      *
-     * @param int $amount
+     * @param  int $amount
      * @return int
      */
     public function setAmount($amount)
@@ -102,7 +102,7 @@ class MakeRequest
     /**
      * Set Extendable
      *
-     * @param bool $extendable
+     * @param  bool $extendable
      * @return bool
      */
     public function setExtendable($extendable=true)
