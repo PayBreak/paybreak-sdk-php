@@ -10,6 +10,8 @@
 
 namespace Graham\LoanRequest;
 
+use Graham\CustomType;
+use Graham\FieldEncoder;
 use Graham\HashGenerator;
 use Graham\StandardInterface\ConfigurationInterface;
 
@@ -22,6 +24,7 @@ class MakeRequest
 {
     protected $loanRequest;
     protected $configuration;
+    protected $additionalData;
 
     /**
      * @throws \InvalidArgumentException
@@ -120,6 +123,34 @@ class MakeRequest
         return $this->loanRequest->setOrderValidity($validity);
     }
 
+    public function addCustomer($firstName=NULL, $lastName=NULL, $email=NULL)
+    {
+        $additionalData = $this->makeAdditionalData();
+
+        $customer = new CustomType\RequestCustomer();
+
+        if ($firstName !== NULL)
+            $customer->setFirstName($firstName);
+
+        if ($lastName !== NULL)
+            $customer->setLastName($lastName);
+
+        if ($email !== NULL)
+            $customer->setEmail($email);
+
+        $additionalData->setCustomer($customer);
+
+        return true;
+    }
+
+    protected function makeAdditionalData()
+    {
+        if (!($this->additionalData instanceof Entity\AdditionalData))
+            $this->additionalData = new Entity\AdditionalData();
+
+        return $this->additionalData;
+    }
+
     /**
      * Prepare Loan Request
      *
@@ -152,6 +183,9 @@ class MakeRequest
         $ar['order_amount'] = $this->loanRequest->getOrderAmount();
         $ar['order_validity'] = date("c", $this->loanRequest->getOrderValidity());
         $ar['order_extendable'] = (int) $this->loanRequest->getOrderExtendable();
+
+        if ($this->additionalData instanceof Entity\AdditionalData)
+            $ar['additional_data'] = FieldEncoder::encodeField($this->additionalData->toArray());
 
         $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
 
