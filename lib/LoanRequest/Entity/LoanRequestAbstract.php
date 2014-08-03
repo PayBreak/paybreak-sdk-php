@@ -200,10 +200,10 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     /**
      * Set Additional Data
      *
-     * @param  array $additionalData
-     * @return array
+     * @param  AdditionalData $additionalData
+     * @return AdditionalData
      */
-    public function setAdditionalData(array $additionalData)
+    public function setAdditionalData(AdditionalData $additionalData)
     {
         return $this->additionalData = $additionalData;
     }
@@ -211,7 +211,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     /**
      * Get Additional Data
      *
-     * @return array
+     * @return AdditionalData
      */
     public function getAdditionalData()
     {

@@ -137,15 +137,15 @@ interface LoanRequestInterface extends EntityInterface
     /**
      * Set Additional Data
      *
-     * @param  array $additionalData
-     * @return array
+     * @param  AdditionalData $additionalData
+     * @return AdditionalData
      */
-    public function setAdditionalData(array $additionalData);
+    public function setAdditionalData(AdditionalData $additionalData);
 
     /**
      * Get Additional Data
      *
-     * @return array
+     * @return AdditionalData
      */
     public function getAdditionalData();
 
