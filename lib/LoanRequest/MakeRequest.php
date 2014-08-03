@@ -123,7 +123,15 @@ class MakeRequest
         return $this->loanRequest->setOrderValidity($validity);
     }
 
-    public function addCustomer($firstName=NULL, $lastName=NULL, $email=NULL)
+    /**
+     * Add Customer
+     *
+     * @param  string|null $firstName
+     * @param  string|null $lastName
+     * @param  string|null $email
+     * @return bool
+     */
+    public function setCustomer($firstName=NULL, $lastName=NULL, $email=NULL)
     {
         $additionalData = $this->makeAdditionalData();
 
@@ -143,6 +151,87 @@ class MakeRequest
         return true;
     }
 
+    /**
+     * Set Customer Current Address
+     *
+     * @param  string      $buildingNumber
+     * @param  string      $postcode
+     * @param  string|null $street
+     * @param  string|null $town
+     * @param  string|null $buildingName
+     * @param  string|null $abode
+     * @param  string|null $locality
+     * @return bool
+     */
+    public function setAddressCurrent($buildingNumber, $postcode, $street=NULL, $town=NULL, $buildingName=NULL, $abode=NULL, $locality=NULL)
+    {
+        $additionalData = $this->makeAdditionalData();
+
+        $address = new CustomType\Address();
+
+        $address->setBuildingNumber($buildingNumber);
+        $address->setPostcode($postcode);
+
+        if ($street !== NULL)
+            $address->setStreet($street);
+        if ($town !== NULL)
+            $address->setTown($town);
+        if ($buildingName !== NULL)
+            $address->setBuildingName($buildingName);
+        if ($abode !== NULL)
+            $address->setAbode($abode);
+        if ($locality !== NULL)
+            $address->setLocality($locality);
+
+        $additionalData->setAddressCurrent($address);
+
+        return true;
+    }
+
+    /**
+     * Set Alternative Fulfilment Address
+     *
+     * @param  string      $buildingNumber
+     * @param  string      $postcode
+     * @param  string|null $street
+     * @param  string|null $town
+     * @param  string|null $buildingName
+     * @param  string|null $abode
+     * @param  string|null $locality
+     * @return bool
+     */
+    public function setAlternativeFulfilmentAddres($buildingNumber, $postcode, $street=NULL, $town=NULL, $buildingName=NULL, $abode=NULL, $locality=NULL)
+    {
+        $additionalData = $this->makeAdditionalData();
+
+        $address = new CustomType\Address();
+
+        $address->setBuildingNumber($buildingNumber);
+        $address->setPostcode($postcode);
+
+        if ($street !== NULL)
+            $address->setStreet($street);
+        if ($town !== NULL)
+            $address->setTown($town);
+        if ($buildingName !== NULL)
+            $address->setBuildingName($buildingName);
+        if ($abode !== NULL)
+            $address->setAbode($abode);
+        if ($locality !== NULL)
+            $address->setLocality($locality);
+
+        $additionalData->setAddressFulfilment($address);
+
+        $additionalData->setAlternativeFulfilment();
+
+        return true;
+    }
+
+    /**
+     * Make / Get Additional Data for Loan Request
+     *
+     * @return Entity\AdditionalData
+     */
     protected function makeAdditionalData()
     {
         if (!($this->additionalData instanceof Entity\AdditionalData))
