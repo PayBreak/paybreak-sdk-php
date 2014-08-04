@@ -133,19 +133,19 @@ class MakeRequest
      * @param  string|null $email
      * @return bool
      */
-    public function setCustomer($firstName=NULL, $lastName=NULL, $email=NULL)
+    public function setCustomer($firstName=null, $lastName=null, $email=null)
     {
         $additionalData = $this->makeAdditionalData();
 
         $customer = new CustomType\RequestCustomer();
 
-        if ($firstName !== NULL)
+        if ($firstName !== null)
             $customer->setFirstName($firstName);
 
-        if ($lastName !== NULL)
+        if ($lastName !== null)
             $customer->setLastName($lastName);
 
-        if ($email !== NULL)
+        if ($email !== null)
             $customer->setEmail($email);
 
         $additionalData->setCustomer($customer);
@@ -165,7 +165,7 @@ class MakeRequest
      * @param  string|null $locality
      * @return bool
      */
-    public function setAddressCurrent($buildingNumber, $postcode, $street=NULL, $town=NULL, $buildingName=NULL, $abode=NULL, $locality=NULL)
+    public function setAddressCurrent($buildingNumber, $postcode, $street=null, $town=null, $buildingName=null, $abode=null, $locality=null)
     {
         $additionalData = $this->makeAdditionalData();
 
@@ -174,15 +174,15 @@ class MakeRequest
         $address->setBuildingNumber($buildingNumber);
         $address->setPostcode($postcode);
 
-        if ($street !== NULL)
+        if ($street !== null)
             $address->setStreet($street);
-        if ($town !== NULL)
+        if ($town !== null)
             $address->setTown($town);
-        if ($buildingName !== NULL)
+        if ($buildingName !== null)
             $address->setBuildingName($buildingName);
-        if ($abode !== NULL)
+        if ($abode !== null)
             $address->setAbode($abode);
-        if ($locality !== NULL)
+        if ($locality !== null)
             $address->setLocality($locality);
 
         $additionalData->setAddressCurrent($address);
@@ -202,7 +202,7 @@ class MakeRequest
      * @param  string|null $locality
      * @return bool
      */
-    public function setAlternativeFulfilmentAddres($buildingNumber, $postcode, $street=NULL, $town=NULL, $buildingName=NULL, $abode=NULL, $locality=NULL)
+    public function setAlternativeFulfilmentAddres($buildingNumber, $postcode, $street=null, $town=null, $buildingName=null, $abode=null, $locality=null)
     {
         $additionalData = $this->makeAdditionalData();
 
@@ -211,15 +211,15 @@ class MakeRequest
         $address->setBuildingNumber($buildingNumber);
         $address->setPostcode($postcode);
 
-        if ($street !== NULL)
+        if ($street !== null)
             $address->setStreet($street);
-        if ($town !== NULL)
+        if ($town !== null)
             $address->setTown($town);
-        if ($buildingName !== NULL)
+        if ($buildingName !== null)
             $address->setBuildingName($buildingName);
-        if ($abode !== NULL)
+        if ($abode !== null)
             $address->setAbode($abode);
-        if ($locality !== NULL)
+        if ($locality !== null)
             $address->setLocality($locality);
 
         $additionalData->setAddressFulfilment($address);

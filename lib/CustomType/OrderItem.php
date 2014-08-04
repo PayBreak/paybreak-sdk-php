@@ -30,8 +30,8 @@ class OrderItem implements EntityInterface
 
     /**
      * Set SKU
-     * 
-     * @param string $sku
+     *
+     * @param  string $sku
      * @return string
      */
     public function setSku($sku)
@@ -41,7 +41,7 @@ class OrderItem implements EntityInterface
 
     /**
      * Get SKU
-     * 
+     *
      * @return string
      */
     public function getSku()
@@ -51,8 +51,8 @@ class OrderItem implements EntityInterface
 
     /**
      * Set GTIN
-     * 
-     * @param string $gtin
+     *
+     * @param  string $gtin
      * @return string
      */
     public function setGtin($gtin)
@@ -62,7 +62,7 @@ class OrderItem implements EntityInterface
 
     /**
      * Get GTIN
-     * 
+     *
      * @return string
      */
     public function getGtin()
@@ -72,8 +72,8 @@ class OrderItem implements EntityInterface
 
     /**
      * Set Description
-     * 
-     * @param string $description
+     *
+     * @param  string $description
      * @return string
      */
     public function setDescription($description)
@@ -83,7 +83,7 @@ class OrderItem implements EntityInterface
 
     /**
      * Get Description
-     * 
+     *
      * @return string
      */
     public function getDescription()
@@ -93,7 +93,7 @@ class OrderItem implements EntityInterface
 
     /**
      * Set Price
-     * @param int $price
+     * @param  int $price
      * @return int
      */
     public function setPrice($price)
@@ -103,7 +103,7 @@ class OrderItem implements EntityInterface
 
     /**
      * Get Price
-     * 
+     *
      * @return int
      */
     public function getPrice()
@@ -113,8 +113,8 @@ class OrderItem implements EntityInterface
 
     /**
      * Set Quantity
-     * 
-     * @param int $quantity
+     *
+     * @param  int $quantity
      * @return int
      */
     public function setQuantity($quantity)
@@ -124,7 +124,7 @@ class OrderItem implements EntityInterface
 
     /**
      * Get Quantity
-     * 
+     *
      * @return int
      */
     public function getQuantity()
@@ -134,8 +134,8 @@ class OrderItem implements EntityInterface
 
     /**
      * Set Fultillable
-     * 
-     * @param bool $fulfillable
+     *
+     * @param  bool $fulfillable
      * @return bool
      */
     public function setFulfillable($fulfillable=true)
@@ -145,7 +145,7 @@ class OrderItem implements EntityInterface
 
     /**
      * Get Fulfillable
-     * 
+     *
      * @return bool
      */
     public function getFulfillable()
