@@ -13,6 +13,7 @@ namespace Graham\LoanRequest;
 use Graham\CustomType;
 use Graham\FieldEncoder;
 use Graham\HashGenerator;
+use Graham\LoanRequest\Entity\ExtendedLoanRequest;
 use Graham\StandardInterface\ConfigurationInterface;
 
 /**
@@ -25,6 +26,7 @@ class MakeRequest
     protected $loanRequest;
     protected $configuration;
     protected $additionalData;
+    protected $orderItems;
 
     /**
      * @throws \InvalidArgumentException
@@ -240,6 +242,25 @@ class MakeRequest
         return $this->additionalData;
     }
 
+    public function addOrderItem($sku, $price, $quantity, $description, $fulfillable=true, $gtin=null)
+    {
+        if (!($this->loanRequest instanceof ExtendedLoanRequest))
+            throw new \Exception('Simple checkout, no items allowed');
+
+        $item = new CustomType\OrderItem();
+
+        $item->setSku($sku);
+        $item->setPrice($price);
+        $item->setQuantity($quantity);
+        $item->setDescription($description);
+        $item->setFulfillable($fulfillable);
+        $item->setGtin($gtin);
+
+        $this->loanRequest->addOrderItem($item);
+
+        return true;
+    }
+
     /**
      * Prepare Loan Request
      *
@@ -275,6 +296,17 @@ class MakeRequest
 
         if ($this->additionalData instanceof Entity\AdditionalData)
             $ar['additional_data'] = FieldEncoder::encodeField($this->additionalData->toArray());
+
+        if (
+            $this->loanRequest instanceof ExtendedLoanRequest &&
+            !empty($this->loanRequest->getOrderItems())
+        ) {
+            foreach ($this->loanRequest->getOrderItems() as $item) {
+                $ar['order_items'][] = $item->toArray();
+            }
+
+            $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
+        }
 
         $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
 
