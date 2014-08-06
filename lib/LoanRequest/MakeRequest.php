@@ -14,6 +14,7 @@ use Graham\CustomType;
 use Graham\FieldEncoder;
 use Graham\HashGenerator;
 use Graham\LoanRequest\Entity\ExtendedLoanRequest;
+use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\StandardInterface\ConfigurationInterface;
 
 /**
@@ -25,17 +26,25 @@ class MakeRequest
 {
     protected $loanRequest;
     protected $configuration;
+    protected $repository;
     protected $additionalData;
     protected $orderItems;
 
     /**
+     *
+     * @param  int                                       $type
+     * @param  ConfigurationInterface                    $configuration
+     * @param  Repository\LoanRequestRepositoryInterface $repository
      * @throws \InvalidArgumentException
-     * @param  int                       $type
-     * @param  ConfigurationInterface    $configuration
      */
-    public function __construct($type, ConfigurationInterface $configuration)
-    {
+    public function __construct(
+        $type,
+        ConfigurationInterface $configuration,
+        LoanRequestRepositoryInterface $repository
+    ) {
         $this->configuration = $configuration;
+
+        $this->repository = $repository;
 
         if ($type == 1) {
             $this->loanRequest = new Entity\SimpleLoanRequest();
@@ -56,9 +65,9 @@ class MakeRequest
      * @param  ConfigurationInterface $configuration
      * @return static
      */
-    public static function makeSimple(ConfigurationInterface $configuration)
+    public static function makeSimple(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
     {
-        return new static(Entity\LoanRequestInterface::TYPE_SIMPLE, $configuration);
+        return new static(Entity\LoanRequestInterface::TYPE_SIMPLE, $configuration, $repository);
     }
 
     /**
@@ -67,9 +76,9 @@ class MakeRequest
      * @param  ConfigurationInterface $configuration
      * @return static
      */
-    public static function makeExtended(ConfigurationInterface $configuration)
+    public static function makeExtended(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
     {
-        return new static(Entity\LoanRequestInterface::TYPE_EXTENDED, $configuration);
+        return new static(Entity\LoanRequestInterface::TYPE_EXTENDED, $configuration, $repository);
     }
 
     /**
@@ -311,5 +320,10 @@ class MakeRequest
         $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
 
         return $ar;
+    }
+
+    public function saveRequest()
+    {
+
     }
 }
