@@ -22,6 +22,17 @@ interface LoanRequestInterface extends EntityInterface
     const TYPE_SIMPLE = 1;
     const TYPE_EXTENDED = 2;
 
+    const STATUS_PENDING = 0;
+    const STATUS_REQUESTED = 1;
+    const STATUS_CANCELLED = 2;
+    const STATUS_UNSUCCESSFUL = 4;
+    const STATUS_REFERRED = 8;
+    const STATUS_CONVERTED = 16;
+
+    const FULFILLED_NONE = 0;
+    const FULFILLED_PARTIAL = 1;
+    const FULFILLED_FULL = 2;
+
     /**
      * Returns Checkout Type
      *
