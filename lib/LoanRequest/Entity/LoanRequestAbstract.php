@@ -28,6 +28,8 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $orderExtendable = false;
     protected $additionalData = [];
     protected $requestDate;
+    protected $status;
+    protected $fulfilled;
 
     /**
      * Entity unique ID
@@ -237,6 +239,48 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     public function getRequestDate()
     {
         return $this->requestDate;
+    }
+
+    /**
+     * Set Status
+     *
+     * @param  int $status
+     * @return int
+     */
+    public function setStatus($status)
+    {
+        return $this->status = $status;
+    }
+
+    /**
+     * Get Status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set Fulfilled
+     *
+     * @param  int $fulfilled
+     * @return int
+     */
+    public function setFulfilled($fulfilled)
+    {
+        return $this->fulfilled = $fulfilled;
+    }
+
+    /**
+     * Get Fulfilled
+     *
+     * @return int
+     */
+    public function getFulfilled()
+    {
+        return $this->fulfilled;
     }
 
     /**

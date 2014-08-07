@@ -174,4 +174,34 @@ interface LoanRequestInterface extends EntityInterface
      * @return int
      */
     public function getRequestDate();
+
+    /**
+     * Set Status
+     *
+     * @param  int   $status
+     * @return int
+     */
+    public function setStatus($status);
+
+    /**
+     * Get Status
+     *
+     * @return int
+     */
+    public function getStatus();
+
+    /**
+     * Set Fulfilled
+     *
+     * @param  int   $fulfilled
+     * @return int
+     */
+    public function setFulfilled($fulfilled);
+
+    /**
+     * Get Fulfilled
+     *
+     * @return int
+     */
+    public function getFulfilled();
 }
