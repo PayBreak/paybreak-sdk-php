@@ -25,4 +25,10 @@ class NullLoanRequestRepository implements LoanRequestRepositoryInterface
         return true;
     }
 
+    public function findAll($offset = 0, $length = 50)
+    {
+        // TODO: Implement findAll() method.
+    }
+
+
 }
