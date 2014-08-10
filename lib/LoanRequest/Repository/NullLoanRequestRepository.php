@@ -11,6 +11,7 @@
 namespace Graham\LoanRequest\Repository;
 
 use Graham\LoanRequest\Entity\LoanRequestInterface;
+use Graham\LoanRequest\Entity\SimpleLoanRequest;
 
 class NullLoanRequestRepository implements LoanRequestRepositoryInterface
 {
@@ -25,10 +26,24 @@ class NullLoanRequestRepository implements LoanRequestRepositoryInterface
         return true;
     }
 
+    /**
+     * Find LoanRequest Entity by ID
+     *
+     * @param  string                                               $id
+     * @return \Graham\LoanRequest\Entity\LoanRequestInterface|bool
+     */
+    public function findById($id)
+    {
+        $rtn = new SimpleLoanRequest();
+
+        $rtn->setId($id);
+
+        return $rtn;
+    }
+
     public function findAll($offset = 0, $length = 50)
     {
         // TODO: Implement findAll() method.
     }
-
 
 }

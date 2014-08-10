@@ -21,4 +21,12 @@ interface LoanRequestRepositoryInterface
      * @return bool
      */
     public function save(LoanRequestInterface $loanRequest);
+
+    /**
+     * Find LoanRequest Entity by ID
+     *
+     * @param  string                                               $id
+     * @return \Graham\LoanRequest\Entity\LoanRequestInterface|bool
+     */
+    public function findById($id);
 }
