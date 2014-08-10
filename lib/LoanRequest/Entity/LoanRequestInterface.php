@@ -178,7 +178,7 @@ interface LoanRequestInterface extends EntityInterface
     /**
      * Set Status
      *
-     * @param  int   $status
+     * @param  int $status
      * @return int
      */
     public function setStatus($status);
@@ -193,7 +193,7 @@ interface LoanRequestInterface extends EntityInterface
     /**
      * Set Fulfilled
      *
-     * @param  int   $fulfilled
+     * @param  int $fulfilled
      * @return int
      */
     public function setFulfilled($fulfilled);
