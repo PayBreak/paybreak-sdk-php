@@ -34,7 +34,18 @@ class ExtendedLoanRequest extends LoanRequestAbstract
      */
     public function addOrderItem(OrderItem $orderItem)
     {
+        $this->orderAmount += $orderItem->getPrice();
+
         return $this->orderItems[$orderItem->getSku()] = $orderItem;
+    }
+
+    /**
+     * @param  int $orderAmount
+     * @return int
+     */
+    public function setOrderAmount($orderAmount)
+    {
+        return 0;
     }
 
     /**
@@ -45,6 +56,17 @@ class ExtendedLoanRequest extends LoanRequestAbstract
     public function getOrderItems()
     {
         return $this->orderItems;
+    }
+
+    public function toArray()
+    {
+        $ar = parent::toArray();
+
+        foreach ($this->getOrderItems() as $k => $v) {
+            $ar['order_items'][$k] = $v->toArray();
+        }
+
+        return $ar;
     }
 
 }

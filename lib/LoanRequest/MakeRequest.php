@@ -62,7 +62,8 @@ class MakeRequest
     /**
      * Make Simple Loan Request
      *
-     * @param  ConfigurationInterface $configuration
+     * @param  ConfigurationInterface                    $configuration
+     * @param  Repository\LoanRequestRepositoryInterface $repository
      * @return static
      */
     public static function makeSimple(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
@@ -73,7 +74,8 @@ class MakeRequest
     /**
      * Make Extended Loan Request
      *
-     * @param  ConfigurationInterface $configuration
+     * @param  ConfigurationInterface                    $configuration
+     * @param  Repository\LoanRequestRepositoryInterface $repository
      * @return static
      */
     public static function makeExtended(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
@@ -308,7 +310,7 @@ class MakeRequest
 
         if (
             $this->loanRequest instanceof ExtendedLoanRequest &&
-            !empty($this->loanRequest->getOrderItems())
+            $this->loanRequest->getOrderItems()
         ) {
             foreach ($this->loanRequest->getOrderItems() as $item) {
                 $ar['order_items'][] = $item->toArray();
