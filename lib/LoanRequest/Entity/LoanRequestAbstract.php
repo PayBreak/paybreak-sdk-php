@@ -28,8 +28,8 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $orderExtendable = false;
     protected $additionalData = [];
     protected $requestDate;
-    protected $status;
-    protected $fulfilled;
+    protected $status = self::STATUS_PENDING;
+    protected $fulfilled = self::FULFILLED_NONE;
 
     /**
      * Entity unique ID

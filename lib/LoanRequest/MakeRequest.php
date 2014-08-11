@@ -14,6 +14,7 @@ use Graham\CustomType;
 use Graham\FieldEncoder;
 use Graham\HashGenerator;
 use Graham\LoanRequest\Entity\ExtendedLoanRequest;
+use Graham\LoanRequest\Entity\LoanRequestInterface;
 use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\StandardInterface\ConfigurationInterface;
 
@@ -324,8 +325,32 @@ class MakeRequest
         return $ar;
     }
 
+    /**
+     * Save Loan Request into Repository
+     *
+     * @return bool
+     */
     public function saveRequest()
     {
+        return $this->repository->save($this->loanRequest);
+    }
 
+    /**
+     * Confirm Sent
+     *
+     * Action to run once request be successfully sent, updates LoanRequest status to REQUESTED and sets time of request.
+     *
+     * @param bool $save
+     * @return bool
+     */
+    public function confirmSent($save=true)
+    {
+        $this->loanRequest->setStatus(LoanRequestInterface::STATUS_REQUESTED);
+        $this->loanRequest->setRequestDate(time());
+
+        if ($save)
+            return $this->saveRequest();
+
+        return true;
     }
 }
