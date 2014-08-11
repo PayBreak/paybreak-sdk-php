@@ -26,4 +26,24 @@ class MakePartialRequest extends MakeRequestAbstract
         parent::__construct($configuration, $loanRequestRepository, $fulfilmentRequestRepository);
         $this->fulfilmentRequest = new PartialFulfilmentRequest();
     }
+
+    /**
+     * Prepare Fulfilment Request
+     *
+     * @throws \Exception
+     * @return array
+     */
+    public function prepareRequest()
+    {
+        $ar = [];
+
+        $this->prepareEssentialRequest($ar);
+
+        // TODO: Something with items
+
+        $this->addMerchantHash($ar);
+
+        return $ar;
+    }
+
 }

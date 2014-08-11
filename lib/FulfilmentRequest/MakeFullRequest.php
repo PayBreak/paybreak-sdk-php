@@ -27,4 +27,21 @@ class MakeFullRequest extends MakeRequestAbstract
         $this->fulfilmentRequest = new FullFulfilmentRequest();
     }
 
+    /**
+     * Prepare Fulfilment Request
+     *
+     * @throws \Exception
+     * @return array
+     */
+    public function prepareRequest()
+    {
+        $ar = [];
+
+        $this->prepareEssentialRequest($ar);
+
+        $this->addMerchantHash($ar);
+
+        return $ar;
+    }
+
 }

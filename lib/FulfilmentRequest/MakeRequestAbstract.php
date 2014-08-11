@@ -16,7 +16,7 @@ use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\LoanRequest\Entity\LoanRequestInterface;
 use Graham\HashGenerator;
 
-abstract class MakeRequestAbstract
+abstract class MakeRequestAbstract implements MakeRequestInterface
 {
     protected $configuration;
     protected $loanRequestRepository;
@@ -71,23 +71,6 @@ abstract class MakeRequestAbstract
         $this->fulfilmentRequest->setOrderAmount($loanRequest->getOrderAmount());
 
         return true;
-    }
-
-    /**
-     * Prepare Fulfilment Request
-     *
-     * @throws \Exception
-     * @return array
-     */
-    public function prepareRequest()
-    {
-        $ar = [];
-
-        $this->prepareEssentialRequest($ar);
-
-        $this->addMerchantHash($ar);
-
-        return $ar;
     }
 
     /**
