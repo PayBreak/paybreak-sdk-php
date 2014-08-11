@@ -17,6 +17,9 @@ interface FulfilmentRequestInterface extends EntityInterface
     const TYPE_FULL = 1;
     const TYPE_PARTIAL = 2;
 
+    const STATUS_PENDING = 0;
+    const STATUS_REQUESTED = 1;
+
     /**
      * Get Fulfilment Type
      *
@@ -97,4 +100,34 @@ interface FulfilmentRequestInterface extends EntityInterface
      * @return int
      */
     public function getOrderAmount();
+
+    /**
+     * Set Request Date
+     *
+     * @param  int   $date
+     * @return mixed
+     */
+    public function setRequestDate($date);
+
+    /**
+     * Get Request Date
+     *
+     * @return int
+     */
+    public function getRequestDate();
+
+    /**
+     * Set Status
+     *
+     * @param  int $status
+     * @return int
+     */
+    public function setStatus($status);
+
+    /**
+     * Get Status
+     *
+     * @return int
+     */
+    public function getStatus();
 }

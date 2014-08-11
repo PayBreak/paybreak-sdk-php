@@ -18,6 +18,8 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
     protected $merchantInstallation;
     protected $orderReference;
     protected $orderAmount;
+    protected $requestDate;
+    protected $status;
 
     /**
      * Entity unique ID
@@ -140,6 +142,48 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
     }
 
     /**
+     * Set Request Date
+     *
+     * @param  int   $date
+     * @return mixed
+     */
+    public function setRequestDate($date)
+    {
+        return $this->requestDate = $date;
+    }
+
+    /**
+     * Get Request Date
+     *
+     * @return int
+     */
+    public function getRequestDate()
+    {
+        return $this->requestDate;
+    }
+
+    /**
+     * Set Status
+     *
+     * @param  int $status
+     * @return int
+     */
+    public function setStatus($status)
+    {
+        return $this->status = $status;
+    }
+
+    /**
+     * Get Status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
      * Returns entity as array
      *
      * @return array
@@ -154,6 +198,8 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
             'merchant_installation' => $this->getMerchantInstallation(),
             'order_reference'       => $this->getOrderReference(),
             'order_amount'          => $this->getOrderAmount(),
+            'request_date'          => $this->getRequestDate(),
+            'status'                => $this->getStatus(),
         ];
     }
 

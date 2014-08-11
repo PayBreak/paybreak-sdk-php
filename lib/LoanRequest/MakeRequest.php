@@ -340,7 +340,7 @@ class MakeRequest
      *
      * Action to run once request be successfully sent, updates LoanRequest status to REQUESTED and sets time of request.
      *
-     * @param bool $save
+     * @param  bool $save
      * @return bool
      */
     public function confirmSent($save=true)
