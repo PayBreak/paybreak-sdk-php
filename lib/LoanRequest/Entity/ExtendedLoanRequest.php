@@ -29,23 +29,37 @@ class ExtendedLoanRequest extends LoanRequestAbstract
     /**
      * Add Order Item
      *
+     * Adds OrderItem object to Request, updates order amount.
+     *
      * @param  \Graham\CustomType\OrderItem $orderItem
      * @return \Graham\CustomType\OrderItem
      */
     public function addOrderItem(OrderItem $orderItem)
     {
-        $this->orderAmount += $orderItem->getPrice();
+        $this->orderItems[$orderItem->getSku()] = $orderItem;
 
-        return $this->orderItems[$orderItem->getSku()] = $orderItem;
+        $this->updateOrderAmount();
+
+        return $orderItem;
     }
 
     /**
-     * @param  int $orderAmount
+     * Update Order Amount
+     *
+     * Updates orderAmount value to be a sum of all items in request (multiplied by quantity of them).
+     * Also returns new orderAmount (in pence).
+     *
      * @return int
      */
-    public function setOrderAmount($orderAmount)
+    public function updateOrderAmount()
     {
-        return 0;
+        $amount = 0;
+
+        foreach ($this->getOrderItems() as $item) {
+            $amount += $item->getPrice() * $item->getQuantity();
+        }
+
+        return $this->setOrderAmount($amount);
     }
 
     /**
