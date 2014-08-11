@@ -13,6 +13,7 @@ namespace Graham;
 /**
  * Class FieldEncoder
  *
+ * @author WN
  * @package Graham
  */
 class FieldEncoder

@@ -15,6 +15,12 @@ use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
 use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\StandardInterface\ConfigurationInterface;
 
+/**
+ * Class MakeFullRequest
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest
+ */
 class MakeFullRequest extends MakeRequestAbstract
 {
     public function __construct(

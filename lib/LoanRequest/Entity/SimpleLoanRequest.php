@@ -13,6 +13,7 @@ namespace Graham\LoanRequest\Entity;
 /**
  * Class SimpleLoanRequest
  *
+ * @author WN
  * @package Graham\LoanRequest\Entity
  */
 class SimpleLoanRequest extends LoanRequestAbstract

@@ -13,6 +13,7 @@ namespace Graham\StandardInterface;
 /**
  * Interface ConfigurationInterface
  *
+ * @author WN
  * @package Graham\StandardInterface
  */
 interface ConfigurationInterface

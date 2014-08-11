@@ -12,6 +12,12 @@ namespace Graham\LoanRequest\Entity;
 
 use Graham\CustomType\OrderItem;
 
+/**
+ * Class ExtendedLoanRequest
+ *
+ * @author WN
+ * @package Graham\LoanRequest\Entity
+ */
 class ExtendedLoanRequest extends LoanRequestAbstract
 {
     protected $orderItems = [];

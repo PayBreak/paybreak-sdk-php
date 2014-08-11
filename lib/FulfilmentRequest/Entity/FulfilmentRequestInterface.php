@@ -12,6 +12,12 @@ namespace Graham\FulfilmentRequest\Entity;
 
 use Graham\StandardInterface\EntityInterface;
 
+/**
+ * Interface FulfilmentRequestInterface
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest\Entity
+ */
 interface FulfilmentRequestInterface extends EntityInterface
 {
     const TYPE_FULL = 1;

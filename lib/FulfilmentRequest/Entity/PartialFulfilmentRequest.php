@@ -12,6 +12,12 @@ namespace Graham\FulfilmentRequest\Entity;
 
 use Graham\CustomType\OrderItem;
 
+/**
+ * Class PartialFulfilmentRequest
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest\Entity
+ */
 class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements FulfilmentRequestInterface
 {
     protected $fulfilmentItems = [];

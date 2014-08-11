@@ -10,6 +10,12 @@
 
 namespace Graham\FulfilmentRequest\Entity;
 
+/**
+ * Class FullFulfilmentRequest
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest\Entity
+ */
 class FullFulfilmentRequest extends FulfilmentRequestAbstract implements FulfilmentRequestInterface
 {
     /**

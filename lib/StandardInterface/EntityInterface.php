@@ -13,6 +13,7 @@ namespace Graham\StandardInterface;
 /**
  * Standard Interface EntityInterface
  *
+ * @author WN
  * @package Graham\StandardInterface
  */
 interface EntityInterface

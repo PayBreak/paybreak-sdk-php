@@ -13,6 +13,12 @@ namespace Graham\LoanRequest\Repository;
 use Graham\LoanRequest\Entity\LoanRequestInterface;
 use Graham\LoanRequest\Entity\SimpleLoanRequest;
 
+/**
+ * Class NullLoanRequestRepository
+ *
+ * @author WN
+ * @package Graham\LoanRequest\Repository
+ */
 class NullLoanRequestRepository implements LoanRequestRepositoryInterface
 {
     /**

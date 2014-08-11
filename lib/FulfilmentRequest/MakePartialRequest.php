@@ -17,6 +17,12 @@ use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
 use Graham\FulfilmentRequest\Entity\PartialFulfilmentRequest;
 
+/**
+ * Class MakePartialRequest
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest
+ */
 class MakePartialRequest extends MakeRequestAbstract
 {
     protected $fulfilmentItems = [];

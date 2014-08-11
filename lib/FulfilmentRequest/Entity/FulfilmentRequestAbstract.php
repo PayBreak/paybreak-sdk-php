@@ -10,6 +10,12 @@
 
 namespace Graham\FulfilmentRequest\Entity;
 
+/**
+ * Class FulfilmentRequestAbstract
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest\Entity
+ */
 abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
 {
     protected $id;

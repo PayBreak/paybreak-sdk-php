@@ -21,6 +21,7 @@ use Graham\StandardInterface\ConfigurationInterface;
 /**
  * Class MakeRequest
  *
+ * @author WN
  * @package Graham\LoanRequest
  */
 class MakeRequest

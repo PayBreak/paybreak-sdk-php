@@ -13,6 +13,7 @@ namespace Graham\LoanRequest\Entity;
 /**
  * Class LoanRequestAbstract
  *
+ * @author WN
  * @package Graham\LoanRequest\Entity
  */
 abstract class LoanRequestAbstract implements LoanRequestInterface

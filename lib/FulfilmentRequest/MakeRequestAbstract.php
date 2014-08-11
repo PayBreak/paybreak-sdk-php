@@ -16,6 +16,12 @@ use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\LoanRequest\Entity\LoanRequestInterface;
 use Graham\HashGenerator;
 
+/**
+ * Class MakeRequestAbstract
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest
+ */
 abstract class MakeRequestAbstract implements MakeRequestInterface
 {
     protected $configuration;

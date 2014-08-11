@@ -15,6 +15,7 @@ use Graham\StandardInterface\EntityInterface;
 /**
  * Interface LoanRequestInterface
  *
+ * @author WN
  * @package Graham\LoanRequest\Entity
  */
 interface LoanRequestInterface extends EntityInterface

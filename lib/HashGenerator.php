@@ -13,6 +13,7 @@ namespace Graham;
 /**
  * Class HashGenerator
  *
+ * @author WN
  * @package Graham
  */
 class HashGenerator
