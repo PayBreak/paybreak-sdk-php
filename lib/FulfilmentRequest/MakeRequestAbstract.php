@@ -16,7 +16,7 @@ use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\LoanRequest\Entity\LoanRequestInterface;
 use Graham\HashGenerator;
 
-abstract class MakeFulfilmentRequest
+abstract class MakeRequestAbstract
 {
     protected $configuration;
     protected $loanRequestRepository;

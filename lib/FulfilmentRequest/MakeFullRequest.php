@@ -10,12 +10,12 @@
 
 namespace Graham\FulfilmentRequest;
 
-use Graham\StandardInterface\ConfigurationInterface;
-use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use Graham\FulfilmentRequest\Entity\FullFulfilmentRequest;
 use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
-use Graham\FulfilmentRequest\Entity\PartialFulfilmentRequest;
+use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use Graham\StandardInterface\ConfigurationInterface;
 
-class MakePartialFulfilmentRequest extends MakeFulfilmentRequest
+class MakeFullRequest extends MakeRequestAbstract
 {
     public function __construct(
         ConfigurationInterface $configuration,
@@ -24,6 +24,7 @@ class MakePartialFulfilmentRequest extends MakeFulfilmentRequest
     )
     {
         parent::__construct($configuration, $loanRequestRepository, $fulfilmentRequestRepository);
-        $this->fulfilmentRequest = new PartialFulfilmentRequest();
+        $this->fulfilmentRequest = new FullFulfilmentRequest();
     }
+
 }
