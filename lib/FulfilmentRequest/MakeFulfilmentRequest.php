@@ -10,27 +10,32 @@
 
 namespace Graham\FulfilmentRequest;
 
-use Graham\FulfilmentRequest\Entity\FullFulfilmentRequest;
-use Graham\HashGenerator;
-use Graham\LoanRequest\Entity\LoanRequestInterface;
-use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
 use Graham\StandardInterface\ConfigurationInterface;
+use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use Graham\LoanRequest\Entity\LoanRequestInterface;
+use Graham\HashGenerator;
 
-class MakeFullFulfilmentRequest
+abstract class MakeFulfilmentRequest
 {
     protected $configuration;
     protected $loanRequestRepository;
     protected $loanRequest;
+    protected $fulfilmentRequestRepository;
+    /**
+     * @var \Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface
+     */
     protected $fulfilmentRequest;
 
     public function __construct(
         ConfigurationInterface $configuration,
-        LoanRequestRepositoryInterface $loanRequestRepository
+        LoanRequestRepositoryInterface $loanRequestRepository,
+        FulfilmentRequestRepositoryInterface $fulfilmentRequestRepository
     )
     {
         $this->configuration = $configuration;
         $this->loanRequestRepository = $loanRequestRepository;
-        $this->fulfilmentRequest = new FullFulfilmentRequest();
+        $this->fulfilmentRequestRepository = $fulfilmentRequestRepository;
     }
 
     /**
@@ -76,6 +81,22 @@ class MakeFullFulfilmentRequest
      */
     public function prepareRequest()
     {
+        $ar = [];
+
+        $this->prepareEssentialRequest($ar);
+
+        $this->addMerchantHash($ar);
+
+        return $ar;
+    }
+
+    /**
+     * @param  array      $ar
+     * @return bool
+     * @throws \Exception
+     */
+    protected function prepareEssentialRequest(array &$ar)
+    {
         if (
             !$this->fulfilmentRequest->getCheckoutType() ||
             !$this->fulfilmentRequest->getCheckoutVersion() ||
@@ -94,8 +115,17 @@ class MakeFullFulfilmentRequest
         $ar['order_reference'] = $this->fulfilmentRequest->getOrderReference();
         $ar['order_amount'] = $this->fulfilmentRequest->getOrderAmount();
 
+        return true;
+    }
+
+    /**
+     * @param  array $ar
+     * @return bool
+     */
+    protected function addMerchantHash(array &$ar)
+    {
         $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
 
-        return $ar;
+        return true;
     }
 }
