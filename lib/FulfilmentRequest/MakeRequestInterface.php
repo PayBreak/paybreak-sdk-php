@@ -43,4 +43,13 @@ interface MakeRequestInterface
      * @return array
      */
     public function prepareRequest();
+
+    /**
+     * Confirm Sent
+     *
+     * Should be run once FulfilmentRequest is sent. Updates FulfilmentRequest and LoanRequest.
+     *
+     * @return bool
+     */
+    public function confirmSent();
 }
