@@ -12,6 +12,12 @@ namespace Graham\LoanRequest\Repository;
 
 use Graham\LoanRequest\Entity\LoanRequestInterface;
 
+/**
+ * Interface LoanRequestRepositoryInterface
+ *
+ * @author WN
+ * @package Graham\LoanRequest\Repository
+ */
 interface LoanRequestRepositoryInterface
 {
     /**
@@ -29,4 +35,13 @@ interface LoanRequestRepositoryInterface
      * @return \Graham\LoanRequest\Entity\LoanRequestInterface|bool
      */
     public function findById($id);
+
+    /**
+     * Find all
+     *
+     * @param  int                                                    $offset
+     * @param  int                                                    $length
+     * @return \Graham\LoanRequest\Entity\LoanRequestInterface[]|bool
+     */
+    public function findAll($offset = 0, $length = 50);
 }

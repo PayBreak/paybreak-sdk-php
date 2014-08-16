@@ -10,7 +10,21 @@
 
 namespace Graham\FulfilmentRequest\Repository;
 
+use Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface;
+
+/**
+ * Interface FulfilmentRequestRepositoryInterface
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest\Repository
+ */
 interface FulfilmentRequestRepositoryInterface
 {
-
+    /**
+     * Saves FulfilmentRequest in Repository
+     *
+     * @param  FulfilmentRequestInterface $fulfilmentRequest
+     * @return bool
+     */
+    public function save(FulfilmentRequestInterface $fulfilmentRequest);
 }

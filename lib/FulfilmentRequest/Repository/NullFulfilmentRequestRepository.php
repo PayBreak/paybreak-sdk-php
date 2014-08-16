@@ -10,7 +10,24 @@
 
 namespace Graham\FulfilmentRequest\Repository;
 
+use Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface;
+
+/**
+ * Class NullFulfilmentRequestRepository
+ *
+ * @author WN
+ * @package Graham\FulfilmentRequest\Repository
+ */
 class NullFulfilmentRequestRepository implements FulfilmentRequestRepositoryInterface
 {
-
+    /**
+     * Saves FulfilmentRequest in Repository
+     *
+     * @param  FulfilmentRequestInterface $fulfilmentRequest
+     * @return bool
+     */
+    public function save(FulfilmentRequestInterface $fulfilmentRequest)
+    {
+        return true;
+    }
 }
