@@ -47,9 +47,18 @@ interface MakeRequestInterface
     /**
      * Confirm Sent
      *
-     * Should be run once FulfilmentRequest is sent. Updates FulfilmentRequest and LoanRequest.
+     * Should be run once FulfilmentRequest is successfully sent and accepted. Updates FulfilmentRequest and LoanRequest.
      *
      * @return bool
      */
     public function confirmSent();
+
+    /**
+     * Save Fulfilment Request
+     *
+     * Also saves Loan Request
+     *
+     * @return bool
+     */
+    public function save();
 }

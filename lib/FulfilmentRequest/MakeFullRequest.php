@@ -12,6 +12,7 @@ namespace Graham\FulfilmentRequest;
 
 use Graham\FulfilmentRequest\Entity\FullFulfilmentRequest;
 use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
+use Graham\LoanRequest\Entity\LoanRequestInterface;
 use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use Graham\StandardInterface\ConfigurationInterface;
 
@@ -26,7 +27,7 @@ class MakeFullRequest extends MakeRequestAbstract
     public function __construct(
         ConfigurationInterface $configuration,
         LoanRequestRepositoryInterface $loanRequestRepository,
-        FulfilmentRequestRepositoryInterface $fulfilmentRequestRepository = NULL
+        FulfilmentRequestRepositoryInterface $fulfilmentRequestRepository
     )
     {
         parent::__construct($configuration, $loanRequestRepository, $fulfilmentRequestRepository);
@@ -50,4 +51,17 @@ class MakeFullRequest extends MakeRequestAbstract
         return $ar;
     }
 
+    /**
+     * Confirm Sent
+     *
+     * Should be run once FulfilmentRequest is successfully sent and accepted. Updates FulfilmentRequest and LoanRequest.
+     *
+     * @return bool
+     */
+    public function confirmSent()
+    {
+        $this->loanRequest->setFulfilled(LoanRequestInterface::FULFILLED_FULL);
+
+        parent::confirmSent();
+    }
 }

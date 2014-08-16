@@ -30,7 +30,7 @@ class MakePartialRequest extends MakeRequestAbstract
     public function __construct(
         ConfigurationInterface $configuration,
         LoanRequestRepositoryInterface $loanRequestRepository,
-        FulfilmentRequestRepositoryInterface $fulfilmentRequestRepository = NULL
+        FulfilmentRequestRepositoryInterface $fulfilmentRequestRepository
     )
     {
         parent::__construct($configuration, $loanRequestRepository, $fulfilmentRequestRepository);
@@ -114,4 +114,17 @@ class MakePartialRequest extends MakeRequestAbstract
         return $ar;
     }
 
+    /**
+     * Confirm Sent
+     *
+     * Should be run once FulfilmentRequest is successfully sent and accepted. Updates FulfilmentRequest and LoanRequest.
+     *
+     * @return bool
+     */
+    public function confirmSent()
+    {
+        // TODO: Here need to find out if this loanRequest is now fulfilled in full or just partial !!!
+
+        parent::confirmSent();
+    }
 }

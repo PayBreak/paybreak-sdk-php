@@ -10,6 +10,7 @@
 
 namespace Graham\FulfilmentRequest;
 
+use Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface;
 use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
 use Graham\StandardInterface\ConfigurationInterface;
 use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
@@ -26,6 +27,9 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
 {
     protected $configuration;
     protected $loanRequestRepository;
+    /**
+     * @var \Graham\LoanRequest\Entity\LoanRequestInterface
+     */
     protected $loanRequest;
     protected $fulfilmentRequestRepository;
     /**
@@ -116,5 +120,38 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
         $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
 
         return true;
+    }
+
+    /**
+     * Confirm Sent
+     *
+     * Should be run once FulfilmentRequest is successfully sent and accepted. Updates FulfilmentRequest and LoanRequest.
+     *
+     * @return bool
+     */
+    public function confirmSent()
+    {
+        $this->fulfilmentRequest->setStatus(FulfilmentRequestInterface::STATUS_REQUESTED);
+
+        return $this->save();
+    }
+
+    /**
+     * Save Fulfilment Request
+     *
+     * Also saves Loan Request
+     *
+     * @return bool
+     */
+    public function save()
+    {
+        if (
+            $this->fulfilmentRequestRepository->save($this->fulfilmentRequest) &&
+            $this->loanRequestRepository->save($this->loanRequest)
+        ){
+            return true;
+        }
+
+        return false;
     }
 }
