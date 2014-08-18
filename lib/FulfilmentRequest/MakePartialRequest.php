@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,20 +8,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\FulfilmentRequest;
+namespace PayBreak\Sdk\FulfilmentRequest;
 
-use Graham\CustomType\OrderItem;
-use Graham\LoanRequest\Entity\LoanRequestInterface;
-use Graham\StandardInterface\ConfigurationInterface;
-use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
-use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
-use Graham\FulfilmentRequest\Entity\PartialFulfilmentRequest;
+use PayBreak\Sdk\CustomType\OrderItem;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
+use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use PayBreak\Sdk\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
+use PayBreak\Sdk\FulfilmentRequest\Entity\PartialFulfilmentRequest;
 
 /**
  * Class MakePartialRequest
  *
  * @author WN
- * @package Graham\FulfilmentRequest
+ * @package PayBreak\Sdk\FulfilmentRequest
  */
 class MakePartialRequest extends MakeRequestAbstract
 {
@@ -83,7 +83,7 @@ class MakePartialRequest extends MakeRequestAbstract
     /**
      * Get Fulfilment Items
      *
-     * @return \Graham\CustomType\OrderItem[]
+     * @return \PayBreak\Sdk\CustomType\OrderItem[]
      */
     public function getFulfilmentItems()
     {

@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\StandardInterface;
+namespace PayBreak\Sdk\StandardInterface;
 
 /**
  * Interface ConfigurationInterface
  *
  * @author WN
- * @package Graham\StandardInterface
+ * @package PayBreak\Sdk\StandardInterface
  */
 interface ConfigurationInterface
 {

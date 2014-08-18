@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -9,4 +9,4 @@
  */
 
 $loader = include __DIR__ . "/../vendor/autoload.php";
-$loader->addPsr4('Graham\\Tests\\', __DIR__);
+$loader->addPsr4('PayBreak\\Sdk\\Tests\\', __DIR__);

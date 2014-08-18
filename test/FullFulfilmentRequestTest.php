@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,16 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\Tests;
+namespace PayBreak\Sdk\Tests;
 
-use Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface;
-use Graham\FulfilmentRequest\Entity\FullFulfilmentRequest;
+use PayBreak\Sdk\FulfilmentRequest\Entity\FulfilmentRequestInterface;
+use PayBreak\Sdk\FulfilmentRequest\Entity\FullFulfilmentRequest;
 
 /**
  * Class FullFulfilmentRequestTest
  *
  * @author WN
- * @package Graham\Tests
+ * @package PayBreak\Sdk\Tests
  */
 class FullFulfilmentRequestTest extends TestCase
 {
@@ -26,7 +26,7 @@ class FullFulfilmentRequestTest extends TestCase
      */
     public function testConstruct()
     {
-        $this->assertInstanceOf('Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface', new FullFulfilmentRequest());
+        $this->assertInstanceOf('PayBreak\Sdk\FulfilmentRequest\Entity\FulfilmentRequestInterface', new FullFulfilmentRequest());
     }
 
     /**

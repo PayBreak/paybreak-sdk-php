@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\LoanRequest\Entity;
+namespace PayBreak\Sdk\LoanRequest\Entity;
 
-use Graham\CustomType\OrderItem;
+use PayBreak\Sdk\CustomType\OrderItem;
 
 /**
  * Class ExtendedLoanRequest
  *
  * @author WN
- * @package Graham\LoanRequest\Entity
+ * @package PayBreak\Sdk\LoanRequest\Entity
  */
 class ExtendedLoanRequest extends LoanRequestAbstract
 {
@@ -37,8 +37,8 @@ class ExtendedLoanRequest extends LoanRequestAbstract
      *
      * Adds OrderItem object to Request, updates order amount.
      *
-     * @param  \Graham\CustomType\OrderItem $orderItem
-     * @return \Graham\CustomType\OrderItem
+     * @param  \PayBreak\Sdk\CustomType\OrderItem $orderItem
+     * @return \PayBreak\Sdk\CustomType\OrderItem
      */
     public function addOrderItem(OrderItem $orderItem)
     {
@@ -71,7 +71,7 @@ class ExtendedLoanRequest extends LoanRequestAbstract
     /**
      * Get Order Items
      *
-     * @return \Graham\CustomType\OrderItem[]
+     * @return \PayBreak\Sdk\CustomType\OrderItem[]
      */
     public function getOrderItems()
     {

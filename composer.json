@@ -1,13 +1,13 @@
 {
-    "name": "graham/graham",
-    "description": "Graham",
+    "name": "paybreak/paybreak-sdk-php",
+    "description": "PayBreak SDK",
     "require": {
         "php": ">=5.4.0",
         "nesbot/Carbon": "*"
     },
     "autoload": {
         "psr-4": {
-            "Graham\\": "lib"
+            "PayBreak\\Sdk\\": "lib"
         }
     },
     "minimum-stability": "dev"

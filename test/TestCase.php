@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\Tests;
+namespace PayBreak\Sdk\Tests;
 
 /**
  * Class TestCase - Default configuration for this test case
  *
  * @author WN
- * @package Graham\Tests
+ * @package PayBreak\Sdk\Tests
  */
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {

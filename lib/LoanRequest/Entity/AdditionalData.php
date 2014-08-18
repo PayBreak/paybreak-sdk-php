@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,17 +8,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\LoanRequest\Entity;
+namespace PayBreak\Sdk\LoanRequest\Entity;
 
-use Graham\CustomType;
+use PayBreak\Sdk\CustomType;
 
 /**
  * Class AdditionalData
  *
  * @author WN
- * @package Graham\LoanRequest\Entity
+ * @package PayBreak\Sdk\LoanRequest\Entity
  */
-class AdditionalData implements \Graham\StandardInterface\EntityInterface
+class AdditionalData implements \PayBreak\Sdk\StandardInterface\EntityInterface
 {
 
     protected $customer;

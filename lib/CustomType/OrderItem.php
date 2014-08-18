@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\CustomType;
+namespace PayBreak\Sdk\CustomType;
 
-use Graham\StandardInterface\EntityInterface;
+use PayBreak\Sdk\StandardInterface\EntityInterface;
 
 /**
  * Class OrderItem
  *
  * @author WN
- * @package Graham\CustomType
+ * @package PayBreak\Sdk\CustomType
  */
 class OrderItem implements EntityInterface
 {

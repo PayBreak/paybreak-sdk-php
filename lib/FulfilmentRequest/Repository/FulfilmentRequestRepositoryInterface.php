@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\FulfilmentRequest\Repository;
+namespace PayBreak\Sdk\FulfilmentRequest\Repository;
 
-use Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface;
+use PayBreak\Sdk\FulfilmentRequest\Entity\FulfilmentRequestInterface;
 
 /**
  * Interface FulfilmentRequestRepositoryInterface
  *
  * @author WN
- * @package Graham\FulfilmentRequest\Repository
+ * @package PayBreak\Sdk\FulfilmentRequest\Repository
  */
 interface FulfilmentRequestRepositoryInterface
 {

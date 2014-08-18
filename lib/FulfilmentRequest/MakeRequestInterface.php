@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,12 +8,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\FulfilmentRequest;
+namespace PayBreak\Sdk\FulfilmentRequest;
 
-use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
-use Graham\StandardInterface\ConfigurationInterface;
-use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
-use Graham\LoanRequest\Entity\LoanRequestInterface;
+use PayBreak\Sdk\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
+use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 
 interface MakeRequestInterface
 {
@@ -31,7 +31,7 @@ interface MakeRequestInterface
     /**
      * Set Loan Request to fulfill
      *
-     * @param  \Graham\LoanRequest\Entity\LoanRequestInterface $loanRequest
+     * @param  \PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface $loanRequest
      * @return bool
      */
     public function setLoanRequest(LoanRequestInterface $loanRequest);

@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,24 +8,24 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\Tests;
+namespace PayBreak\Sdk\Tests;
 
 /**
  * Class FulfilmentRequestAbstractTest
  *
  * @author WN
- * @package Graham\Tests
+ * @package PayBreak\Sdk\Tests
  */
 class FulfilmentRequestAbstractTest extends TestCase
 {
     /**
-     * @var \Graham\FulfilmentRequest\Entity\FulfilmentRequestAbstract
+     * @var \PayBreak\Sdk\FulfilmentRequest\Entity\FulfilmentRequestAbstract
      */
     protected $mockObject;
 
     protected function setUp()
     {
-        $this->mockObject = $this->getMockForAbstractClass('Graham\FulfilmentRequest\Entity\FulfilmentRequestAbstract');
+        $this->mockObject = $this->getMockForAbstractClass('PayBreak\Sdk\FulfilmentRequest\Entity\FulfilmentRequestAbstract');
     }
 
     protected function tearDown()

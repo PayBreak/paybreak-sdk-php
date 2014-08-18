@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,21 +8,21 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\LoanRequest;
+namespace PayBreak\Sdk\LoanRequest;
 
-use Graham\CustomType;
-use Graham\FieldEncoder;
-use Graham\HashGenerator;
-use Graham\LoanRequest\Entity\ExtendedLoanRequest;
-use Graham\LoanRequest\Entity\LoanRequestInterface;
-use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
-use Graham\StandardInterface\ConfigurationInterface;
+use PayBreak\Sdk\CustomType;
+use PayBreak\Sdk\FieldEncoder;
+use PayBreak\Sdk\HashGenerator;
+use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
+use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
 
 /**
  * Class MakeRequest
  *
  * @author WN
- * @package Graham\LoanRequest
+ * @package PayBreak\Sdk\LoanRequest
  */
 class MakeRequest
 {

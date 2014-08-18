@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,32 +8,32 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\FulfilmentRequest;
+namespace PayBreak\Sdk\FulfilmentRequest;
 
-use Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface;
-use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
-use Graham\StandardInterface\ConfigurationInterface;
-use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
-use Graham\LoanRequest\Entity\LoanRequestInterface;
-use Graham\HashGenerator;
+use PayBreak\Sdk\FulfilmentRequest\Entity\FulfilmentRequestInterface;
+use PayBreak\Sdk\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
+use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
+use PayBreak\Sdk\HashGenerator;
 
 /**
  * Class MakeRequestAbstract
  *
  * @author WN
- * @package Graham\FulfilmentRequest
+ * @package PayBreak\Sdk\FulfilmentRequest
  */
 abstract class MakeRequestAbstract implements MakeRequestInterface
 {
     protected $configuration;
     protected $loanRequestRepository;
     /**
-     * @var \Graham\LoanRequest\Entity\LoanRequestInterface
+     * @var \PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface
      */
     protected $loanRequest;
     protected $fulfilmentRequestRepository;
     /**
-     * @var \Graham\FulfilmentRequest\Entity\FulfilmentRequestInterface
+     * @var \PayBreak\Sdk\FulfilmentRequest\Entity\FulfilmentRequestInterface
      */
     protected $fulfilmentRequest;
 
@@ -52,7 +52,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
      * Get Loan Request to fulfill from Repository
      *
      * @param $id
-     * @return \Graham\LoanRequest\Entity\LoanRequestInterface|bool
+     * @return \PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface|bool
      */
     public function getLoanRequest($id)
     {
@@ -69,7 +69,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     /**
      * Set Loan Request to fulfill
      *
-     * @param  \Graham\LoanRequest\Entity\LoanRequestInterface $loanRequest
+     * @param  \PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface $loanRequest
      * @return bool
      */
     public function setLoanRequest(LoanRequestInterface $loanRequest)

@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,16 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\LoanRequest\Repository;
+namespace PayBreak\Sdk\LoanRequest\Repository;
 
-use Graham\LoanRequest\Entity\LoanRequestInterface;
-use Graham\LoanRequest\Entity\SimpleLoanRequest;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
+use PayBreak\Sdk\LoanRequest\Entity\SimpleLoanRequest;
 
 /**
  * Class NullLoanRequestRepository
  *
  * @author WN
- * @package Graham\LoanRequest\Repository
+ * @package PayBreak\Sdk\LoanRequest\Repository
  */
 class NullLoanRequestRepository implements LoanRequestRepositoryInterface
 {
@@ -36,7 +36,7 @@ class NullLoanRequestRepository implements LoanRequestRepositoryInterface
      * Find LoanRequest Entity by ID
      *
      * @param  string                                               $id
-     * @return \Graham\LoanRequest\Entity\LoanRequestInterface|bool
+     * @return \PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface|bool
      */
     public function findById($id)
     {

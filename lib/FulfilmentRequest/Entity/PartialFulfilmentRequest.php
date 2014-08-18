@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\FulfilmentRequest\Entity;
+namespace PayBreak\Sdk\FulfilmentRequest\Entity;
 
-use Graham\CustomType\OrderItem;
+use PayBreak\Sdk\CustomType\OrderItem;
 
 /**
  * Class PartialFulfilmentRequest
  *
  * @author WN
- * @package Graham\FulfilmentRequest\Entity
+ * @package PayBreak\Sdk\FulfilmentRequest\Entity
  */
 class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements FulfilmentRequestInterface
 {
@@ -35,8 +35,8 @@ class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements Fulf
     /**
      * Add Item to Fulfill
      *
-     * @param  \Graham\CustomType\OrderItem $item
-     * @return \Graham\CustomType\OrderItem
+     * @param  \PayBreak\Sdk\CustomType\OrderItem $item
+     * @return \PayBreak\Sdk\CustomType\OrderItem
      */
     public function addFulfilmentItem(OrderItem $item)
     {
@@ -46,7 +46,7 @@ class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements Fulf
     /**
      * Get Items to Fulfill
      *
-     * @return \Graham\CustomType\OrderItem[]
+     * @return \PayBreak\Sdk\CustomType\OrderItem[]
      */
     public function getFulfilmentItems()
     {

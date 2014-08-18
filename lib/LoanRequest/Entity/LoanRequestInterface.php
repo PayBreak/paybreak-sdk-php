@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\LoanRequest\Entity;
+namespace PayBreak\Sdk\LoanRequest\Entity;
 
-use Graham\StandardInterface\EntityInterface;
+use PayBreak\Sdk\StandardInterface\EntityInterface;
 
 /**
  * Interface LoanRequestInterface
  *
  * @author WN
- * @package Graham\LoanRequest\Entity
+ * @package PayBreak\Sdk\LoanRequest\Entity
  */
 interface LoanRequestInterface extends EntityInterface
 {

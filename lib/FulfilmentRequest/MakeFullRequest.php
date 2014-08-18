@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Graham package.
+ * This file is part of the PayBreak\Sdk package.
  *
  * (c) Wojciech Nowicki <wojtek@gettelegramm.org>
  *
@@ -8,19 +8,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Graham\FulfilmentRequest;
+namespace PayBreak\Sdk\FulfilmentRequest;
 
-use Graham\FulfilmentRequest\Entity\FullFulfilmentRequest;
-use Graham\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
-use Graham\LoanRequest\Entity\LoanRequestInterface;
-use Graham\LoanRequest\Repository\LoanRequestRepositoryInterface;
-use Graham\StandardInterface\ConfigurationInterface;
+use PayBreak\Sdk\FulfilmentRequest\Entity\FullFulfilmentRequest;
+use PayBreak\Sdk\FulfilmentRequest\Repository\FulfilmentRequestRepositoryInterface;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
+use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
 
 /**
  * Class MakeFullRequest
  *
  * @author WN
- * @package Graham\FulfilmentRequest
+ * @package PayBreak\Sdk\FulfilmentRequest
  */
 class MakeFullRequest extends MakeRequestAbstract
 {
