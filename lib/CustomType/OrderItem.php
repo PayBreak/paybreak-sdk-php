@@ -27,6 +27,7 @@ class OrderItem implements EntityInterface
     protected $price;
     protected $quantity;
     protected $fulfillable;
+    protected $fulfilled;
 
     /**
      * Set SKU
@@ -175,6 +176,27 @@ class OrderItem implements EntityInterface
     }
 
     /**
+     * Set Fulfilled amount
+     *
+     * @param  int $fulfilled
+     * @return int
+     */
+    public function setFulfilled($fulfilled)
+    {
+        return $this->fulfilled = $fulfilled;
+    }
+
+    /**
+     * Get Fulfilled amount
+     *
+     * @return int
+     */
+    public function getFulfilled()
+    {
+        return $this->fulfilled;
+    }
+
+    /**
      * Returns entity as array
      *
      * @return array
@@ -188,6 +210,7 @@ class OrderItem implements EntityInterface
             'price' => $this->getPrice(),
             'quantity' => $this->getQuantity(),
             'fulfillable' => $this->getFulfillable(),
+            'fulfilled' => $this->getFulfilled(),
         ];
     }
 

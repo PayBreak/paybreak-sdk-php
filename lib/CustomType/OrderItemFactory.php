@@ -44,6 +44,7 @@ class OrderItemFactory
         if (array_key_exists('gtin', $components)) $item->setGtin($components['gtin']);
         if (array_key_exists('description', $components)) $item->setDescription($components['description']);
         if (array_key_exists('fulfillable', $components)) $item->setFulfillable($components['fulfillable']);
+        if (array_key_exists('fulfilled', $components)) $item->setFulfilled($components['fulfilled']);
 
         return $item;
     }
