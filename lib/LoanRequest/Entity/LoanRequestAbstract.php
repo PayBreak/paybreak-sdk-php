@@ -10,6 +10,8 @@
 
 namespace PayBreak\Sdk\LoanRequest\Entity;
 
+use Carbon\Carbon;
+
 /**
  * Class LoanRequestAbstract
  *
@@ -161,10 +163,10 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     /**
      * Set Order Validity - timestamp
      *
-     * @param  int $orderValidity
-     * @return int
+     * @param  \Carbon\Carbon $orderValidity
+     * @return \Carbon\Carbon
      */
-    public function setOrderValidity($orderValidity)
+    public function setOrderValidity(Carbon $orderValidity)
     {
         return $this->orderValidity = $orderValidity;
     }
@@ -172,7 +174,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     /**
      * Get Order Validity - timestamp
      *
-     * @return int
+     * @return \Carbon\Carbon
      */
     public function getOrderValidity()
     {
@@ -224,10 +226,10 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     /**
      * Set Request Date
      *
-     * @param  int   $date
-     * @return mixed
+     * @param  \Carbon\Carbon $date
+     * @return \Carbon\Carbon
      */
-    public function setRequestDate($date)
+    public function setRequestDate(Carbon $date)
     {
         return $this->requestDate = $date;
     }
@@ -235,7 +237,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     /**
      * Get Request Date
      *
-     * @return int
+     * @return \Carbon\Carbon
      */
     public function getRequestDate()
     {
@@ -299,10 +301,10 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
             'order_description' => $this->getOrderDescription(),
             'order_reference' => $this->getOrderReference(),
             'order_amount' => $this->getOrderAmount(),
-            'order_validity' => $this->getOrderValidity(),
+            'order_validity' => $this->getOrderValidity()->getTimestamp(),
             'order_extendable' => $this->getOrderExtendable(),
             'additional_data' => $this->getAdditionalData(),
-            'request_date' => $this->getRequestDate(),
+            'request_date' => $this->getRequestDate()->getTimestamp(),
         ];
     }
 }

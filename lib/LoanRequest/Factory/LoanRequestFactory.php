@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\LoanRequest\Factory;
 
+use Carbon\Carbon;
 use PayBreak\Sdk\CustomType\OrderItem;
 use PayBreak\Sdk\CustomType\OrderItemFactory;
 use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
@@ -53,9 +54,36 @@ class LoanRequestFactory
         if (array_key_exists('order_description', $components)) $loanRequest->setOrderDescription($components['order_description']);
         if (array_key_exists('order_reference', $components)) $loanRequest->setOrderReference($components['order_reference']);
         if (array_key_exists('order_amount', $components)) $loanRequest->setOrderAmount($components['order_amount']);
-        if (array_key_exists('order_validity', $components)) $loanRequest->setOrderValidity($components['order_validity']);
+        if (array_key_exists('order_validity', $components)) {
+            if ($components['order_validity'] instanceof Carbon) {
+
+                $loanRequest->setOrderValidity($components['order_validity']);
+
+            } elseif (is_int($components['order_validity'])) {
+
+                $loanRequest->setOrderValidity(Carbon::createFromTimestamp($components['order_validity']));
+
+            } else {
+
+                throw new \Exception('Unrecognisable date format');
+            }
+        }
         if (array_key_exists('order_extendable', $components)) $loanRequest->setOrderExtendable($components['order_extendable']);
-        if (array_key_exists('request_date', $components)) $loanRequest->setRequestDate($components['request_date']);
+        if (array_key_exists('request_date', $components)) {
+            if ($components['request_date'] instanceof Carbon) {
+
+                $loanRequest->setRequestDate($components['request_date']);
+
+            } elseif (is_int($components['request_date'])) {
+
+                $loanRequest->setRequestDate(Carbon::createFromTimestamp($components['request_date']));
+
+            } else {
+
+                throw new \Exception('Unrecognisable date format');
+            }
+
+        }
         if (array_key_exists('status', $components)) $loanRequest->setStatus($components['status']);
         if (array_key_exists('fulfilled', $components)) $loanRequest->setFulfilled($components['fulfilled']);
 

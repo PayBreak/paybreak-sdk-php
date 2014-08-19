@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\LoanRequest\Entity;
 
+use Carbon\Carbon;
 use PayBreak\Sdk\StandardInterface\EntityInterface;
 
 /**
@@ -119,15 +120,15 @@ interface LoanRequestInterface extends EntityInterface
     /**
      * Set Order Validity - timestamp
      *
-     * @param  int $orderValidity
-     * @return int
+     * @param  \Carbon\Carbon $orderValidity
+     * @return \Carbon\Carbon
      */
-    public function setOrderValidity($orderValidity);
+    public function setOrderValidity(Carbon $orderValidity);
 
     /**
      * Get Order Validity - timestamp
      *
-     * @return int
+     * @return \Carbon\Carbon
      */
     public function getOrderValidity();
 
@@ -164,15 +165,15 @@ interface LoanRequestInterface extends EntityInterface
     /**
      * Set Request Date
      *
-     * @param  int   $date
-     * @return mixed
+     * @param  \Carbon\Carbon $date
+     * @return \Carbon\Carbon
      */
-    public function setRequestDate($date);
+    public function setRequestDate(Carbon $date);
 
     /**
      * Get Request Date
      *
-     * @return int
+     * @return \Carbon\Carbon
      */
     public function getRequestDate();
 
