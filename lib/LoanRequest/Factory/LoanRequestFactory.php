@@ -10,7 +10,10 @@
 
 namespace PayBreak\Sdk\LoanRequest\Factory;
 
+use PayBreak\Sdk\CustomType\OrderItem;
+use PayBreak\Sdk\CustomType\OrderItemFactory;
 use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 use PayBreak\Sdk\LoanRequest\Entity\SimpleLoanRequest;
 
 /**
@@ -31,11 +34,11 @@ class LoanRequestFactory
     {
         if (!array_key_exists('checkout_type', $components)) throw new \Exception('At least checkout_type must be defined.');
 
-        if ($components['checkout_type'] == 1) {
+        if ($components['checkout_type'] == LoanRequestInterface::TYPE_SIMPLE) {
 
             $loanRequest = new SimpleLoanRequest();
 
-        } elseif ($components['checkout_type'] == 2) {
+        } elseif ($components['checkout_type'] == LoanRequestInterface::TYPE_EXTENDED) {
 
             $loanRequest = new ExtendedLoanRequest();
 
@@ -58,9 +61,27 @@ class LoanRequestFactory
 
         // TODO: Additional Data to implement
 
-        if ($loanRequest->getCheckoutType() == 2) {
+        if (
+            $loanRequest->getCheckoutType() == LoanRequestInterface::TYPE_EXTENDED &&
+            array_key_exists('order_items', $components) &&
+            is_array($components['order_items'])
+        ) {
 
-            // TODO: Order Items
+            foreach ($components['order_items'] as $item) {
+
+                if ($item instanceof OrderItem) {
+
+                    $loanRequest->addOrderItem($item);
+
+                } elseif (is_array($item)) {
+
+                    $loanRequest->addOrderItem(OrderItemFactory::make($item));
+
+                } else {
+
+                    throw new \Exception('Wrong type of data!');
+                }
+            }
         }
 
         return $loanRequest;
