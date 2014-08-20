@@ -71,7 +71,7 @@ class HashGenerator
      */
     private static function ksortRecursive(array &$array)
     {
-        foreach ($array as $value) {
+        foreach ($array as &$value) {
 
             if (is_array($value)) self::ksortRecursive($value);
 
