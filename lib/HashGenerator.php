@@ -77,6 +77,8 @@ class HashGenerator
 
         }
 
-        return ksort($array);
+        ksort($array);
+
+        return $array;
     }
 }
