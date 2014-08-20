@@ -69,16 +69,14 @@ class HashGenerator
      * @param  array $array
      * @return array
      */
-    private static function ksortRecursive(array $array)
+    private static function ksortRecursive(array &$array)
     {
-        ksort($array);
-
         foreach ($array as $value) {
 
             if (is_array($value)) self::ksortRecursive($value);
 
         }
 
-        return $array;
+        return ksort($array);
     }
 }
