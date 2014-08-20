@@ -103,6 +103,7 @@ class MakePartialRequest extends MakeRequestAbstract
         $this->prepareEssentialRequest($ar);
 
         foreach ($this->getFulfilmentItems() as $k => $v) {
+            if ($v->getQuantity() > 0)
             $ar['order_items'][] = [
                 'sku'       => $k,
                 'quantity'  => $v->getQuantity()
