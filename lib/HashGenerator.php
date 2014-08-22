@@ -18,7 +18,12 @@ namespace PayBreak\Sdk;
  */
 class HashGenerator
 {
+    /**
+     * Hash Methods for PayBreak communication
+     */
+
     const TYPE_SHA256 = 'sha256';
+    const TYPE_SHA1 = 'sha1';
 
     /**
      * Generates array hash with given $key and algorithm

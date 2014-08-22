@@ -321,7 +321,7 @@ class MakeRequest
             $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
         }
 
-        $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
+        $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey(), $this->configuration->getHashMethod());
 
         return $ar;
     }
