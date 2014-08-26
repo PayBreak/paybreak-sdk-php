@@ -117,7 +117,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
      */
     protected function addMerchantHash(array &$ar)
     {
-        $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey());
+        $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey(), $this->configuration->getHashMethod());
 
         return true;
     }

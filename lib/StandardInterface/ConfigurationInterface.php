@@ -66,4 +66,14 @@ interface ConfigurationInterface
      * @return string
      */
     public function getOrderDescription();
+
+    /**
+     * Hash Generation Method
+     *
+     * Refer to \PayBreak\Sdk\HashGenerator::TYPE_???
+     *
+     * @author WN
+     * @return string
+     */
+    public function getHashMethod();
 }
