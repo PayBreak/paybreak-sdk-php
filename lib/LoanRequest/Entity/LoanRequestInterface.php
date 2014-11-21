@@ -35,6 +35,10 @@ interface LoanRequestInterface extends EntityInterface
     const FULFILLED_PARTIAL = 1;
     const FULFILLED_FULL = 2;
 
+    const FULFILMENT_TYPE_STANDARD = 0;
+    const FULFILMENT_TYPE_ALTERNATIVE = 1; // means that it's an alternative fulfilment address
+    const FULFILMENT_TYPE_COLLECT = 2;
+
     /**
      * Returns Checkout Type
      *

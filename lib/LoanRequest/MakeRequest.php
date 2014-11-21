@@ -10,16 +10,20 @@
 
 namespace PayBreak\Sdk\LoanRequest;
 
+use Carbon\Carbon;
 use PayBreak\Sdk\CustomType;
 use PayBreak\Sdk\FieldEncoder;
 use PayBreak\Sdk\HashGenerator;
 use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
+use PayBreak\Sdk\LoanRequest\Entity\FulfilmentObject;
 use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
 use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
 
 /**
  * Class MakeRequest
+ *
+ * Generates a request array structure, which can be POSTed to the appropriate Paybreak endpoint
  *
  * @author WN
  * @package PayBreak\Sdk\LoanRequest
@@ -274,6 +278,27 @@ class MakeRequest
         return true;
     }
 
+    public function setFulfilmentType($value)
+    {
+        $this->loanRequest->setFulfilmentType($value);
+    }
+
+    public function setFulfilmentObject($postcode, $address, $reference)
+    {
+        $fulfilmentObject = new FulfilmentObject();
+
+        $fulfilmentObject->setPostcode($postcode);
+        $fulfilmentObject->setAddress($address);
+        $fulfilmentObject->setReference($reference);
+
+        $this->loanRequest->setFulfilmentObject($fulfilmentObject);
+    }
+
+    public function setDeposit($deposit)
+    {
+        $this->loanRequest->setDeposit($deposit);
+    }
+
     /**
      * Prepare Loan Request
      *
@@ -290,26 +315,30 @@ class MakeRequest
         if ($this->loanRequest->getOrderDescription() == '')
             $this->loanRequest->setOrderDescription($this->configuration->getOrderDescription());
 
-        if ($this->loanRequest->getOrderValidity() < time())
-            $this->loanRequest->setOrderValidity(time() + $this->configuration->getOrderValidity());
+        if ($this->loanRequest->getOrderValidity()->timestamp < time())
+            $this->loanRequest->setOrderValidity(
+                new Carbon(time() + $this->configuration->getOrderValidity())
+            );
 
         if ($this->loanRequest->getOrderReference() == '')
             $this->loanRequest->setOrderReference(rand(10,99) . time());
 
         $ar = [];
 
+        // Add various fields to the output.
         $ar['checkout_version'] = $this->loanRequest->getCheckoutVersion();
         $ar['checkout_type'] = $this->loanRequest->getCheckoutType();
         $ar['merchant_installation'] = $this->loanRequest->getMerchantInstallation();
         $ar['order_description'] = $this->loanRequest->getOrderDescription();
         $ar['order_reference'] = $this->loanRequest->getOrderReference();
         $ar['order_amount'] = $this->loanRequest->getOrderAmount();
-        $ar['order_validity'] = date("c", $this->loanRequest->getOrderValidity());
+        $ar['order_validity'] = date("c", $this->loanRequest->getOrderValidity()->timestamp);
         $ar['order_extendable'] = (int) $this->loanRequest->getOrderExtendable();
 
         if ($this->additionalData instanceof Entity\AdditionalData)
             $ar['additional_data'] = FieldEncoder::encodeField($this->additionalData->toArray());
 
+        // If there are order items, add them to the output
         if (
             $this->loanRequest instanceof ExtendedLoanRequest &&
             $this->loanRequest->getOrderItems()
@@ -322,6 +351,24 @@ class MakeRequest
         }
 
         $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey(), $this->configuration->getHashMethod());
+
+        $fulfilmentType = $this->loanRequest->getFulfilmentType();
+        $fulfilmentObject = $this->loanRequest->getFulfilmentObject();
+
+        // If alternative fulfilment data exists, add it to the output.
+        if (
+            $fulfilmentType != LoanRequestInterface::FULFILMENT_TYPE_STANDARD &&
+            !is_null($fulfilmentObject)
+        ) {
+            $ar['fulfilment_object'] = FieldEncoder::encodeField($fulfilmentObject->toArray());
+            $ar['fulfilment_type'] = $this->loanRequest->getFulfilmentType();
+        }
+
+        // If there's a deposit, add it to the output
+        $deposit = $this->loanRequest->getDeposit();
+        if ($deposit > 0) {
+            $ar["deposit"] = $deposit;
+        }
 
         return $ar;
     }

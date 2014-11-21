@@ -33,6 +33,9 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $requestDate;
     protected $status = self::STATUS_PENDING;
     protected $fulfilled = self::FULFILLED_NONE;
+    protected $fulfilmentType = self::FULFILMENT_TYPE_STANDARD;
+    protected $fulfilmentObject = null;
+    protected $deposit = 0;
 
     /**
      * Entity unique ID
@@ -284,6 +287,53 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     public function getFulfilled()
     {
         return $this->fulfilled;
+    }
+
+    /**
+     * @param FulfilmentObject $obj The fulfilment object
+     */
+    public function setFulfilmentType($value)
+    {
+        $this->fulfilmentType = $value;
+    }
+
+    /**
+     * @param FulfilmentObject $obj The fulfilment object
+     */
+    public function setFulfilmentObject($obj)
+    {
+        $this->fulfilmentObject = $obj;
+    }
+
+    /**
+     * @return int The fulfilment type
+     */
+    public function getFulfilmentType()
+    {
+        return $this->fulfilmentType;
+    }
+
+    /**
+     * @return FulfilmentObject The fulfilment object.
+     */
+    public function getFulfilmentObject() {
+        return $this->fulfilmentObject;
+    }
+
+    /**
+     * @param int $deposit Deposit amount, in pence.
+     */
+    public function setDeposit($deposit)
+    {
+        $this->deposit = $deposit;
+    }
+
+    /**
+     * @return int Deposit amount, in pence.
+     */
+    public function getDeposit()
+    {
+        return $this->deposit;
     }
 
     /**
