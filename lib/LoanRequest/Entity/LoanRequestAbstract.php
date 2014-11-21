@@ -34,8 +34,8 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $status = self::STATUS_PENDING;
     protected $fulfilled = self::FULFILLED_NONE;
     protected $fulfilmentType = self::FULFILMENT_TYPE_STANDARD;
-    protected $fulfilmentObject = null;
-    protected $deposit = 0;
+    protected $fulfilmentObject;
+    protected $deposit;
 
     /**
      * Entity unique ID

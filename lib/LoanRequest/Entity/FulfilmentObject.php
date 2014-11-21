@@ -40,7 +40,8 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
         return $this->address;
     }
 
-    public function getReference() {
+    public function getReference()
+    {
         return $this->reference;
     }
 
