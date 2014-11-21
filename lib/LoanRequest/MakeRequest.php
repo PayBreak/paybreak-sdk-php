@@ -268,13 +268,15 @@ class MakeRequest
             $this->loanRequest->getOrderItems()
         ) {
             foreach ($this->loanRequest->getOrderItems() as $item) {
-                $ar['order_items'][] = $item->toArray();
+                $itemArray = $item->toArray();
+                unset($itemArray["fulfilled"]);
+                $ar['order_items'][] = $itemArray;
             }
 
             $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
         }
 
-        $ar['merchant_hash'] = HashGenerator::genHash($ar, $this->configuration->getKey(), $this->configuration->getHashMethod());
+
 
         $fulfilmentType = $this->loanRequest->getFulfilmentType();
         $fulfilmentObject = $this->loanRequest->getFulfilmentObject();
@@ -293,6 +295,13 @@ class MakeRequest
         if ($deposit > 0) {
             $ar["deposit"] = $deposit;
         }
+
+        ksort($ar);
+        $ar['merchant_hash'] = HashGenerator::genHash(
+            $ar,
+            $this->configuration->getKey(),
+            $this->configuration->getHashMethod()
+        );
 
         return $ar;
     }
