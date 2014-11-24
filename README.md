@@ -27,6 +27,15 @@ this in greater detail. To carry out a Simple Loan Request, the following code m
     $request->setExtendable(false);
     $request->setValidity($validity);
     $request->setCustomer("John", "Smith", "johnsmith@example.com");
+    $request->setLoanProducts(["AIN1-5"]);
+
+    // Add fulfilment type
+    $request->setFulfilmentType(1);
+    $request->setFulfilmentObject(
+        "POSTCODE", 
+        "Address Goes Here", 
+        "RefGoesHere"
+    );
 
     $arr = $request->prepareRequest();
     print_r($arr);
@@ -62,29 +71,33 @@ The Extended Loan Request allows partial fulfillment of orders, and is described
     $request->setDescription("description_of_order");
     $request->setExtendable(false);
     $request->setValidity($validity);
-    $request->setDeposit(9000); // deposit not working?
+    $request->setDeposit(9000);
     $request->setCustomer("John", "Smith", "johnsmith@example.com");
-    
+        
     // Can only be done if the extended checkout is used (i.e. option 2)
     $request->addOrderItem(
-    	"SKU_1", // Stock keeping unit (SKU)
-    	20000, // Cost of item
-    	1, // Quantity
-    	"Item description 1",
-    	true, // Is this item fulfillable?
-    	"001" // Global Trade Index Number
+        "SKU_1", // Stock keeping unit (SKU)
+        20000, // Cost of item
+        1, // Quantity
+        "Item description 1",
+        true, // Is this item fulfillable?
+        "001" // Global Trade Index Number
     );
     
-    // Can only be done if the extended checkout is used (i.e. option 2)
     $request->addOrderItem(
-    	"SKU_2", // Stock keeping unit (SKU)
-    	32000, // Cost of item
-    	1, // Quantity
-    	"Item description 2",
-    	true, // Is this item fulfillable?
-    	"002" // Global Trade Index Number
+        "SKU_2", // Stock keeping unit (SKU)
+        32000, // Cost of item
+        1, // Quantity
+        "Item description 2",
+        true, // Is this item fulfillable?
+        "002" // Global Trade Index Number
     );
-
+    
     $arr = $request->prepareRequest();
     print_r($arr);
+
+Most of this is the same as with a Simple Loan Request, with some differences:
+
+- MakeRequest::makeExtended() is used to generate the object.
+- Individual items can be added using the addOrderItem() method.
 
