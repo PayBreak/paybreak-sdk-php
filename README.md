@@ -21,19 +21,32 @@ this in greater detail. To carry out a Simple Loan Request, the following code m
     $repository = new NullLoanRequestRepository();
 
     $request = MakeRequest::makeSimple($config, $repository);
-    $request->setAmount(90000);
+    $request->setAmount(25000);
     $request->setReference($uniqueOrderRef);
     $request->setDescription("description_of_order");
     $request->setExtendable(false);
     $request->setValidity($validity);
-    $request->setCustomer("John", "Smith", "johnsmith@example.com");
+    $request->setDeposit(9000);
     $request->setLoanProducts(["AIN1-5"]);
-
+    
+    // Optional field, to pre-populate Paybreak form with customer data
+    $request->setCustomer( 
+        "1-1-1984",
+        "John", 
+        "Smith", 
+        "johnsmith@example.com",
+        "07654321012",
+        "01212123456",
+        "A1 B23",
+        "Mr"
+    );
+    $request->setLoanProducts(["AIN1-5"]);
+    
     // Add fulfilment type
     $request->setFulfilmentType(1);
     $request->setFulfilmentObject(
-        "POSTCODE", 
-        "Address Goes Here", 
+        "M1 1AB", 
+        "This address is a test...", 
         "RefGoesHere"
     );
 
@@ -65,34 +78,33 @@ The Extended Loan Request allows partial fulfillment of orders, and is described
     $config = new Configuration();
     $repository = new NullLoanRequestRepository();
 
+   
     $request = MakeRequest::makeExtended($config, $repository);
     $request->setAmount(50000);
     $request->setReference($uniqueOrderRef);
     $request->setDescription("description_of_order");
     $request->setExtendable(false);
     $request->setValidity($validity);
-    $request->setDeposit(9000);
-    $request->setCustomer("John", "Smith", "johnsmith@example.com");
-        
+    
     // Can only be done if the extended checkout is used (i.e. option 2)
     $request->addOrderItem(
-        "SKU_1", // Stock keeping unit (SKU)
-        20000, // Cost of item
-        1, // Quantity
-        "Item description 1",
-        true, // Is this item fulfillable?
-        "001" // Global Trade Index Number
+    	"SKU_1", // Stock keeping unit (SKU)
+    	20000, // Cost of item
+    	1, // Quantity
+    	"Item description 1",
+    	true, // Is this item fulfillable?
+    	"001" // Global Trade Index Number
     );
     
     $request->addOrderItem(
-        "SKU_2", // Stock keeping unit (SKU)
-        32000, // Cost of item
-        1, // Quantity
-        "Item description 2",
-        true, // Is this item fulfillable?
-        "002" // Global Trade Index Number
+    	"SKU_2", // Stock keeping unit (SKU)
+    	32000, // Cost of item
+    	1, // Quantity
+    	"Item description 2",
+    	true, // Is this item fulfillable?
+    	"002" // Global Trade Index Number
     );
-    
+
     $arr = $request->prepareRequest();
     print_r($arr);
 

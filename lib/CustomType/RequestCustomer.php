@@ -13,9 +13,12 @@ namespace PayBreak\Sdk\CustomType;
 use PayBreak\Sdk\StandardInterface\EntityInterface;
 
 /**
- * Class RequestCustomer
+ * Class RequestCustomer. Stores details about the customer.
+ * This is so fields can be pre-populated on the loan request form.
  *
  * @author WN
+ * @author Matthew Norris
+ *
  * @package PayBreak\Sdk\CustomType
  */
 class RequestCustomer implements EntityInterface
@@ -49,18 +52,16 @@ class RequestCustomer implements EntityInterface
     /**
      * Set First Name
      *
-     * @param  string $firstName
-     * @return string
+     * @param  string $firstName Customer's first name
+
      */
     public function setFirstName($firstName)
     {
-        return $this->firstName = $firstName;
+        $this->firstName = $firstName;
     }
 
     /**
-     * Get First Name
-     *
-     * @return string
+     * @return string Customer's first name
      */
     public function getFirstName()
     {
@@ -68,20 +69,15 @@ class RequestCustomer implements EntityInterface
     }
 
     /**
-     * Set Last Name
-     *
-     * @param  string $lastName
-     * @return string
+     * @param string $lastName Customer's last name
      */
     public function setLastName($lastName)
     {
-        return $this->lastName = $lastName;
+        $this->lastName = $lastName;
     }
 
     /**
-     * Get Last Name
-     *
-     * @return string
+     * @return string Customer's last name
      */
     public function getLastName()
     {
@@ -89,13 +85,11 @@ class RequestCustomer implements EntityInterface
     }
 
     /**
-     * Set Email
-     * @param  string $email
-     * @return string
+     * @param string $email Customer's email
      */
     public function setEmail($email)
     {
-        return $this->email = $email;
+        $this->email = $email;
     }
 
     /**
@@ -125,7 +119,7 @@ class RequestCustomer implements EntityInterface
     }
 
     /**
-     * @param string $phoneMobile Customer's personal phone number.
+     * @param string $phonePersonal Customer's personal phone number.
      */
     public function setPhonePersonal($phonePersonal)
     {

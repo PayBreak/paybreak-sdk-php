@@ -191,7 +191,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
      * @param  bool $orderExtendable
      * @return bool
      */
-    public function setOrderExtendable($orderExtendable = true)
+    public function setOrderExtendable($orderExtendable = false)
     {
         return $this->orderExtendable = $orderExtendable;
     }

@@ -22,10 +22,11 @@ use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
 
 /**
  * Class MakeRequest
- *
  * Generates a request array structure, which can be POSTed to the appropriate Paybreak endpoint
  *
  * @author WN
+ * @author Matthew Norris
+ *
  * @package PayBreak\Sdk\LoanRequest
  */
 class MakeRequest
@@ -142,11 +143,16 @@ class MakeRequest
     }
 
     /**
-     * Add Customer
+     * Add customer data to the request
      *
-     * @param  string|null $firstName
-     * @param  string|null $lastName
-     * @param  string|null $email
+     * @param string|null $dob Customer's date of birth (YYYY-MM-DD)
+     * @param string|null $firstName Customer's first name
+     * @param string|null $lastName Customer's last name
+     * @param string|null $email Customer's email
+     * @param string|null $phoneMobile Customer's mobile phone number.
+     * @param string|null $phonePersonal Customer's personal phone number.
+     * @param string|null $postcode Customer's postcode
+     * @param string|null $title Customer's title
      * @return bool
      */
     public function setCustomer(
@@ -268,19 +274,40 @@ class MakeRequest
      */
     public function prepareRequest()
     {
-        if ($this->loanRequest->getOrderAmount() < 1)
-            throw new \Exception('Amount is not set');
+
+        $errors = [];
+
+        // Do some checks. Some fields are essential - if they're missing, you will get an exception.
+        if (!$this->loanRequest->getCheckoutVersion())
+            $errors[] = 'Checkout version not set. ';
+
+        if (!$this->loanRequest->getCheckoutType())
+            $errors[] = 'Checkout type not set. ';
+
+        if (!$this->loanRequest->getMerchantInstallation())
+            $errors[] = 'Merchant installation not set. ';
 
         if ($this->loanRequest->getOrderDescription() == '')
             $this->loanRequest->setOrderDescription($this->configuration->getOrderDescription());
 
-        if ($this->loanRequest->getOrderValidity()->timestamp < time())
-            $this->loanRequest->setOrderValidity(
-                new Carbon(time() + $this->configuration->getOrderValidity())
-            );
-
         if ($this->loanRequest->getOrderReference() == '')
             $this->loanRequest->setOrderReference(rand(10,99) . time());
+
+        if ($this->loanRequest->getOrderAmount() < 1)
+            $errors[] = 'Amount not set. ';
+
+        if ($this->loanRequest->getOrderValidity()->timestamp < time())
+            $this->loanRequest->setOrderValidity(new Carbon(time() + $this->configuration->getOrderValidity()));
+
+        if (    $this->loanRequest->getCheckoutType() == 2
+            && !$this->loanRequest->getOrderItems()) {
+
+            $errors[] = 'Order items must be set when checkoutType == 2. ';
+        }
+
+        if ($errors) {
+            throw new \Exception("Some fields were missing: ".implode("\n", $errors));
+        }
 
         $ar = [];
 
