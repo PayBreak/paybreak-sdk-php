@@ -36,6 +36,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $fulfilmentType = self::FULFILMENT_TYPE_STANDARD;
     protected $fulfilmentObject;
     protected $deposit;
+    protected $loanProducts = [];
 
     /**
      * Entity unique ID
@@ -337,6 +338,22 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     }
 
     /**
+     * @param array $loanProducts An array of loan product identifiers (strings)
+     */
+    public function setLoanProducts(array $loanProducts)
+    {
+        $this->loanProducts = $loanProducts;
+    }
+
+    /**
+     * @return array An array of loan product identifiers (strings)
+     */
+    public function getLoanProducts()
+    {
+        return $this->loanProducts;
+    }
+
+    /**
      * Returns entity as array
      *
      * @return array
@@ -355,6 +372,10 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
             'order_extendable' => $this->getOrderExtendable(),
             'additional_data' => $this->getAdditionalData(),
             'request_date' => $this->getRequestDate()->getTimestamp(),
+            'deposit' => $this->getDeposit(),
+            'fulfilment_type' => $this->getFulfilmentType(),
+            'fulfilment_object' => $this->getFulfilmentObject(),
+            'loan_products' => $this->getLoanProducts()
         ];
     }
 }

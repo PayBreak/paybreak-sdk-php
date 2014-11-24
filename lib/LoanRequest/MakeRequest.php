@@ -61,7 +61,6 @@ class MakeRequest
         }
 
         $this->loanRequest->setMerchantInstallation($configuration->getMerchantInstallation());
-
         $this->loanRequest->setCheckoutVersion($configuration->getCheckoutVersion());
     }
 
@@ -223,6 +222,10 @@ class MakeRequest
         $this->loanRequest->setDeposit($deposit);
     }
 
+    public function setLoanProducts(array $loanProducts) {
+        $this->loanRequest->setLoanProducts($loanProducts);
+    }
+
     /**
      * Prepare Loan Request
      *
@@ -276,8 +279,6 @@ class MakeRequest
             $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
         }
 
-
-
         $fulfilmentType = $this->loanRequest->getFulfilmentType();
         $fulfilmentObject = $this->loanRequest->getFulfilmentObject();
 
@@ -296,6 +297,11 @@ class MakeRequest
             $ar["deposit"] = $deposit;
         }
 
+        if ($this->loanRequest->getLoanProducts()) {
+            $ar["loan_products"] = FieldEncoder::encodeField($this->loanRequest->getLoanProducts());
+        }
+
+        // Must sort by keys, alphabetically, to get a consistent hash.
         ksort($ar);
         $ar['merchant_hash'] = HashGenerator::genHash(
             $ar,

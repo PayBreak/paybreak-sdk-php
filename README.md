@@ -45,8 +45,7 @@ e.g. by using a form. If you are testing, you can POST to `http://checkout-test.
 Extended Loan Request (Checkout Type 2)
 ---------------------------------------
 
-The Extended Loan Request allows partial fulfillment of orders, and is described in the Integration Guide. This type 
-of request is illustrated below:
+The Extended Loan Request allows partial fulfillment of orders, and is described in the Integration Guide:
 
     use \PayBreak\Sdk\LoanRequest\MakeRequest;
     use \PayBreak\Sdk\LoanRequest\Repository\NullLoanRequestRepository;
@@ -54,34 +53,36 @@ of request is illustrated below:
 
     // ...
     
-    $config = new \PayBreak\Sdk\StandardInterface\Configuration();
-    $repository = new \PayBreak\Sdk\LoanRequest\Repository\NullLoanRequestRepository();
+    $config = new Configuration();
+    $repository = new NullLoanRequestRepository();
 
-    $request = new ß(2, $config, $repository);
-    $request->setAmount(9000);
+    $request = MakeRequest::makeExtended($config, $repository);
+    $request->setAmount(50000);
     $request->setReference($uniqueOrderRef);
     $request->setDescription("description_of_order");
     $request->setExtendable(false);
     $request->setValidity($validity);
-    $request->setDeposit(9000);
+    $request->setDeposit(9000); // deposit not working?
     $request->setCustomer("John", "Smith", "johnsmith@example.com");
-
+    
+    // Can only be done if the extended checkout is used (i.e. option 2)
     $request->addOrderItem(
-    	"SKU_9000",
-    	9000,
-    	10,
-    	"Best item ever",
-    	true,
-    	"00000123456"
+    	"SKU_1", // Stock keeping unit (SKU)
+    	20000, // Cost of item
+    	1, // Quantity
+    	"Item description 1",
+    	true, // Is this item fulfillable?
+    	"001" // Global Trade Index Number
     );
     
+    // Can only be done if the extended checkout is used (i.e. option 2)
     $request->addOrderItem(
-        "SKU_9000",
-        9000,
-        10,
-        "Another awesome item",
-        true,
-        "00000123457"
+    	"SKU_2", // Stock keeping unit (SKU)
+    	32000, // Cost of item
+    	1, // Quantity
+    	"Item description 2",
+    	true, // Is this item fulfillable?
+    	"002" // Global Trade Index Number
     );
 
     $arr = $request->prepareRequest();
