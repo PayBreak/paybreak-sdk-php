@@ -22,7 +22,6 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
 {
     protected $id;
     protected $checkoutVersion;
-    protected $checkoutType;
     protected $merchantInstallation;
     protected $orderDescription;
     protected $orderReference;

@@ -275,38 +275,44 @@ class MakeRequest
     public function prepareRequest()
     {
 
-        $errors = [];
-
         // Do some checks. Some fields are essential - if they're missing, you will get an exception.
-        if (!$this->loanRequest->getCheckoutVersion())
-            $errors[] = 'Checkout version not set. ';
+        $errors = [];
+        if (!$this->loanRequest->getCheckoutVersion()) {
+            $errors[] = 'Checkout version not set.';
+        }
 
-        if (!$this->loanRequest->getCheckoutType())
-            $errors[] = 'Checkout type not set. ';
+        if (!$this->loanRequest->getMerchantInstallation()) {
+            $errors[] = 'Merchant installation not set.';
+        }
 
-        if (!$this->loanRequest->getMerchantInstallation())
-            $errors[] = 'Merchant installation not set. ';
-
-        if ($this->loanRequest->getOrderDescription() == '')
+        if ($this->loanRequest->getOrderDescription() == '') {
             $this->loanRequest->setOrderDescription($this->configuration->getOrderDescription());
+        }
 
-        if ($this->loanRequest->getOrderReference() == '')
-            $this->loanRequest->setOrderReference(rand(10,99) . time());
+        // Set a random order reference if it's not already set
+        if ($this->loanRequest->getOrderReference() == '') {
+            $this->loanRequest->setOrderReference(rand(10, 99) . time());
+        }
 
-        if ($this->loanRequest->getOrderAmount() < 1)
+        if ($this->loanRequest->getOrderAmount() < 1) {
             $errors[] = 'Amount not set. ';
+        }
 
-        if ($this->loanRequest->getOrderValidity()->timestamp < time())
-            $this->loanRequest->setOrderValidity(new Carbon(time() + $this->configuration->getOrderValidity()));
+        if (!$this->configuration->getOrderValidity()) {
+            $errors[] = 'Order validity time period must be set in Configuration';
 
-        if (    $this->loanRequest->getCheckoutType() == 2
-            && !$this->loanRequest->getOrderItems()) {
+        } else if ($this->loanRequest->getOrderValidity()->timestamp < time()) {
+            $errors[] = "Order valid date is in the the past.";
+        }
 
-            $errors[] = 'Order items must be set when checkoutType == 2. ';
+        if ( $this->loanRequest->getCheckoutType() == 2 &&
+            !$this->loanRequest->getOrderItems()) {
+
+            $errors[] = 'Order items must be set when checkoutType == 2.';
         }
 
         if ($errors) {
-            throw new \Exception("Some fields were missing: ".implode("\n", $errors));
+            throw new \Exception("Some fields were missing:\n".implode("\n", $errors));
         }
 
         $ar = [];
