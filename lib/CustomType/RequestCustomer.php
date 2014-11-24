@@ -21,9 +21,30 @@ use PayBreak\Sdk\StandardInterface\EntityInterface;
 class RequestCustomer implements EntityInterface
 {
 
+    protected $dob;
     protected $firstName;
     protected $lastName;
     protected $email;
+    protected $phoneMobile;
+    protected $phonePersonal;
+    protected $postcode;
+    protected $title;
+
+    /**
+     * @param string $dob Customer's date of birth (YYYY-MM-DD)
+     */
+    public function setDob($dob)
+    {
+        $this->dob = $dob;
+    }
+
+    /**
+     * @return string Customer's date of birth (YYYY-MM-DD)
+     */
+    public function getDob()
+    {
+        return $this->dob;
+    }
 
     /**
      * Set First Name
@@ -85,6 +106,70 @@ class RequestCustomer implements EntityInterface
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * @param string $phoneMobile Customer's mobile phone number.
+     */
+    public function setPhoneMobile($phoneMobile)
+    {
+        $this->phoneMobile = $phoneMobile;
+    }
+
+    /**
+     * @return string Customer's mobile phone number.
+     */
+    public function getPhoneMobile()
+    {
+        return $this->phoneMobile;
+    }
+
+    /**
+     * @param string $phoneMobile Customer's personal phone number.
+     */
+    public function setPhonePersonal($phonePersonal)
+    {
+        $this->phonePersonal = $phonePersonal;
+    }
+
+    /**
+     * @return string Customer's personal phone number.
+     */
+    public function getPhonePersonal()
+    {
+        return $this->phonePersonal;
+    }
+
+    /**
+     * @param string $postcode Customer's postcode
+     */
+    public function setPostcode($postcode)
+    {
+        $this->postcode = $postcode;
+    }
+
+    /**
+     * @return string Customer's postcode
+     */
+    public function getPostcode()
+    {
+        return $this->postcode;
+    }
+
+    /**
+     * @param string $title Customer's title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string Customer's title
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**

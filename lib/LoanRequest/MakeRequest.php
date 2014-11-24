@@ -149,20 +149,28 @@ class MakeRequest
      * @param  string|null $email
      * @return bool
      */
-    public function setCustomer($firstName=null, $lastName=null, $email=null)
-    {
+    public function setCustomer(
+        $dob            = null,
+        $firstName      = null,
+        $lastName       = null,
+        $email          = null,
+        $phoneMobile    = null,
+        $phonePersonal  = null,
+        $postcode       = null,
+        $title          = null
+    ) {
         $additionalData = $this->makeAdditionalData();
 
         $customer = new CustomType\RequestCustomer();
 
-        if ($firstName !== null)
-            $customer->setFirstName($firstName);
-
-        if ($lastName !== null)
-            $customer->setLastName($lastName);
-
-        if ($email !== null)
-            $customer->setEmail($email);
+        if ($dob !== null)              $customer->setDob($dob);
+        if ($firstName !== null)        $customer->setFirstName($firstName);
+        if ($lastName !== null)         $customer->setLastName($lastName);
+        if ($email !== null)            $customer->setEmail($email);
+        if ($phoneMobile !== null)      $customer->setPhoneMobile($email);
+        if ($phonePersonal !== null)    $customer->setPhonePersonal($email);
+        if ($postcode !== null)         $customer->setPostcode($email);
+        if ($title !== null)            $customer->setTitle($title);
 
         $additionalData->setCustomer($customer);
 
