@@ -182,6 +182,17 @@ class MakeRequest
         return $this->additionalData;
     }
 
+    /**
+     * Add a single order item
+     *
+     * @param $sku Stock-keeping unit
+     * @param $price Price of item
+     * @param $quantity Number of items in order
+     * @param $description Description of item
+     * @param bool $fulfillable Whether the item is fulfillable
+     * @param null $gtin Global Trade Index Number (GTIN)
+     * @throws \Exception
+     */
     public function addOrderItem($sku, $price, $quantity, $description, $fulfillable=true, $gtin=null)
     {
         if (!($this->loanRequest instanceof ExtendedLoanRequest))
@@ -197,16 +208,23 @@ class MakeRequest
         $item->setGtin($gtin);
 
         $this->loanRequest->addOrderItem($item);
-
-        return true;
     }
 
+    /**
+     * @param int $value The fulfilment type (0 | 1 | 2)
+     */
     public function setFulfilmentType($value)
     {
         $this->loanRequest->setFulfilmentType($value);
     }
 
-    public function setFulfilmentObject($postcode, $address, $reference)
+    /**
+     * Set the fulfilment object
+     * @param $postcode Fulfilment postcode
+     * @param $address Fulfilment address
+     * @param $reference The reference (for collecting items with fulfilmentType == 2)
+     */
+    public function setFulfilmentObject($postcode, $address, $reference = null)
     {
         $fulfilmentObject = new FulfilmentObject();
 
@@ -217,11 +235,17 @@ class MakeRequest
         $this->loanRequest->setFulfilmentObject($fulfilmentObject);
     }
 
+    /**
+     * @param int $deposit The deposit, in pence.
+     */
     public function setDeposit($deposit)
     {
         $this->loanRequest->setDeposit($deposit);
     }
 
+    /**
+     * @param array $loanProducts Array of loan product IDs, as strings.
+     */
     public function setLoanProducts(array $loanProducts) {
         $this->loanRequest->setLoanProducts($loanProducts);
     }
