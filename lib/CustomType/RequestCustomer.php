@@ -23,7 +23,6 @@ use PayBreak\Sdk\StandardInterface\EntityInterface;
  */
 class RequestCustomer implements EntityInterface
 {
-
     protected $dob;
     protected $firstName;
     protected $lastName;
@@ -38,7 +37,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setDob($dob)
     {
-        $this->dob = $dob;
+        return $this->dob = $dob;
     }
 
     /**
@@ -57,7 +56,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setFirstName($firstName)
     {
-        $this->firstName = $firstName;
+        return $this->firstName = $firstName;
     }
 
     /**
@@ -73,7 +72,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setLastName($lastName)
     {
-        $this->lastName = $lastName;
+        return $this->lastName = $lastName;
     }
 
     /**
@@ -89,7 +88,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        return $this->email = $email;
     }
 
     /**
@@ -107,7 +106,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setPhoneMobile($phoneMobile)
     {
-        $this->phoneMobile = $phoneMobile;
+        return $this->phoneMobile = $phoneMobile;
     }
 
     /**
@@ -123,7 +122,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setPhonePersonal($phonePersonal)
     {
-        $this->phonePersonal = $phonePersonal;
+        return $this->phonePersonal = $phonePersonal;
     }
 
     /**
@@ -139,7 +138,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setPostcode($postcode)
     {
-        $this->postcode = $postcode;
+        return $this->postcode = $postcode;
     }
 
     /**
@@ -155,7 +154,7 @@ class RequestCustomer implements EntityInterface
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        return $this->title = $title;
     }
 
     /**
