@@ -19,6 +19,7 @@ class RequestCustomerTest extends TestCase {
     const EMAIL = "johnsmith@example.com";
     const PHONE_MOBILE = "07654321321";
     const PHONE_PERSONAL = "01234567890";
+    const POSTCODE = "A1 B23";
 
     protected function setUp()
     {
@@ -96,17 +97,36 @@ class RequestCustomerTest extends TestCase {
         $this->assertSame(self::PHONE_PERSONAL, $this->customer->getPhonePersonal());
     }
 
+    public function testSetPostcode()
+    {
+        $this->assertSame(self::POSTCODE, $this->customer->setPostcode(self::POSTCODE));
+    }
+
+    public function testGetPostcode()
+    {
+        $this->customer->setPostcode(self::POSTCODE);
+        $this->assertSame(self::POSTCODE, $this->customer->getPostcode());
+    }
+
     public function testToArray()
     {
+        $this->customer->setDob(self::DOB);
         $this->customer->setFirstName(self::FIRST_NAME);
         $this->customer->setLastName(self::LAST_NAME);
         $this->customer->setEmail(self::EMAIL);
+        $this->customer->setPhoneMobile(self::PHONE_MOBILE);
+        $this->customer->setPhonePersonal(self::PHONE_PERSONAL);
+        $this->customer->setPostcode(self::POSTCODE);
 
         $this->assertEquals(
             [
-                'first_name' => self::FIRST_NAME,
-                'last_name'  => self::LAST_NAME,
-                'email'      => self::EMAIL
+                'dob'               => self::DOB,
+                'firstName'         => self::FIRST_NAME,
+                'lastName'          => self::LAST_NAME,
+                'email'             => self::EMAIL,
+                'phoneMobile'       => self::PHONE_MOBILE,
+                'phonePersonal'     => self::PHONE_PERSONAL,
+                'postcode'          => self::POSTCODE
             ],
             $this->customer->toArray()
         );

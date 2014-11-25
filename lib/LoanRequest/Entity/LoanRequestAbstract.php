@@ -294,7 +294,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
      */
     public function setFulfilmentType($value)
     {
-        $this->fulfilmentType = $value;
+        return $this->fulfilmentType = $value;
     }
 
     /**
@@ -302,7 +302,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
      */
     public function setFulfilmentObject($obj)
     {
-        $this->fulfilmentObject = $obj;
+        return $this->fulfilmentObject = $obj;
     }
 
     /**
@@ -325,7 +325,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
      */
     public function setDeposit($deposit)
     {
-        $this->deposit = $deposit;
+        return $this->deposit = $deposit;
     }
 
     /**
@@ -341,7 +341,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
      */
     public function setLoanProducts(array $loanProducts)
     {
-        $this->loanProducts = $loanProducts;
+        return $this->loanProducts = $loanProducts;
     }
 
     /**

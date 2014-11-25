@@ -194,9 +194,13 @@ class RequestCustomer implements EntityInterface
     public function toArray()
     {
         return [
-            'first_name' => $this->getFirstName(),
-            'last_name'  => $this->getLastName(),
-            'email'      => $this->getEmail()
+            'dob'               => $this->getDob(),
+            'firstName'         => $this->getFirstName(),
+            'lastName'          => $this->getLastName(),
+            'email'             => $this->getEmail(),
+            'phoneMobile'       => $this->getPhoneMobile(),
+            'phonePersonal'     => $this->getPhonePersonal(),
+            'postcode'          => $this->getPostcode()
         ];
     }
 

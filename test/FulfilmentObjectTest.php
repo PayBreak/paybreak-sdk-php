@@ -83,6 +83,4 @@ class FulfilmentObjectTest extends TestCase {
     {
         file_put_contents("debug.log", $string."\n", FILE_APPEND);
     }
-
-    // test toArray method as well
 }
