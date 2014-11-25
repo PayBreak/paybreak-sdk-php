@@ -17,17 +17,17 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
 
     public function setPostcode($postcode)
     {
-        $this->postcode = $postcode;
+        return $this->postcode = $postcode;
     }
 
     public function setAddress($address)
     {
-        $this->address = $address;
+        return $this->address = $address;
     }
 
     public function setReference($reference)
     {
-        $this->reference = $reference;
+        return $this->reference = $reference;
     }
 
     public function getPostcode()
