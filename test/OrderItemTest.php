@@ -106,4 +106,28 @@ class OrderItemTest extends TestCase {
         $this->assertSame(self::FULFILLED, $this->orderItem->getFulfilled());
     }
 
+    public function testToArray()
+    {
+        $this->orderItem->setSku(self::SKU);
+        $this->orderItem->setGtin(self::GTIN);
+        $this->orderItem->setDescription(self::DESCRIPTION);
+        $this->orderItem->setPrice(self::PRICE);
+        $this->orderItem->setQuantity(self::QUANTITY);
+        $this->orderItem->setFulfillable(self::FULFILLABLE);
+        $this->orderItem->setFulfilled(self::FULFILLED);
+
+        $this->assertEquals(
+            [
+                "sku" => self::SKU,
+                "gtin" => self::GTIN,
+                "description" => self::DESCRIPTION,
+                "price" => self::PRICE,
+                "quantity" => self::QUANTITY,
+                "fulfillable" => self::FULFILLABLE,
+                "fulfilled" => self::FULFILLED
+            ],
+            $this->orderItem->toArray()
+        );
+    }
+
 } 

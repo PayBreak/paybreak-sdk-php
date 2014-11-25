@@ -96,7 +96,24 @@ class RequestCustomerTest extends TestCase {
         $this->assertSame(self::PHONE_PERSONAL, $this->customer->getPhonePersonal());
     }
 
-    private function d($string) {
+    public function testToArray()
+    {
+        $this->customer->setFirstName(self::FIRST_NAME);
+        $this->customer->setLastName(self::LAST_NAME);
+        $this->customer->setEmail(self::EMAIL);
+
+        $this->assertEquals(
+            [
+                'first_name' => self::FIRST_NAME,
+                'last_name'  => self::LAST_NAME,
+                'email'      => self::EMAIL
+            ],
+            $this->customer->toArray()
+        );
+    }
+
+    private function d($string)
+    {
         file_put_contents("debug.log", $string."\n", FILE_APPEND);
     }
 
