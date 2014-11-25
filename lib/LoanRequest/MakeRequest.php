@@ -367,7 +367,7 @@ class MakeRequest
         }
 
         // Must sort by keys, alphabetically, to get a consistent hash.
-        ksort($ar);
+        // ksort($ar); // no need - HashGenerator does the sorting for you
         $ar['merchant_hash'] = HashGenerator::genHash(
             $ar,
             $this->configuration->getKey(),
