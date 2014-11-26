@@ -33,6 +33,10 @@ class FieldEncoderTest extends TestCase {
         $this->fieldEncoder = null;
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\FieldEncoder::testEncode()
+     */
     public function testEncode()
     {
         $this->assertEquals(
@@ -41,6 +45,10 @@ class FieldEncoderTest extends TestCase {
         );
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\FieldEncoder::testDecode()
+     */
     public function testDecode()
     {
         $this->assertEquals(

@@ -50,7 +50,6 @@ class MakeRequest
         LoanRequestRepositoryInterface $repository
     ) {
         $this->configuration = $configuration;
-
         $this->repository = $repository;
 
         if ($type == 1) {
@@ -274,7 +273,6 @@ class MakeRequest
      */
     public function prepareRequest()
     {
-
         // Do some checks. Some fields are essential - if they're missing, you will get an exception.
         $errors = [];
         if (!$this->loanRequest->getCheckoutVersion()) {
@@ -285,8 +283,13 @@ class MakeRequest
             $errors[] = 'Merchant installation not set.';
         }
 
+        // default to the order description in Configuration
         if ($this->loanRequest->getOrderDescription() == '') {
-            $this->loanRequest->setOrderDescription($this->configuration->getOrderDescription());
+            if (!$this->configuration->getOrderDescription()) {
+                $errors[] = 'Order description not set in loan request or Configuration';
+            } else {
+                $this->loanRequest->setOrderDescription($this->configuration->getOrderDescription());
+            }
         }
 
         // Set a random order reference if it's not already set
@@ -298,11 +301,21 @@ class MakeRequest
             $errors[] = 'Amount not set. ';
         }
 
-        if (!$this->configuration->getOrderValidity()) {
-            $errors[] = 'Order validity time period must be set in Configuration';
+        if (!$this->loanRequest->getOrderValidity()) {
+            if (!$this->configuration->getOrderValidity()) {
+                $errors[] = 'Order validity not set in loan request or Configuration object.';
+            } else {
+                $this->loanRequest->setOrderValidity(
+                    Carbon::now()->addSeconds($this->configuration->getOrderValidity()));
+            }
+        }
 
-        } else if ($this->loanRequest->getOrderValidity()->timestamp < time()) {
-            $errors[] = "Order valid date is in the the past.";
+        if (!$this->configuration->getKey()) {
+            $errors[] = 'Key must be set in Configuration.';
+        }
+
+        if (!$this->configuration->getHashMethod()) {
+            $errors[] = 'Hash method must be set in Configuration.';
         }
 
         if ( $this->loanRequest->getCheckoutType() == 2 &&
@@ -312,7 +325,7 @@ class MakeRequest
         }
 
         if ($errors) {
-            throw new \Exception("Some fields were missing:\n".implode("\n", $errors));
+            throw new \Exception('Some fields were missing:\n'.implode('\n', $errors));
         }
 
         $ar = [];
@@ -376,6 +389,7 @@ class MakeRequest
 
         return $ar;
     }
+
 
     /**
      * Save Loan Request into Repository

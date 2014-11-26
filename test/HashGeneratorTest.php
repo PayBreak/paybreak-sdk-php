@@ -1,9 +1,8 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: matthewnorris
- * Date: 25/11/14
- * Time: 13:35
+ * @author Matthew Norris
+ * Unit test for HashGenerator class
  */
 
 namespace PayBreak\Sdk\Tests;
@@ -39,21 +38,37 @@ class HashGeneratorTest extends TestCase {
         $this->hashGenerator = null;
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\HashGenerator::genHash()
+     */
     public function testGenHashSha256()
     {
         $this->internalTestGenHash(HashGenerator::TYPE_SHA256);
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\HashGenerator::genHashFromObject()
+     */
     public function testGenHashFromObjectSha256()
     {
         $this->internalTestGenHashFromObject(HashGenerator::TYPE_SHA256);
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\HashGenerator::genHash()
+     */
     public function testGenHashSha1()
     {
         $this->internalTestGenHash(HashGenerator::TYPE_SHA1);
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\HashGenerator::genHashFromObject()
+     */
     public function testGenHashFromObjectSha1()
     {
         $this->internalTestGenHashFromObject(HashGenerator::TYPE_SHA1);

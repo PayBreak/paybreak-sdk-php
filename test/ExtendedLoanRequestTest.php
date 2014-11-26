@@ -1,16 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matthewnorris
- * Date: 26/11/14
- * Time: 10:04
- */
+
 
 namespace PayBreak\Sdk\Tests;
 
 use PayBreak\Sdk\CustomType\OrderItem;
 use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
 use Carbon\Carbon;
+
+/**
+ * Class ExtendedLoanRequestTest - unit test for ExtendedLoanRequest
+ * @package PayBreak\Sdk\Tests
+ * @author Matthew Norris
+ */
 
 class ExtendedLoanRequestTest extends TestCase
 {
@@ -20,6 +21,9 @@ class ExtendedLoanRequestTest extends TestCase
      */
     private $loanRequest;
 
+    /**
+     * @author Matthew Norris
+     */
     protected function setUp()
     {
         date_default_timezone_set('Europe/London');
@@ -27,16 +31,27 @@ class ExtendedLoanRequestTest extends TestCase
         $this->loanRequest = new ExtendedLoanRequest();
     }
 
+    /**
+     * @author Matthew Norris
+     */
     protected function tearDown()
     {
         $this->loanRequest = null;
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest::getCheckoutType()
+     */
     public function testGetCheckoutType()
     {
         $this->assertEquals(ExtendedLoanRequest::TYPE_EXTENDED, $this->loanRequest->getCheckoutType());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest::getOrderAmount()
+     */
     public function testAddOrderItem()
     {
         $expectedItems = $this->addTestOrderItems();
@@ -44,6 +59,10 @@ class ExtendedLoanRequestTest extends TestCase
         $this->assertEquals($expectedItems, $this->loanRequest->getOrderItems());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest::toArray()
+     */
     public function testToArray()
     {
         // for array, we just need to test whether the order items are there
@@ -60,7 +79,12 @@ class ExtendedLoanRequestTest extends TestCase
 
         $this->assertEquals($expectedArray, $this->loanRequest->toArray()["order_items"]);
     }
-    
+
+    /**
+     * Helper
+     * @author Matthew Norris
+     * @return array
+     */
     private function addTestOrderItems()
     {
         $expectedItems = [];
@@ -88,10 +112,5 @@ class ExtendedLoanRequestTest extends TestCase
         $this->loanRequest->addOrderItem($item);
 
         return $expectedItems;
-    }
-
-    private function d($string)
-    {
-        file_put_contents("debug.log", $string."\n", FILE_APPEND);
     }
 }

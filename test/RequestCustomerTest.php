@@ -6,7 +6,6 @@ use \PayBreak\Sdk\CustomType\RequestCustomer;
  * Test setters and getters for each of the 6 fields in the RequestCustomer class.
  * @author Matthew Norris
  */
-
 namespace PayBreak\Sdk\Tests;
 
 class RequestCustomerTest extends TestCase {
@@ -31,83 +30,143 @@ class RequestCustomerTest extends TestCase {
         $this->customer = null;
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::setDob()
+     */
     public function testSetDob()
     {
         $this->assertSame(self::DOB, $this->customer->setDob(self::DOB));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::getDob()
+     */
     public function testGetDob()
     {
         $this->customer->setDob(self::DOB);
         $this->assertSame(self::DOB, $this->customer->getDob());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::setFirstName()
+     */
     public function testSetFirstName()
     {
         $this->assertSame(self::FIRST_NAME, $this->customer->setFirstName(self::FIRST_NAME));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::getFirstName()
+     */
     public function testGetFirstName()
     {
         $this->customer->setFirstName(self::FIRST_NAME);
         $this->assertSame(self::FIRST_NAME, $this->customer->getFirstName());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::setLastName()
+     */
     public function testSetLastName()
     {
         $this->assertSame(self::LAST_NAME, $this->customer->setLastName(self::LAST_NAME));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::getLastName()
+     */
     public function testGetLastName()
     {
         $this->customer->setLastName(self::LAST_NAME);
         $this->assertSame(self::LAST_NAME, $this->customer->getLastName());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::setEmail()
+     */
     public function testSetEmail()
     {
         $this->assertSame(self::EMAIL, $this->customer->setEmail(self::EMAIL));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::getEmail()
+     */
     public function testGetEmail()
     {
         $this->customer->setEmail(self::EMAIL);
         $this->assertSame(self::EMAIL, $this->customer->getEmail());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::setPhoneMobile()
+     */
     public function testSetPhoneMobile()
     {
         $this->assertSame(self::PHONE_MOBILE, $this->customer->setPhoneMobile(self::PHONE_MOBILE));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::getPhoneMobile()
+     */
     public function testGetPhoneMobile()
     {
         $this->customer->setPhoneMobile(self::PHONE_MOBILE);
         $this->assertSame(self::PHONE_MOBILE, $this->customer->getPhoneMobile());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::setPhonePersonal()
+     */
     public function testSetPhonePersonal()
     {
         $this->assertSame(self::PHONE_PERSONAL, $this->customer->setPhonePersonal(self::PHONE_PERSONAL));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::getPhonePersonal()
+     */
     public function testGetPhonePersonal()
     {
         $this->customer->setPhonePersonal(self::PHONE_PERSONAL);
         $this->assertSame(self::PHONE_PERSONAL, $this->customer->getPhonePersonal());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::setPostcode()
+     */
     public function testSetPostcode()
     {
         $this->assertSame(self::POSTCODE, $this->customer->setPostcode(self::POSTCODE));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::getPostcode()
+     */
     public function testGetPostcode()
     {
         $this->customer->setPostcode(self::POSTCODE);
         $this->assertSame(self::POSTCODE, $this->customer->getPostcode());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\CustomType\RequestCustomer::toArray()
+     */
     public function testToArray()
     {
         $this->customer->setDob(self::DOB);
