@@ -57,7 +57,7 @@ class ExtendedLoanRequest extends LoanRequestAbstract
      *
      * @return int
      */
-    protected function updateOrderAmount()
+    public function updateOrderAmount()
     {
         $amount = 0;
 
