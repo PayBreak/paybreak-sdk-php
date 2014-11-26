@@ -13,6 +13,9 @@ use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
  */
 class LoanRequestAbstractTest extends TestCase {
 
+    /**
+     * @var \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract
+     */
     private $loanRequest;
     private $additionalData;
     private $fulfilmentObject;
@@ -229,6 +232,50 @@ class LoanRequestAbstractTest extends TestCase {
     {
         $this->loanRequest->setLoanProducts($this->loanProducts);
         $this->assertEquals($this->loanProducts, $this->loanRequest->getLoanProducts($this->loanProducts));
+    }
+
+    public function testToArray()
+    {
+        $requestDate = Carbon::yesterday();
+        $validityDate = Carbon::tomorrow();
+        $additionalData = new AdditionalData();
+        $fulfilmentObject = new FulfilmentObject();
+        $loanProducts = ["LOAN_PRODUCT"];
+
+        $expected = [
+            'id' => 123,
+            'checkout_version' => "1.23",
+            'checkout_type' => null, // set null, since this is only defined by subclasses.
+            'merchant_installation' => "TestInstall",
+            'order_description' => "OrderDescription",
+            'order_reference' => "OrderReference",
+            'order_amount' => 9000,
+            'order_validity' => $validityDate->getTimestamp(),
+            'order_extendable' => true,
+            'additional_data' => $additionalData,
+            'request_date' => $requestDate->getTimestamp(),
+            'deposit' => 1000,
+            'fulfilment_type' => 1,
+            'fulfilment_object' => $fulfilmentObject,
+            'loan_products' => $loanProducts
+        ];
+
+        $this->loanRequest->setId($expected["id"]);
+        $this->loanRequest->setCheckoutVersion($expected["checkout_version"]);
+        $this->loanRequest->setMerchantInstallation($expected["merchant_installation"]);
+        $this->loanRequest->setOrderDescription($expected["order_description"]);
+        $this->loanRequest->setOrderReference($expected["order_reference"]);
+        $this->loanRequest->setOrderAmount($expected["order_amount"]);
+        $this->loanRequest->setOrderValidity($validityDate);
+        $this->loanRequest->setOrderExtendable($expected["order_extendable"]);
+        $this->loanRequest->setAdditionalData($expected["additional_data"]);
+        $this->loanRequest->setRequestDate($requestDate);
+        $this->loanRequest->setDeposit($expected["deposit"]);
+        $this->loanRequest->setFulfilmentType($expected["fulfilment_type"]);
+        $this->loanRequest->setFulfilmentObject($expected["fulfilment_object"]);
+        $this->loanRequest->setLoanProducts($expected["loan_products"]);
+
+        $this->assertEquals($expected, $this->loanRequest->toArray());
     }
 
     private function d($string)

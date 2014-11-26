@@ -10,11 +10,20 @@ namespace PayBreak\Sdk\Tests;
 
 use PayBreak\Sdk\CustomType\OrderItem;
 use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
+use Carbon\Carbon;
 
-class ExtendedLoanRequestTest extends TestCase {
+class ExtendedLoanRequestTest extends TestCase
+{
+
+    /**
+     * @var ExtendedLoanRequest
+     */
+    private $loanRequest;
 
     protected function setUp()
     {
+        date_default_timezone_set('Europe/London');
+        $this->d("setUp() invoked");
         $this->loanRequest = new ExtendedLoanRequest();
     }
 
@@ -29,6 +38,30 @@ class ExtendedLoanRequestTest extends TestCase {
     }
 
     public function testAddOrderItem()
+    {
+        $expectedItems = $this->addTestOrderItems();
+        $this->assertEquals(5000, $this->loanRequest->getOrderAmount());
+        $this->assertEquals($expectedItems, $this->loanRequest->getOrderItems());
+    }
+
+    public function testToArray()
+    {
+        // for array, we just need to test whether the order items are there
+        // ... since the rest of the fields are tested by the Abstract unit test
+        $expectedItems = $this->addTestOrderItems();
+        $expectedArray = [];
+        foreach ($expectedItems as $expectedItem) {
+            $expectedArray[$expectedItem->getSku()] = $expectedItem->toArray();
+        }
+
+        // must set the timestamp fields though, because otherwise there will be an exception
+        $this->loanRequest->setOrderValidity(Carbon::tomorrow());
+        $this->loanRequest->setRequestDate(Carbon::yesterday());
+
+        $this->assertEquals($expectedArray, $this->loanRequest->toArray()["order_items"]);
+    }
+    
+    private function addTestOrderItems()
     {
         $expectedItems = [];
 
@@ -54,7 +87,11 @@ class ExtendedLoanRequestTest extends TestCase {
         $expectedItems["TEST_SKU_2"] = $item;
         $this->loanRequest->addOrderItem($item);
 
-        $this->assertEquals(5000, $this->loanRequest->getOrderAmount());
-        $this->assertEquals($expectedItems, $this->loanRequest->getOrderItems());
+        return $expectedItems;
+    }
+
+    private function d($string)
+    {
+        file_put_contents("debug.log", $string."\n", FILE_APPEND);
     }
 }
