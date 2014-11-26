@@ -233,6 +233,6 @@ class LoanRequestAbstractTest extends TestCase {
 
     private function d($string)
     {
-        file_put_contents("debu1g.log", $string."\n", FILE_APPEND);
+        file_put_contents("debug.log", $string."\n", FILE_APPEND);
     }
 }
