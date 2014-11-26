@@ -29,12 +29,20 @@ class AdditionalDataTest extends TestCase {
         $this->additionalData = null;
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\Entity\AdditionalData::setCustomer()
+     */
     public function testSetCustomer()
     {
         $customer = new RequestCustomer();
         $this->assertEquals($customer, $this->additionalData->setCustomer($customer));
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\Entity\AdditionalData::getCustomer()
+     */
     public function testGetCustomer()
     {
         $customer = new RequestCustomer();
@@ -42,6 +50,10 @@ class AdditionalDataTest extends TestCase {
         $this->assertEquals($customer, $this->additionalData->getCustomer());
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\Entity\AdditionalData::toArray()
+     */
     public function testToArray()
     {
         $customer = new RequestCustomer();

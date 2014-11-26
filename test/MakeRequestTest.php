@@ -42,38 +42,63 @@ class MakeRequestTest extends TestCase {
     }
 
     /**
-     * Test missing fields errors
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
      */
     public function testMerchantInstallationException()
     {
         $this->helpTestConfigException("getMerchantInstallation");
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     public function testKeyException()
     {
         $this->helpTestConfigException("getKey");
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     public function testCheckoutVersionException()
     {
         $this->helpTestConfigException("getCheckoutVersion");
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     public function testOrderValidityExceptionFromConfiguration()
     {
         $this->helpTestConfigException("getOrderValidity");
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     public function testOrderDescriptionException()
     {
         $this->helpTestConfigException("getOrderDescription");
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     public function testHashMethodException()
     {
         $this->helpTestConfigException("getHashMethod");
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     private function helpTestConfigException($method)
     {
         $this->setExpectedException('Exception');
@@ -83,7 +108,8 @@ class MakeRequestTest extends TestCase {
     }
 
     /**
-     * Test situation where order amount is not set, (checkout Type 1)
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
      */
     public function testOrderAmountException1()
     {
@@ -93,8 +119,8 @@ class MakeRequestTest extends TestCase {
     }
 
     /**
-     * Test situation where no order items were added, (checkout Type 2)
-     * @throws \Exception
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
      */
     public function testOrderAmountException2()
     {
@@ -103,6 +129,10 @@ class MakeRequestTest extends TestCase {
         $request->prepareRequest(); // exception emitted here
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     public function testPrepareRequestType1()
     {
         $request = $this->makeFullMakeRequest(1);
@@ -127,6 +157,10 @@ class MakeRequestTest extends TestCase {
         ], $requestArray);
     }
 
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     */
     public function testPrepareRequestType2()
     {
         $request = $this->makeFullMakeRequest(2);
