@@ -97,4 +97,4 @@ class HashGeneratorTest extends TestCase {
         file_put_contents("debug.log", $string."\n", FILE_APPEND);
     }
 
-} 
+}

@@ -16,6 +16,7 @@ use Carbon\Carbon;
  * Class LoanRequestAbstract
  *
  * @author WN
+ * @author Matthew Norris
  * @package PayBreak\Sdk\LoanRequest\Entity
  */
 abstract class LoanRequestAbstract implements LoanRequestInterface
@@ -290,7 +291,8 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     }
 
     /**
-     * @param FulfilmentObject $obj The fulfilment object
+     * @param int $obj The fulfilment type
+     * @return int
      */
     public function setFulfilmentType($value)
     {
@@ -299,6 +301,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
 
     /**
      * @param FulfilmentObject $obj The fulfilment object
+     * @return FulfilmentObject
      */
     public function setFulfilmentObject($obj)
     {
@@ -322,6 +325,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
 
     /**
      * @param int $deposit Deposit amount, in pence.
+     * @return int
      */
     public function setDeposit($deposit)
     {
@@ -338,6 +342,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
 
     /**
      * @param array $loanProducts An array of loan product identifiers (strings)
+     * @return array
      */
     public function setLoanProducts(array $loanProducts)
     {

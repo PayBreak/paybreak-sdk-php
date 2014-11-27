@@ -41,7 +41,6 @@ interface LoanRequestInterface extends EntityInterface
 
     /**
      * Returns Checkout Type
-     *
      * @return int
      */
     public function getCheckoutType();

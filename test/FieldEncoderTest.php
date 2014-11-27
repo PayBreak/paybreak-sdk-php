@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matthewnorris
- * Date: 25/11/14
- * Time: 13:16
- */
 
 namespace PayBreak\Sdk\Tests;
 

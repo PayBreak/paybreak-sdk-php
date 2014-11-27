@@ -101,7 +101,7 @@ class MakeRequest
 
     /**
      * Set Reference
-     * @param $reference
+     * @param string $reference
      * @return string
      */
     public function setReference($reference)
@@ -112,7 +112,7 @@ class MakeRequest
     /**
      * Set Description
      *
-     * @param $description
+     * @param string $description
      * @return string
      */
     public function setDescription($description)
@@ -168,14 +168,22 @@ class MakeRequest
 
         $customer = new CustomType\RequestCustomer();
 
-        if ($dob !== null)              $customer->setDob($dob);
-        if ($firstName !== null)        $customer->setFirstName($firstName);
-        if ($lastName !== null)         $customer->setLastName($lastName);
-        if ($email !== null)            $customer->setEmail($email);
-        if ($phoneMobile !== null)      $customer->setPhoneMobile($email);
-        if ($phonePersonal !== null)    $customer->setPhonePersonal($email);
-        if ($postcode !== null)         $customer->setPostcode($email);
-        if ($title !== null)            $customer->setTitle($title);
+        if ($dob !== null)
+            $customer->setDob($dob);
+        if ($firstName !== null)
+            $customer->setFirstName($firstName);
+        if ($lastName !== null)
+            $customer->setLastName($lastName);
+        if ($email !== null)
+            $customer->setEmail($email);
+        if ($phoneMobile !== null)
+            $customer->setPhoneMobile($email);
+        if ($phonePersonal !== null)
+            $customer->setPhonePersonal($email);
+        if ($postcode !== null)
+            $customer->setPostcode($email);
+        if ($title !== null)
+            $customer->setTitle($title);
 
         $additionalData->setCustomer($customer);
 
@@ -224,15 +232,20 @@ class MakeRequest
     }
 
     /**
+     * @author Matthew Norris
      * @param int $value The fulfilment type (0 | 1 | 2)
+     * @return int
      */
     public function setFulfilmentType($value)
     {
         $this->loanRequest->setFulfilmentType($value);
+        return $value;
     }
 
     /**
      * Set the fulfilment object
+     * @author Matthew Norris
+     *
      * @param $postcode Fulfilment postcode
      * @param $address Fulfilment address
      * @param $reference The reference (for collecting items with fulfilmentType == 2)
@@ -249,18 +262,24 @@ class MakeRequest
     }
 
     /**
+     * @author Matthew Norris
      * @param int $deposit The deposit, in pence.
+     * @return int
      */
     public function setDeposit($deposit)
     {
         $this->loanRequest->setDeposit($deposit);
+        return $deposit;
     }
 
     /**
+     * @author Matthew Norris
      * @param array $loanProducts Array of loan product IDs, as strings.
+     * @return array
      */
     public function setLoanProducts(array $loanProducts) {
         $this->loanRequest->setLoanProducts($loanProducts);
+        return $loanProducts;
     }
 
     /**

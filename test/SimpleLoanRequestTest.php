@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matthewnorris
- * Date: 26/11/14
- * Time: 09:52
- */
-
 namespace PayBreak\Sdk\Tests;
-
 
 use PayBreak\Sdk\LoanRequest\Entity\SimpleLoanRequest;
 
@@ -31,4 +23,4 @@ class SimpleLoanRequestTest extends TestCase {
     {
         $this->assertEquals(SimpleLoanRequest::TYPE_SIMPLE, $this->loanRequest->getCheckoutType());
     }
-} 
+}

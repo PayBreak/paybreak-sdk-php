@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matthewnorris
- * Date: 25/11/14
- * Time: 14:10
- */
 
 namespace PayBreak\Sdk\Tests;
-
 
 class FulfilmentObjectTest extends TestCase {
 

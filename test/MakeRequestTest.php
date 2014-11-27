@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matthewnorris
- * Date: 26/11/14
- * Time: 11:52
- */
 
 namespace PayBreak\Sdk\Tests;
 
@@ -12,6 +6,12 @@ use PayBreak\Sdk\LoanRequest\MakeRequest;
 use PayBreak\Sdk\LoanRequest\Repository\NullLoanRequestRepository;
 use PayBreak\Sdk\HashGenerator;
 use Carbon\Carbon;
+
+/**
+ * Class MakeRequestTest
+ * @author Matthew Norris
+ * @package PayBreak\Sdk\Tests
+ */
 
 class MakeRequestTest extends TestCase {
 
@@ -110,6 +110,7 @@ class MakeRequestTest extends TestCase {
     /**
      * @author Matthew Norris
      * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setAmount()
      */
     public function testOrderAmountException1()
     {
@@ -121,6 +122,8 @@ class MakeRequestTest extends TestCase {
     /**
      * @author Matthew Norris
      * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setAmount()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::addOrderItem()
      */
     public function testOrderAmountException2()
     {
@@ -132,6 +135,10 @@ class MakeRequestTest extends TestCase {
     /**
      * @author Matthew Norris
      * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setAmount()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setCustomer()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setDeposit()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setLoanProducts()
      */
     public function testPrepareRequestType1()
     {
@@ -160,6 +167,10 @@ class MakeRequestTest extends TestCase {
     /**
      * @author Matthew Norris
      * @covers PayBreak\Sdk\LoanRequest\MakeRequest::prepareRequest()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::addOrderItem()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setCustomer()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setDeposit()
+     * @covers PayBreak\Sdk\LoanRequest\MakeRequest::setLoanProducts()
      */
     public function testPrepareRequestType2()
     {
@@ -232,4 +243,4 @@ class MakeRequestTest extends TestCase {
     }
 
 
-} 
+}

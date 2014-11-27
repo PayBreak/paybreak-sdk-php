@@ -1,6 +1,5 @@
 <?php
 
-
 namespace PayBreak\Sdk\Tests;
 
 use PayBreak\Sdk\CustomType\OrderItem;

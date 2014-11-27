@@ -1,13 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matthewnorris
- * Date: 21/11/14
- * Time: 11:32
- */
 
 namespace PayBreak\Sdk\LoanRequest\Entity;
 
+/**
+ * Class FulfilmentObject
+ * @package PayBreak\Sdk\LoanRequest\Entity
+ * @author Matthew Norris
+ */
 
 class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterface {
 
@@ -15,31 +14,58 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
     private $address;
     private $reference;
 
+    /**
+     * @author Matthew Norris
+     * @param string $postcode The postcode
+     * @return string
+     */
     public function setPostcode($postcode)
     {
         return $this->postcode = $postcode;
     }
 
+    /**
+     * @author Matthew Norris
+     * @param string $address The address
+     * @return string
+     */
     public function setAddress($address)
     {
         return $this->address = $address;
     }
 
+    /**
+     * @author Matthew Norris
+     * @param string The reference
+     * @return string
+     */
     public function setReference($reference)
     {
         return $this->reference = $reference;
     }
 
+    /**
+     * @author Matthew Norris
+     * @return string The postcode
+     */
     public function getPostcode()
     {
         return $this->postcode;
     }
 
+    /**
+     * @author Matthew Norris
+     * @return string The address
+     */
     public function getAddress()
     {
         return $this->address;
     }
 
+    /**
+     * @author Matthew Norris
+     * @return string The reference
+     */
     public function getReference()
     {
         return $this->reference;
@@ -58,7 +84,6 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
 
     /**
      * Entity Unique ID
-     *
      * @return mixed
      */
     public function getId()
@@ -68,7 +93,6 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
 
     /**
      * Returns entity as array
-     *
      * @return array
      */
     public function toArray()
