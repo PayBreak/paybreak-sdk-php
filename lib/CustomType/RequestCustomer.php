@@ -17,7 +17,7 @@ use PayBreak\Sdk\StandardInterface\EntityInterface;
  * This is so fields can be pre-populated on the loan request form.
  *
  * @author WN
- * @author Matthew Norris
+ * @author MN
  *
  * @package PayBreak\Sdk\CustomType
  */

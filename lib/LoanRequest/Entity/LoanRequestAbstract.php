@@ -16,7 +16,7 @@ use Carbon\Carbon;
  * Class LoanRequestAbstract
  *
  * @author WN
- * @author Matthew Norris
+ * @author MN
  * @package PayBreak\Sdk\LoanRequest\Entity
  */
 abstract class LoanRequestAbstract implements LoanRequestInterface

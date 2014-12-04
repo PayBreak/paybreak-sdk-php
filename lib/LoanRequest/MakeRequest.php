@@ -25,7 +25,7 @@ use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
  * Generates a request array structure, which can be POSTed to the appropriate Paybreak endpoint
  *
  * @author WN
- * @author Matthew Norris
+ * @author MN
  *
  * @package PayBreak\Sdk\LoanRequest
  */
@@ -232,7 +232,7 @@ class MakeRequest
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @param int $value The fulfilment type (0 | 1 | 2)
      * @return int
      */
@@ -244,7 +244,7 @@ class MakeRequest
 
     /**
      * Set the fulfilment object
-     * @author Matthew Norris
+     * @author MN
      *
      * @param $postcode Fulfilment postcode
      * @param $address Fulfilment address
@@ -262,7 +262,7 @@ class MakeRequest
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @param int $deposit The deposit, in pence.
      * @return int
      */
@@ -273,7 +273,7 @@ class MakeRequest
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @param array $loanProducts Array of loan product IDs, as strings.
      * @return array
      */

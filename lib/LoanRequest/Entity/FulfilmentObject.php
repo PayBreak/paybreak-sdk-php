@@ -5,7 +5,7 @@ namespace PayBreak\Sdk\LoanRequest\Entity;
 /**
  * Class FulfilmentObject
  * @package PayBreak\Sdk\LoanRequest\Entity
- * @author Matthew Norris
+ * @author MN
  */
 
 class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterface {
@@ -15,7 +15,7 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
     private $reference;
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @param string $postcode The postcode
      * @return string
      */
@@ -25,7 +25,7 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @param string $address The address
      * @return string
      */
@@ -35,7 +35,7 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @param string The reference
      * @return string
      */
@@ -45,7 +45,7 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @return string The postcode
      */
     public function getPostcode()
@@ -54,7 +54,7 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @return string The address
      */
     public function getAddress()
@@ -63,7 +63,7 @@ class FulfilmentObject implements \PayBreak\Sdk\StandardInterface\EntityInterfac
     }
 
     /**
-     * @author Matthew Norris
+     * @author MN
      * @return string The reference
      */
     public function getReference()
