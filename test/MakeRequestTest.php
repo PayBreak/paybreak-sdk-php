@@ -236,11 +236,4 @@ class MakeRequestTest extends TestCase {
         $maker = new MakeRequest($type, $this->configuration, $this->loanRequestRepository);
         return $maker;
     }
-
-    private function d($str)
-    {
-        file_put_contents("debug.log", $str, FILE_APPEND);
-    }
-
-
 }

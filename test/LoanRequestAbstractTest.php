@@ -409,9 +409,4 @@ class LoanRequestAbstractTest extends TestCase {
 
         $this->assertEquals($expected, $this->loanRequest->toArray());
     }
-
-    private function d($string)
-    {
-        file_put_contents("debug.log", $string."\n", FILE_APPEND);
-    }
 }

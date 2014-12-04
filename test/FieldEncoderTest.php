@@ -50,9 +50,4 @@ class FieldEncoderTest extends TestCase {
             $this->fieldEncoder->decodeField($this->encodedTestData)
         );
     }
-
-    private function d($string)
-    {
-        file_put_contents("debug.log", $string."\n", FILE_APPEND);
-    }
 }

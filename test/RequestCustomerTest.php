@@ -190,10 +190,4 @@ class RequestCustomerTest extends TestCase {
             $this->customer->toArray()
         );
     }
-
-    private function d($string)
-    {
-        file_put_contents("debug.log", $string."\n", FILE_APPEND);
-    }
-
 }

@@ -91,10 +91,4 @@ class HashGeneratorTest extends TestCase {
             $this->hashGenerator->genHashFromObject($this->dataObject, $this->key, $method)
         );
     }
-
-    private function d($string)
-    {
-        file_put_contents("debug.log", $string."\n", FILE_APPEND);
-    }
-
 }

@@ -99,9 +99,4 @@ class FulfilmentObjectTest extends TestCase {
             $array
         );
     }
-
-    private function d($string)
-    {
-        file_put_contents("debug.log", $string."\n", FILE_APPEND);
-    }
 }
