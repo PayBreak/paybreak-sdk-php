@@ -26,7 +26,6 @@ class ExtendedLoanRequestTest extends TestCase
     protected function setUp()
     {
         date_default_timezone_set('Europe/London');
-        $this->d("setUp() invoked");
         $this->loanRequest = new ExtendedLoanRequest();
     }
 

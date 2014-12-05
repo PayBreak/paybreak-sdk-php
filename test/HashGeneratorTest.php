@@ -84,8 +84,6 @@ class HashGeneratorTest extends TestCase {
 
     private function internalTestGenHashFromObject($method)
     {
-        $this->d($method.": ".$this->hashGenerator->genHashFromObject($this->dataObject, $this->key, $method));
-
         $this->assertEquals(
             $this->expectedHashes[$method], // same as array
             $this->hashGenerator->genHashFromObject($this->dataObject, $this->key, $method)

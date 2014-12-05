@@ -33,8 +33,6 @@ class LoanRequestAbstractTest extends TestCase {
         $this->additionalData = new AdditionalData();
         $this->fulfilmentObject = new FulfilmentObject();
         $this->loanProducts = ["TEST_PRODUCT"];
-
-        $this->d(print_r($this->loanRequest, true));
     }
 
     protected function tearDown()
