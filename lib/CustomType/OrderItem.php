@@ -176,7 +176,7 @@ class OrderItem implements EntityInterface
     }
 
     /**
-     * Set Fulfilled amount
+     * Set Fulfilled amount, in pence
      *
      * @param  int $fulfilled
      * @return int
@@ -187,7 +187,7 @@ class OrderItem implements EntityInterface
     }
 
     /**
-     * Get Fulfilled amount
+     * Get Fulfilled amount, in pence
      *
      * @return int
      */

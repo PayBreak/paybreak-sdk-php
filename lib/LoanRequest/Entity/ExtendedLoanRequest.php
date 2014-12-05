@@ -22,6 +22,7 @@ class ExtendedLoanRequest extends LoanRequestAbstract
 {
     protected $orderItems = [];
 
+
     /**
      * Returns Checkout Type
      *
@@ -43,7 +44,6 @@ class ExtendedLoanRequest extends LoanRequestAbstract
     public function addOrderItem(OrderItem $orderItem)
     {
         $this->orderItems[$orderItem->getSku()] = $orderItem;
-
         $this->updateOrderAmount();
 
         return $orderItem;

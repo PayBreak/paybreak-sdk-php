@@ -16,13 +16,13 @@ use Carbon\Carbon;
  * Class LoanRequestAbstract
  *
  * @author WN
+ * @author MN
  * @package PayBreak\Sdk\LoanRequest\Entity
  */
 abstract class LoanRequestAbstract implements LoanRequestInterface
 {
     protected $id;
     protected $checkoutVersion;
-    protected $checkoutType;
     protected $merchantInstallation;
     protected $orderDescription;
     protected $orderReference;
@@ -33,6 +33,10 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $requestDate;
     protected $status = self::STATUS_PENDING;
     protected $fulfilled = self::FULFILLED_NONE;
+    protected $fulfilmentType = self::FULFILMENT_TYPE_STANDARD;
+    protected $fulfilmentObject;
+    protected $deposit;
+    protected $loanProducts = [];
 
     /**
      * Entity unique ID
@@ -187,7 +191,7 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
      * @param  bool $orderExtendable
      * @return bool
      */
-    public function setOrderExtendable($orderExtendable = true)
+    public function setOrderExtendable($orderExtendable = false)
     {
         return $this->orderExtendable = $orderExtendable;
     }
@@ -287,6 +291,73 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     }
 
     /**
+     * @param int $obj The fulfilment type
+     * @return int
+     */
+    public function setFulfilmentType($value)
+    {
+        return $this->fulfilmentType = $value;
+    }
+
+    /**
+     * @param FulfilmentObject $obj The fulfilment object
+     * @return FulfilmentObject
+     */
+    public function setFulfilmentObject($obj)
+    {
+        return $this->fulfilmentObject = $obj;
+    }
+
+    /**
+     * @return int The fulfilment type
+     */
+    public function getFulfilmentType()
+    {
+        return $this->fulfilmentType;
+    }
+
+    /**
+     * @return FulfilmentObject The fulfilment object.
+     */
+    public function getFulfilmentObject() {
+        return $this->fulfilmentObject;
+    }
+
+    /**
+     * @param int $deposit Deposit amount, in pence.
+     * @return int
+     */
+    public function setDeposit($deposit)
+    {
+        return $this->deposit = $deposit;
+    }
+
+    /**
+     * @return int Deposit amount, in pence.
+     */
+    public function getDeposit()
+    {
+        return $this->deposit;
+    }
+
+    /**
+     * @param array $loanProducts An array of loan product identifiers (strings)
+     * @return array
+     */
+    public function setLoanProducts(array $loanProducts)
+    {
+        return $this->loanProducts = $loanProducts;
+    }
+
+    /**
+     * @return array An array of loan product identifiers (strings)
+     */
+    public function getLoanProducts()
+    {
+        return $this->loanProducts;
+    }
+
+    /**
      * Returns entity as array
      *
      * @return array
@@ -305,6 +376,10 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
             'order_extendable' => $this->getOrderExtendable(),
             'additional_data' => $this->getAdditionalData(),
             'request_date' => $this->getRequestDate()->getTimestamp(),
+            'deposit' => $this->getDeposit(),
+            'fulfilment_type' => $this->getFulfilmentType(),
+            'fulfilment_object' => $this->getFulfilmentObject(),
+            'loan_products' => $this->getLoanProducts()
         ];
     }
 }
