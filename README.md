@@ -48,7 +48,7 @@ The Loan Request allows partial fulfillment of orders, and is described in the I
     $arr = $request->prepareRequest();
     print_r($arr);
 
-Most of this is the same as with a Simple Loan Request, with some differences:
+There are a few things to note here:
 
 - You should use the MakeRequest::makeSimple() factory method to generate the object.
 - The $config object is an implementation of the ConfigurationInterface. You must implement this yourself. The fields
