@@ -20,6 +20,7 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
 {
     protected $id;
     protected $checkoutVersion;
+    protected $checkoutType;
     protected $merchantInstallation;
     protected $orderReference;
     protected $orderAmount;
@@ -45,6 +46,33 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set Checkout Type
+     *
+     * @param  int $checkoutType
+     * @return int
+     */
+    public function setCheckoutType($checkoutType)
+    {
+        if ($this->checkoutVersion >= "3.3") {
+            throw new \Exception("Checkout type is deprecated for 3.3+");
+        }
+        return $this->checkoutType = $checkoutType;
+    }
+
+    /**
+     * Get Checkout Type
+     *
+     * @return int
+     */
+    public function getCheckoutType()
+    {
+        if ($this->checkoutVersion >= "3.3") {
+            throw new \Exception("Checkout type is deprecated for 3.3+");
+        }
+        return $this->checkoutType;
     }
 
     /**
