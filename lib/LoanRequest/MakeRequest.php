@@ -336,19 +336,13 @@ class MakeRequest
         if ($this->additionalData instanceof Entity\AdditionalData)
             $ar['additional_data'] = FieldEncoder::encodeField($this->additionalData->toArray());
 
-        // If there are order items, add them to the output
-        if (
-            $this->loanRequest instanceof ExtendedLoanRequest &&
-            $this->loanRequest->getOrderItems()
-        ) {
-            foreach ($this->loanRequest->getOrderItems() as $item) {
-                $itemArray = $item->toArray();
-                unset($itemArray["fulfilled"]);
-                $ar['order_items'][] = $itemArray;
-            }
-
-            $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
+        // Add order items to the output
+        foreach ($this->loanRequest->getOrderItems() as $item) {
+            $itemArray = $item->toArray();
+            unset($itemArray["fulfilled"]);
+            $ar['order_items'][] = $itemArray;
         }
+        $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
 
         $fulfilmentType = $this->loanRequest->getFulfilmentType();
         $fulfilmentObject = $this->loanRequest->getFulfilmentObject();
