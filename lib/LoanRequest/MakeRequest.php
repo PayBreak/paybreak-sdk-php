@@ -14,7 +14,7 @@ use Carbon\Carbon;
 use PayBreak\Sdk\CustomType;
 use PayBreak\Sdk\FieldEncoder;
 use PayBreak\Sdk\HashGenerator;
-use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequest;
 use PayBreak\Sdk\LoanRequest\Entity\FulfilmentObject;
 use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
@@ -50,7 +50,7 @@ class MakeRequest
     ) {
         $this->configuration = $configuration;
         $this->repository = $repository;
-        $this->loanRequest = new Entity\ExtendedLoanRequest();
+        $this->loanRequest = new LoanRequest();
         $this->loanRequest->setMerchantInstallation($configuration->getMerchantInstallation());
         $this->loanRequest->setCheckoutVersion($configuration->getCheckoutVersion());
     }

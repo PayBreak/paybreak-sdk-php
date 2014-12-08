@@ -11,15 +11,16 @@
 namespace PayBreak\Sdk\LoanRequest\Entity;
 
 use Carbon\Carbon;
+use PayBreak\Sdk\CustomType\OrderItem;
 
 /**
- * Class LoanRequestAbstract
+ * Class LoanRequest
  *
  * @author WN
  * @author MN
  * @package PayBreak\Sdk\LoanRequest\Entity
  */
-abstract class LoanRequest implements LoanRequestInterface
+class LoanRequest implements LoanRequestInterface
 {
     protected $id;
     protected $checkoutVersion;
