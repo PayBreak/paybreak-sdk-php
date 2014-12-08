@@ -44,9 +44,6 @@ class MakePartialRequest extends MakeRequestAbstract
      */
     public function setLoanRequest(LoanRequestInterface $loanRequest)
     {
-        if ($loanRequest->getCheckoutType() != LoanRequestInterface::TYPE_EXTENDED)
-            throw new \Exception('Checkout type not supported!');
-
         return parent::setLoanRequest($loanRequest);
     }
 

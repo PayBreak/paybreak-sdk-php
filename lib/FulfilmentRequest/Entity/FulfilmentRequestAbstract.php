@@ -20,7 +20,6 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
 {
     protected $id;
     protected $checkoutVersion;
-    protected $checkoutType;
     protected $merchantInstallation;
     protected $orderReference;
     protected $orderAmount;
@@ -46,27 +45,6 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set Checkout Type
-     *
-     * @param  int $checkoutType
-     * @return int
-     */
-    public function setCheckoutType($checkoutType)
-    {
-        return $this->checkoutType = $checkoutType;
-    }
-
-    /**
-     * Get Checkout Type
-     *
-     * @return int
-     */
-    public function getCheckoutType()
-    {
-        return $this->checkoutType;
     }
 
     /**
