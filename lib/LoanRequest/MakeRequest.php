@@ -62,21 +62,10 @@ class MakeRequest
      * @param  Repository\LoanRequestRepositoryInterface $repository
      * @return static
      */
-    public static function makeSimple(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
+    public static function make(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
     {
-        return new static(Entity\LoanRequestInterface::TYPE_SIMPLE, $configuration, $repository);
-    }
-
-    /**
-     * Make Extended Loan Request
-     *
-     * @param  ConfigurationInterface                    $configuration
-     * @param  Repository\LoanRequestRepositoryInterface $repository
-     * @return static
-     */
-    public static function makeExtended(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
-    {
-        return new static(Entity\LoanRequestInterface::TYPE_EXTENDED, $configuration, $repository);
+        // this calls the constructor
+        return new static($configuration, $repository);
     }
 
     /**
