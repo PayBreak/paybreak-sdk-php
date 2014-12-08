@@ -40,12 +40,6 @@ interface LoanRequestInterface extends EntityInterface
     const FULFILMENT_TYPE_COLLECT = 2;
 
     /**
-     * Returns Checkout Type
-     * @return int
-     */
-    public function getCheckoutType();
-
-    /**
      * Set Checkout Version
      *
      * @param  float $checkoutVersion

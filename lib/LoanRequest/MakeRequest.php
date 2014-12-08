@@ -14,7 +14,7 @@ use Carbon\Carbon;
 use PayBreak\Sdk\CustomType;
 use PayBreak\Sdk\FieldEncoder;
 use PayBreak\Sdk\HashGenerator;
-use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequest;
 use PayBreak\Sdk\LoanRequest\Entity\FulfilmentObject;
 use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 use PayBreak\Sdk\LoanRequest\Repository\LoanRequestRepositoryInterface;
@@ -45,21 +45,12 @@ class MakeRequest
      * @throws \InvalidArgumentException
      */
     public function __construct(
-        $type,
         ConfigurationInterface $configuration,
         LoanRequestRepositoryInterface $repository
     ) {
         $this->configuration = $configuration;
         $this->repository = $repository;
-
-        if ($type == 1) {
-            $this->loanRequest = new Entity\SimpleLoanRequest();
-        } elseif ($type == 2) {
-            $this->loanRequest = new Entity\ExtendedLoanRequest();
-        } else {
-            throw new \InvalidArgumentException('Invalid Checkout Type');
-        }
-
+        $this->loanRequest = new LoanRequest();
         $this->loanRequest->setMerchantInstallation($configuration->getMerchantInstallation());
         $this->loanRequest->setCheckoutVersion($configuration->getCheckoutVersion());
     }
@@ -71,21 +62,10 @@ class MakeRequest
      * @param  Repository\LoanRequestRepositoryInterface $repository
      * @return static
      */
-    public static function makeSimple(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
+    public static function make(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
     {
-        return new static(Entity\LoanRequestInterface::TYPE_SIMPLE, $configuration, $repository);
-    }
-
-    /**
-     * Make Extended Loan Request
-     *
-     * @param  ConfigurationInterface                    $configuration
-     * @param  Repository\LoanRequestRepositoryInterface $repository
-     * @return static
-     */
-    public static function makeExtended(ConfigurationInterface $configuration, LoanRequestRepositoryInterface $repository)
-    {
-        return new static(Entity\LoanRequestInterface::TYPE_EXTENDED, $configuration, $repository);
+        // this calls the constructor
+        return new static($configuration, $repository);
     }
 
     /**
@@ -216,9 +196,6 @@ class MakeRequest
      */
     public function addOrderItem($sku, $price, $quantity, $description, $fulfillable=true, $gtin=null)
     {
-        if (!($this->loanRequest instanceof ExtendedLoanRequest))
-            throw new \Exception('Simple checkout, no items allowed');
-
         $item = new CustomType\OrderItem();
 
         $item->setSku($sku);
@@ -337,10 +314,8 @@ class MakeRequest
             $errors[] = 'Hash method must be set in Configuration.';
         }
 
-        if ( $this->loanRequest->getCheckoutType() == 2 &&
-            !$this->loanRequest->getOrderItems()) {
-
-            $errors[] = 'Order items must be set when checkoutType == 2.';
+        if (!$this->loanRequest->getOrderItems()) {
+            $errors[] = 'Order items not set!';
         }
 
         if ($errors) {
@@ -351,7 +326,6 @@ class MakeRequest
 
         // Add various fields to the output.
         $ar['checkout_version'] = $this->loanRequest->getCheckoutVersion();
-        $ar['checkout_type'] = $this->loanRequest->getCheckoutType();
         $ar['merchant_installation'] = $this->loanRequest->getMerchantInstallation();
         $ar['order_description'] = $this->loanRequest->getOrderDescription();
         $ar['order_reference'] = $this->loanRequest->getOrderReference();
@@ -362,19 +336,13 @@ class MakeRequest
         if ($this->additionalData instanceof Entity\AdditionalData)
             $ar['additional_data'] = FieldEncoder::encodeField($this->additionalData->toArray());
 
-        // If there are order items, add them to the output
-        if (
-            $this->loanRequest instanceof ExtendedLoanRequest &&
-            $this->loanRequest->getOrderItems()
-        ) {
-            foreach ($this->loanRequest->getOrderItems() as $item) {
-                $itemArray = $item->toArray();
-                unset($itemArray["fulfilled"]);
-                $ar['order_items'][] = $itemArray;
-            }
-
-            $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
+        // Add order items to the output
+        foreach ($this->loanRequest->getOrderItems() as $item) {
+            $itemArray = $item->toArray();
+            unset($itemArray["fulfilled"]);
+            $ar['order_items'][] = $itemArray;
         }
+        $ar['order_items'] = FieldEncoder::encodeField($ar['order_items']);
 
         $fulfilmentType = $this->loanRequest->getFulfilmentType();
         $fulfilmentObject = $this->loanRequest->getFulfilmentObject();

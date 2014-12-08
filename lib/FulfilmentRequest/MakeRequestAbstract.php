@@ -75,11 +75,9 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     public function setLoanRequest(LoanRequestInterface $loanRequest)
     {
         $this->fulfilmentRequest->setCheckoutVersion($loanRequest->getCheckoutVersion());
-        $this->fulfilmentRequest->setCheckoutType($loanRequest->getCheckoutType());
         $this->fulfilmentRequest->setMerchantInstallation($loanRequest->getMerchantInstallation());
         $this->fulfilmentRequest->setOrderReference($loanRequest->getOrderReference());
         $this->fulfilmentRequest->setOrderAmount($loanRequest->getOrderAmount());
-
         return true;
     }
 
@@ -91,7 +89,6 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     protected function prepareEssentialRequest(array &$ar)
     {
         if (
-            !$this->fulfilmentRequest->getCheckoutType() ||
             !$this->fulfilmentRequest->getCheckoutVersion() ||
             !$this->fulfilmentRequest->getMerchantInstallation() ||
             !$this->fulfilmentRequest->getOrderReference() ||
@@ -103,7 +100,6 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
         $ar = [];
 
         $ar['checkout_version'] = $this->fulfilmentRequest->getCheckoutVersion();
-        $ar['checkout_type'] = $this->fulfilmentRequest->getCheckoutType();
         $ar['merchant_installation'] = $this->fulfilmentRequest->getMerchantInstallation();
         $ar['order_reference'] = $this->fulfilmentRequest->getOrderReference();
         $ar['order_amount'] = $this->fulfilmentRequest->getOrderAmount();
@@ -132,7 +128,6 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     public function confirmSent()
     {
         $this->fulfilmentRequest->setStatus(FulfilmentRequestInterface::STATUS_REQUESTED);
-
         return $this->save();
     }
 

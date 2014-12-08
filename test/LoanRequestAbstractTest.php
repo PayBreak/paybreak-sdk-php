@@ -14,7 +14,7 @@ use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 class LoanRequestAbstractTest extends TestCase {
 
     /**
-     * @var \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract
+     * @var \PayBreak\Sdk\LoanRequest\Entity\LoanRequest
      */
     private $loanRequest;
     private $additionalData;
