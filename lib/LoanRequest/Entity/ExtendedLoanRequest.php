@@ -18,20 +18,10 @@ use PayBreak\Sdk\CustomType\OrderItem;
  * @author WN
  * @package PayBreak\Sdk\LoanRequest\Entity
  */
-class ExtendedLoanRequest extends LoanRequestAbstract
+class ExtendedLoanRequest extends LoanRequest
 {
     protected $orderItems = [];
 
-
-    /**
-     * Returns Checkout Type
-     *
-     * @return int
-     */
-    public function getCheckoutType()
-    {
-        return self::TYPE_EXTENDED;
-    }
 
     /**
      * Add Order Item

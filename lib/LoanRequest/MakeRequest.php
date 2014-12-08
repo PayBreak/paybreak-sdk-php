@@ -45,21 +45,12 @@ class MakeRequest
      * @throws \InvalidArgumentException
      */
     public function __construct(
-        $type,
         ConfigurationInterface $configuration,
         LoanRequestRepositoryInterface $repository
     ) {
         $this->configuration = $configuration;
         $this->repository = $repository;
-
-        if ($type == 1) {
-            $this->loanRequest = new Entity\SimpleLoanRequest();
-        } elseif ($type == 2) {
-            $this->loanRequest = new Entity\ExtendedLoanRequest();
-        } else {
-            throw new \InvalidArgumentException('Invalid Checkout Type');
-        }
-
+        $this->loanRequest = new Entity\ExtendedLoanRequest();
         $this->loanRequest->setMerchantInstallation($configuration->getMerchantInstallation());
         $this->loanRequest->setCheckoutVersion($configuration->getCheckoutVersion());
     }
@@ -216,9 +207,6 @@ class MakeRequest
      */
     public function addOrderItem($sku, $price, $quantity, $description, $fulfillable=true, $gtin=null)
     {
-        if (!($this->loanRequest instanceof ExtendedLoanRequest))
-            throw new \Exception('Simple checkout, no items allowed');
-
         $item = new CustomType\OrderItem();
 
         $item->setSku($sku);
@@ -337,10 +325,8 @@ class MakeRequest
             $errors[] = 'Hash method must be set in Configuration.';
         }
 
-        if ( $this->loanRequest->getCheckoutType() == 2 &&
-            !$this->loanRequest->getOrderItems()) {
-
-            $errors[] = 'Order items must be set when checkoutType == 2.';
+        if (!$this->loanRequest->getOrderItems()) {
+            $errors[] = 'Order items not set!';
         }
 
         if ($errors) {
@@ -351,7 +337,6 @@ class MakeRequest
 
         // Add various fields to the output.
         $ar['checkout_version'] = $this->loanRequest->getCheckoutVersion();
-        $ar['checkout_type'] = $this->loanRequest->getCheckoutType();
         $ar['merchant_installation'] = $this->loanRequest->getMerchantInstallation();
         $ar['order_description'] = $this->loanRequest->getOrderDescription();
         $ar['order_reference'] = $this->loanRequest->getOrderReference();
