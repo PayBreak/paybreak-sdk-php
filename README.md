@@ -26,24 +26,33 @@ The Loan Request allows partial fulfillment of orders, and is described in the I
     $requestMaker->setValidity($validity);
     $requestMaker->setDeposit(9000);
     $requestMaker->setLoanProducts(["AIN1-3"]);
-    
-    // Can only be done if the extended checkout is used (i.e. option 2)
     $requestMaker->addOrderItem(
-    	"SKU_1", // Stock keeping unit (SKU)
-    	20000, // Cost of item
-    	1, // Quantity
-    	"Item description 1",
-    	true, // Is this item fulfillable?
-    	"001" // Global Trade Index Number
+    	"SKU_9000", 
+    	12000, 
+    	2, 
+    	"Test description", 
+    	true, 
+    	"0012345"
     );
     
-    $requestMaker->addOrderItem(
-    	"SKU_2", // Stock keeping unit (SKU)
-    	32000, // Cost of item
-    	1, // Quantity
-    	"Item description 2",
-    	true, // Is this item fulfillable?
-    	"002" // Global Trade Index Number
+    // Optional field, to pre-populate Paybreak form with customer data
+    $requestMaker->setCustomer(
+        "1-1-1984",
+        "John", 
+        "Smith", 
+        "johnsmith@example.com",
+        "07654321012",
+        "01212123456",
+        "A1 B23",
+        "Mr"
+    );
+    
+    // Add fulfilment data
+    $requestMaker->setFulfilmentType(1);
+    $requestMaker->setFulfilmentObject(
+        "M1 1AB", 
+        "This address is a test...", 
+        "RefGoesHere"
     );
 
     $arr = $requestMaker->prepareRequest();
