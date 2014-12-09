@@ -12,6 +12,7 @@ namespace PayBreak\Sdk\LoanRequest\Entity;
 
 use Carbon\Carbon;
 use PayBreak\Sdk\CustomType\OrderItem;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
 
 /**
  * Class LoanRequest
@@ -39,6 +40,8 @@ class LoanRequest implements LoanRequestInterface
     protected $deposit;
     protected $loanProducts = [];
     protected $orderItems = [];
+    protected $checkoutType = 2;
+
 
     /**
      * Entity unique ID
@@ -395,6 +398,33 @@ class LoanRequest implements LoanRequestInterface
     }
 
     /**
+     * @param int $checkoutType The checkout type
+     * @return int
+     * @throws \Exception
+     * @deprecated
+     */
+    public function setCheckoutType($checkoutType)
+    {
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION."+");
+        }
+        return $this->checkoutType = $checkoutType;
+    }
+
+    /**
+     * @return int The checkout type
+     * @throws \Exception
+     * @deprecated
+     */
+    public function getCheckoutType()
+    {
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION."+");
+        }
+        return $this->checkoutType;
+    }
+
+    /**
      * Get Order Items
      *
      * @return \PayBreak\Sdk\CustomType\OrderItem[]
@@ -422,6 +452,10 @@ class LoanRequest implements LoanRequestInterface
             'fulfilment_object' => $this->getFulfilmentObject(),
             'loan_products' => $this->getLoanProducts()
         ];
+        if ($this->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            $ar["checkout_type"] = $this->getCheckoutType();
+        }
+
         foreach ($this->getOrderItems() as $k => $v) {
             $ar['order_items'][$k] = $v->toArray();
         }

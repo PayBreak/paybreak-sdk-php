@@ -38,7 +38,7 @@ interface FulfilmentRequestInterface extends EntityInterface
      *
      * @param  int $checkoutType
      * @return int
-     * 
+     *
      * @deprecated
      */
     public function setCheckoutType($checkoutType);

@@ -76,10 +76,9 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     {
         $this->fulfilmentRequest->setCheckoutVersion($loanRequest->getCheckoutVersion());
 
-        // this won't work - there is no checkout type in the Loan Request object since 3.3+.
-//        $this->fulfilmentRequest->setCheckoutType($loanRequest->getCheckoutType());
-
-        $this->fulfilmentRequest->setCheckoutType(2); // set to 2 - request will always be Extended
+        if ($loanRequest->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            $this->fulfilmentRequest->setCheckoutType($loanRequest->getCheckoutType());
+        }
 
         $this->fulfilmentRequest->setMerchantInstallation($loanRequest->getMerchantInstallation());
         $this->fulfilmentRequest->setOrderReference($loanRequest->getOrderReference());
@@ -96,7 +95,10 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     protected function prepareEssentialRequest(array &$ar)
     {
         if (
-            !$this->fulfilmentRequest->getCheckoutType() ||
+            (
+                $this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION &&
+                !$this->fulfilmentRequest->getCheckoutType()
+            ) ||
             !$this->fulfilmentRequest->getCheckoutVersion() ||
             !$this->fulfilmentRequest->getMerchantInstallation() ||
             !$this->fulfilmentRequest->getOrderReference() ||
@@ -106,9 +108,10 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
         }
 
         $ar = [];
-
         $ar['checkout_version'] = $this->fulfilmentRequest->getCheckoutVersion();
-        $ar['checkout_type'] = $this->fulfilmentRequest->getCheckoutType();
+        if ($this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            $ar['checkout_type'] = $this->fulfilmentRequest->getCheckoutType();
+        }
         $ar['merchant_installation'] = $this->fulfilmentRequest->getMerchantInstallation();
         $ar['order_reference'] = $this->fulfilmentRequest->getOrderReference();
         $ar['order_amount'] = $this->fulfilmentRequest->getOrderAmount();

@@ -10,6 +10,8 @@
 
 namespace PayBreak\Sdk\FulfilmentRequest\Entity;
 
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
+
 /**
  * Class FulfilmentRequestAbstract
  *
@@ -53,24 +55,25 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
      *
      * @param  int $checkoutType
      * @return int
+     * @deprecated
      */
     public function setCheckoutType($checkoutType)
     {
-        if ($this->checkoutVersion >= "3.3") {
-            throw new \Exception("Checkout type is deprecated for 3.3+");
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION."+");
         }
         return $this->checkoutType = $checkoutType;
     }
 
     /**
      * Get Checkout Type
-     *
      * @return int
+     * @deprecated
      */
     public function getCheckoutType()
     {
-        if ($this->checkoutVersion >= "3.3") {
-            throw new \Exception("Checkout type is deprecated for 3.3+");
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION."+");
         }
         return $this->checkoutType;
     }
@@ -202,17 +205,20 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
      */
     public function toArray()
     {
-        return [
+        $out = [
             'id'                    => $this->getId(),
             'fulfilment_type'       => $this->getFulfilmentType(),
             'checkout_version'      => $this->getCheckoutVersion(),
-            'checkout_type'         => $this->getCheckoutType(),
             'merchant_installation' => $this->getMerchantInstallation(),
             'order_reference'       => $this->getOrderReference(),
             'order_amount'          => $this->getOrderAmount(),
             'request_date'          => $this->getRequestDate(),
             'status'                => $this->getStatus(),
         ];
+        if ($this->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+            $out['checkout_type'] = $this->getCheckoutType();
+        }
+        return $out;
     }
 
 }

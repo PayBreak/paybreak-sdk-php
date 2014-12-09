@@ -406,4 +406,13 @@ class MakeRequest
 
         return true;
     }
+
+    /**
+     * @return LoanRequest The loan request
+     */
+    public function getLoanRequest()
+    {
+        return $this->loanRequest;
+    }
+
 }
