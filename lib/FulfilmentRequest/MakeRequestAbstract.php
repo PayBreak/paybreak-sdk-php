@@ -41,8 +41,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
         ConfigurationInterface $configuration,
         LoanRequestRepositoryInterface $loanRequestRepository,
         FulfilmentRequestRepositoryInterface $fulfilmentRequestRepository
-    )
-    {
+    ) {
         $this->configuration = $configuration;
         $this->loanRequestRepository = $loanRequestRepository;
         $this->fulfilmentRequestRepository = $fulfilmentRequestRepository;
@@ -156,7 +155,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
         if (
             $this->fulfilmentRequestRepository->save($this->fulfilmentRequest) &&
             $this->loanRequestRepository->save($this->loanRequest)
-        ){
+        ) {
             return true;
         }
 

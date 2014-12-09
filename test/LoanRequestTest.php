@@ -6,12 +6,14 @@ use Carbon\Carbon;
 use PayBreak\Sdk\LoanRequest\Entity\AdditionalData;
 use PayBreak\Sdk\LoanRequest\Entity\FulfilmentObject;
 use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequest;
+use PayBreak\Sdk\CustomType\OrderItem;
 
 /**
- * Test for LoanRequestAbstract
+ * Test for LoanRequest
  * @author Matthew Norris
  */
-class LoanRequestAbstractTest extends TestCase {
+class LoanRequestTest extends TestCase {
 
     /**
      * @var \PayBreak\Sdk\LoanRequest\Entity\LoanRequest
@@ -27,7 +29,7 @@ class LoanRequestAbstractTest extends TestCase {
         date_default_timezone_set('Europe/London');
 
         // Create a mock class that extends the abstract class we're interested in
-        $this->loanRequest = $this->getMockForAbstractClass('\PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract');
+        $this->loanRequest = new LoanRequest();
 
         // Need this stuff to fully test the loan request object
         $this->additionalData = new AdditionalData();
@@ -45,7 +47,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setId()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setId()
      */
     public function testSetId()
     {
@@ -54,7 +56,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getId()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getId()
      */
     public function testGetId()
     {
@@ -64,7 +66,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setCheckoutVersion()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setCheckoutVersion()
      */
     public function testSetCheckoutVersion()
     {
@@ -73,7 +75,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getCheckoutVersion()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getCheckoutVersion()
      */
     public function testGetCheckoutVersion()
     {
@@ -81,9 +83,34 @@ class LoanRequestAbstractTest extends TestCase {
         $this->assertEquals("4.56", $this->loanRequest->getCheckoutVersion());
     }
 
+    public function testSetCheckoutType()
+    {
+        // expected - no exception
+        $this->loanRequest->setCheckoutVersion(3.2);
+        $this->loanRequest->setCheckoutType(1);
+
+        // exception expected here
+        $this->setExpectedException('Exception');
+        $this->loanRequest->setCheckoutVersion(3.3);
+        $this->loanRequest->setCheckoutType(1);
+    }
+
+    public function testGetCheckoutType()
+    {
+        // expected - no exception
+        $this->loanRequest->setCheckoutVersion(3.2);
+        $this->loanRequest->setCheckoutType(1);
+        $this->assertEquals(1, $this->loanRequest->getCheckoutType());
+
+        // exception expected here
+        $this->setExpectedException('Exception');
+        $this->loanRequest->setCheckoutVersion(3.3);
+        $this->loanRequest->getCheckoutType();
+    }
+
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setMerchantInstallation()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setMerchantInstallation()
      */
     public function testSetMerchantInstallation()
     {
@@ -92,7 +119,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getMerchantInstallation()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getMerchantInstallation()
      */
     public function testGetMerchantInstallation()
     {
@@ -102,7 +129,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setOrderDescription()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setOrderDescription()
      */
     public function testSetOrderDescription()
     {
@@ -111,7 +138,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getOrderDescription()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getOrderDescription()
      */
     public function testGetOrderDescription()
     {
@@ -121,7 +148,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setOrderReference()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setOrderReference()
      */
     public function testSetOrderReference()
     {
@@ -130,7 +157,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getOrderReference()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getOrderReference()
      */
     public function testGetOrderReference()
     {
@@ -140,7 +167,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setOrderAmount()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setOrderAmount()
      */
     public function testSetOrderAmount()
     {
@@ -149,7 +176,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getOrderAmount()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getOrderAmount()
      */
     public function testGetOrderAmount()
     {
@@ -159,7 +186,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setOrderValidity()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setOrderValidity()
      */
     public function testSetOrderValidity()
     {
@@ -169,7 +196,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getOrderValidity()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getOrderValidity()
      */
     public function testGetOrderValidity()
     {
@@ -180,7 +207,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setOrderExtendable()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setOrderExtendable()
      */
     public function testSetOrderExtendable()
     {
@@ -189,7 +216,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getOrderExtendable()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getOrderExtendable()
      */
     public function testGetOrderExtendable()
     {
@@ -199,7 +226,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setAdditionalData()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setAdditionalData()
      */
     public function testSetAdditionalData()
     {
@@ -208,7 +235,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getAdditionalData()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getAdditionalData()
      */
     public function testGetAdditionalData()
     {
@@ -218,7 +245,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setRequestData()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setRequestData()
      */
     public function testSetRequestDate()
     {
@@ -228,7 +255,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getRequestData()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getRequestData()
      */
     public function testGetRequestDate()
     {
@@ -239,7 +266,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setStatus()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setStatus()
      */
     public function testSetStatus()
     {
@@ -251,7 +278,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getStatus()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getStatus()
      */
     public function testGetStatus()
     {
@@ -261,7 +288,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setFulfilled()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setFulfilled()
      */
     public function testSetFulfilled()
     {
@@ -273,7 +300,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getFulfilled()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getFulfilled()
      */
     public function testGetFulfilled()
     {
@@ -283,7 +310,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setFulfilmentType()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setFulfilmentType()
      */
     public function testSetFulfilmentType()
     {
@@ -295,7 +322,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getFulfilmentType()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getFulfilmentType()
      */
     public function testGetFulfilmentType()
     {
@@ -305,7 +332,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setFulfilmentObject()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setFulfilmentObject()
      */
     public function testSetFulfilmentObject()
     {
@@ -314,7 +341,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getFulfilmentObject()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getFulfilmentObject()
      */
     public function testGetFulfilmentObject()
     {
@@ -324,7 +351,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setDeposit()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setDeposit()
      */
     public function testSetDeposit()
     {
@@ -333,7 +360,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getDeposit()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getDeposit()
      */
     public function testGetDeposit()
     {
@@ -343,7 +370,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::setLoanProducts()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::setLoanProducts()
      */
     public function testSetLoanProducts()
     {
@@ -352,7 +379,7 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::getLoanProducts()
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getLoanProducts()
      */
     public function testGetLoanProducts()
     {
@@ -362,7 +389,57 @@ class LoanRequestAbstractTest extends TestCase {
 
     /**
      * @author Matthew Norris
-     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequestAbstract::toArray()
+     * @covers PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getOrderAmount()
+     */
+    public function testAddOrderItem()
+    {
+        $expectedItems = $this->addTestOrderItems();
+        $this->assertEquals(5000, $this->loanRequest->getOrderAmount());
+        $this->assertEquals($expectedItems, $this->loanRequest->getOrderItems());
+    }
+
+    /**
+     * @author Matthew Norris
+     * @covers PayBreak\Sdk\LoanRequest\Entity\LoanRequest::getOrderAmount()
+     */
+
+    /**
+     * Helper
+     * @author Matthew Norris
+     * @return array
+     */
+    private function addTestOrderItems()
+    {
+        $expectedItems = [];
+
+        // Add an item that costs £10 and has quantity 2
+        $item = new OrderItem();
+        $item->setSku("TEST_SKU_1");
+        $item->setPrice(1000);
+        $item->setQuantity(2);
+        $item->setDescription("Test description 1");
+        $item->setFulfillable(true);
+        $item->setGtin("001234");
+        $expectedItems["TEST_SKU_1"] = $item;
+        $this->loanRequest->addOrderItem($item);
+
+        // Add another item, price £30 and quantity 1
+        $item = new OrderItem();
+        $item->setSku("TEST_SKU_2");
+        $item->setPrice(3000);
+        $item->setQuantity(1);
+        $item->setDescription("Test description 2");
+        $item->setFulfillable(true);
+        $item->setGtin("002345");
+        $expectedItems["TEST_SKU_2"] = $item;
+        $this->loanRequest->addOrderItem($item);
+
+        return $expectedItems;
+    }
+
+    /**
+     * @author Matthew Norris
+     * @covers \PayBreak\Sdk\LoanRequest\Entity\LoanRequest::toArray()
      */
     public function testToArray()
     {
@@ -372,10 +449,16 @@ class LoanRequestAbstractTest extends TestCase {
         $fulfilmentObject = new FulfilmentObject();
         $loanProducts = ["LOAN_PRODUCT"];
 
+        $expectedItems = $this->addTestOrderItems();
+        $expectedOrderItems = [];
+        foreach ($expectedItems as $expectedItem) {
+            $expectedOrderItems[$expectedItem->getSku()] = $expectedItem->toArray();
+        }
+
         $expected = [
             'id' => 123,
             'checkout_version' => "1.23",
-            'checkout_type' => null, // set null, since this is only defined by subclasses.
+            'checkout_type' => 2, // this is always set to 2
             'merchant_installation' => "TestInstall",
             'order_description' => "OrderDescription",
             'order_reference' => "OrderReference",
@@ -387,7 +470,8 @@ class LoanRequestAbstractTest extends TestCase {
             'deposit' => 1000,
             'fulfilment_type' => 1,
             'fulfilment_object' => $fulfilmentObject,
-            'loan_products' => $loanProducts
+            'loan_products' => $loanProducts,
+            'order_items' => $expectedOrderItems
         ];
 
         $this->loanRequest->setId($expected["id"]);
@@ -404,7 +488,25 @@ class LoanRequestAbstractTest extends TestCase {
         $this->loanRequest->setFulfilmentType($expected["fulfilment_type"]);
         $this->loanRequest->setFulfilmentObject($expected["fulfilment_object"]);
         $this->loanRequest->setLoanProducts($expected["loan_products"]);
-
         $this->assertEquals($expected, $this->loanRequest->toArray());
+
+        /*
+         *
+         *
+         * // for array, we just need to test whether the order items are there
+        // ... since the rest of the fields are tested by the Abstract unit test
+        $expectedItems = $this->addTestOrderItems();
+        $expectedArray = [];
+        foreach ($expectedItems as $expectedItem) {
+            $expectedArray[$expectedItem->getSku()] = $expectedItem->toArray();
+        }
+
+        // must set the timestamp fields though, because otherwise there will be an exception
+        $this->loanRequest->setOrderValidity(Carbon::tomorrow());
+        $this->loanRequest->setRequestDate(Carbon::yesterday());
+
+        $this->assertEquals($expectedArray, $this->loanRequest->toArray()["order_items"]);
+         *
+         */
     }
 }
