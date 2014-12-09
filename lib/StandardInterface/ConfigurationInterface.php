@@ -18,7 +18,7 @@ namespace PayBreak\Sdk\StandardInterface;
  */
 interface ConfigurationInterface
 {
-    const CHECKOUT_TYPE_REMOVED_VERSION = 3.3;
+    const VERSION_CHECKOUT_TYPE_REMOVED = 3.3;
 
     /**
      * Merchant Installation

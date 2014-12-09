@@ -76,7 +76,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     {
         $this->fulfilmentRequest->setCheckoutVersion($loanRequest->getCheckoutVersion());
 
-        if ($loanRequest->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+        if ($loanRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
             $this->fulfilmentRequest->setCheckoutType($loanRequest->getCheckoutType());
         }
 
@@ -96,7 +96,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     {
         if (
             (
-                $this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION &&
+                $this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED &&
                 !$this->fulfilmentRequest->getCheckoutType()
             ) ||
             !$this->fulfilmentRequest->getCheckoutVersion() ||
@@ -109,7 +109,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
 
         $ar = [];
         $ar['checkout_version'] = $this->fulfilmentRequest->getCheckoutVersion();
-        if ($this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+        if ($this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
             $ar['checkout_type'] = $this->fulfilmentRequest->getCheckoutType();
         }
         $ar['merchant_installation'] = $this->fulfilmentRequest->getMerchantInstallation();

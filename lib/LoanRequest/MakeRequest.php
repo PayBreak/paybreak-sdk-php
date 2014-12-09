@@ -53,6 +53,11 @@ class MakeRequest
         $this->loanRequest = new LoanRequest();
         $this->loanRequest->setMerchantInstallation($configuration->getMerchantInstallation());
         $this->loanRequest->setCheckoutVersion($configuration->getCheckoutVersion());
+
+        // if using an older version, copy the checkoutType across
+        if ($configuration->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            $this->loanRequest->setCheckoutType($configuration->getCheckoutType());
+        }
     }
 
     /**
@@ -314,7 +319,13 @@ class MakeRequest
             $errors[] = 'Hash method must be set in Configuration.';
         }
 
-        if (!$this->loanRequest->getOrderItems()) {
+        if (
+            !$this->loanRequest->getOrderItems() &&
+            !(
+                $this->loanRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED &&
+                $this->loanRequest->getCheckoutType() === LoanRequestInterface::TYPE_EXTENDED
+            )
+        ) {
             $errors[] = 'Order items not set!';
         }
 
@@ -326,6 +337,12 @@ class MakeRequest
 
         // Add various fields to the output.
         $ar['checkout_version'] = $this->loanRequest->getCheckoutVersion();
+
+        // only add checkoutType if it's an older checkout version
+        if ($this->loanRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            $ar["checkout_type"] = $this->loanRequest->getCheckoutType();
+        }
+
         $ar['merchant_installation'] = $this->loanRequest->getMerchantInstallation();
         $ar['order_description'] = $this->loanRequest->getOrderDescription();
         $ar['order_reference'] = $this->loanRequest->getOrderReference();

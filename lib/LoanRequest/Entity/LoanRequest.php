@@ -405,8 +405,8 @@ class LoanRequest implements LoanRequestInterface
      */
     public function setCheckoutType($checkoutType)
     {
-        if ($this->getCheckoutVersion() >= ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
-            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION."+");
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
         }
         return $this->checkoutType = $checkoutType;
     }
@@ -418,8 +418,8 @@ class LoanRequest implements LoanRequestInterface
      */
     public function getCheckoutType()
     {
-        if ($this->getCheckoutVersion() >= ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
-            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION."+");
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
         }
         return $this->checkoutType;
     }
@@ -452,7 +452,7 @@ class LoanRequest implements LoanRequestInterface
             'fulfilment_object' => $this->getFulfilmentObject(),
             'loan_products' => $this->getLoanProducts()
         ];
-        if ($this->getCheckoutVersion() < ConfigurationInterface::CHECKOUT_TYPE_REMOVED_VERSION) {
+        if ($this->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
             $ar["checkout_type"] = $this->getCheckoutType();
         }
 
