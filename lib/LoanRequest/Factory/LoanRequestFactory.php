@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use PayBreak\Sdk\CustomType\OrderItem;
 use PayBreak\Sdk\CustomType\OrderItemFactory;
 use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequest;
 use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 use PayBreak\Sdk\LoanRequest\Entity\SimpleLoanRequest;
 /**
@@ -31,13 +32,18 @@ class LoanRequestFactory
     public static function make(array $components)
     {
         if (!array_key_exists('checkout_type', $components)) throw new \Exception('At least checkout_type must be defined.');
-        if ($components['checkout_type'] == LoanRequestInterface::TYPE_SIMPLE) {
-            $loanRequest = new SimpleLoanRequest();
-        } elseif ($components['checkout_type'] == LoanRequestInterface::TYPE_EXTENDED) {
-            $loanRequest = new ExtendedLoanRequest();
-        } else {
-            throw new \Exception('Unrecognised checkout_type!');
-        }
+
+//        if ($components['checkout_type'] == LoanRequestInterface::TYPE_SIMPLE) {
+//            $loanRequest = new SimpleLoanRequest();
+//        } elseif ($components['checkout_type'] == LoanRequestInterface::TYPE_EXTENDED) {
+//            $loanRequest = new ExtendedLoanRequest();
+//        } else {
+//            throw new \Exception('Unrecognised checkout_type!');
+//        }
+
+        $loanRequest = new LoanRequest();
+        $loanRequest->setCheckoutType($components['checkout_type']);
+
         if (array_key_exists('id', $components)) $loanRequest->setId($components['id']);
         if (array_key_exists('checkout_version', $components)) $loanRequest->setCheckoutVersion($components['checkout_version']);
         if (array_key_exists('merchant_installation', $components)) $loanRequest->setMerchantInstallation($components['merchant_installation']);
