@@ -406,9 +406,9 @@ class LoanRequest implements LoanRequestInterface
     public function setCheckoutType($checkoutType)
     {
         // commented out because it messes up the merchants-back-office
-//        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
-//            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
-//        }
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
+        }
         return $this->checkoutType = $checkoutType;
     }
 
@@ -420,9 +420,9 @@ class LoanRequest implements LoanRequestInterface
     public function getCheckoutType()
     {
         // commented out because it messes up the merchants-back-office
-//        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
-//            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
-//        }
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
+        }
         return $this->checkoutType;
     }
 
