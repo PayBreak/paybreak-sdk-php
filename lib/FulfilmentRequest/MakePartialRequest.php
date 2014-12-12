@@ -61,12 +61,13 @@ class MakePartialRequest extends MakeRequestAbstract
      * @param  int    $quantity
      * @return bool
      */
-    public function addFulfilmentItem($sku, $quantity)
+    public function addFulfilmentItem($sku, $quantity, $price)
     {
         $item = new OrderItem();
 
         $item->setSku($sku);
         $item->setQuantity($quantity);
+        $item->setPrice($price);
 
         return $this->addFulfilmentItemObject($item);
     }
