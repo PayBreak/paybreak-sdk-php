@@ -101,8 +101,8 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
             !$this->fulfilmentRequest->getCheckoutVersion() ||
             !$this->fulfilmentRequest->getMerchantInstallation() ||
             !$this->fulfilmentRequest->getOrderReference() ||
-            !$this->fulfilmentRequest->getOrderAmount() // this is actually optional (with partial fulfilments)
-        ){
+            !$this->fulfilmentRequest->getOrderAmount()
+        ) {
             throw new \Exception('Unable to prepare fulfilment, not enough data provided.');
         }
 

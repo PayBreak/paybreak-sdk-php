@@ -80,8 +80,7 @@ class MakePartialRequest extends MakeRequestAbstract
      */
     public function addFulfilmentItemObject(OrderItem $item)
     {
-        $this->fulfilmentItems[$item->getSku()] = $item;
-
+        $this->fulfilmentRequest->addFulfilmentItem($item);
         return true;
     }
 
@@ -92,7 +91,7 @@ class MakePartialRequest extends MakeRequestAbstract
      */
     public function getFulfilmentItems()
     {
-        return $this->fulfilmentItems;
+        return $this->fulfilmentRequest->getFulfilmentItems();
     }
 
     /**
@@ -106,15 +105,15 @@ class MakePartialRequest extends MakeRequestAbstract
         $ar = [];
 
         $this->prepareEssentialRequest($ar);
-
         foreach ($this->getFulfilmentItems() as $k => $v) {
-            if ($v->getQuantity() > 0)
-            $ar['order_items'][] = [
-                'sku'       => $k,
-                'quantity'  => $v->getQuantity()
-            ];
+            if ($v->getQuantity() > 0) {
+                $ar['order_items'][] = [
+                    'sku'       => $k,
+                    'quantity'  => $v->getQuantity(),
+                    'price'     => $v->getPrice()
+                ];
+            }
         }
-
         $this->addMerchantHash($ar);
 
         return $ar;

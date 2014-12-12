@@ -33,18 +33,19 @@ class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements Fulf
     }
 
     /**
-     * Add Item to Fulfill
+     * Add Item to Fulfil
      *
      * @param  \PayBreak\Sdk\CustomType\OrderItem $item
      * @return \PayBreak\Sdk\CustomType\OrderItem
      */
     public function addFulfilmentItem(OrderItem $item)
     {
+        // update the amount every time an order item is added.
         return $this->fulfilmentItems[$item->getSku()] = $item;
     }
 
     /**
-     * Get Items to Fulfill
+     * Get Items to Fulfil
      *
      * @return \PayBreak\Sdk\CustomType\OrderItem[]
      */
