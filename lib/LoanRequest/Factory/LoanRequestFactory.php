@@ -15,6 +15,8 @@ use PayBreak\Sdk\LoanRequest\Entity\ExtendedLoanRequest;
 use PayBreak\Sdk\LoanRequest\Entity\LoanRequest;
 use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 use PayBreak\Sdk\LoanRequest\Entity\SimpleLoanRequest;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
+
 /**
  * Class LoanRequestFactory
  *
@@ -33,6 +35,9 @@ class LoanRequestFactory
     {
         if (!array_key_exists('checkout_type', $components)) throw new \Exception('At least checkout_type must be defined.');
 
+        $loanRequest = new LoanRequest();
+
+        // old version that is checkout_type dependent
 //        if ($components['checkout_type'] == LoanRequestInterface::TYPE_SIMPLE) {
 //            $loanRequest = new SimpleLoanRequest();
 //        } elseif ($components['checkout_type'] == LoanRequestInterface::TYPE_EXTENDED) {
@@ -41,7 +46,17 @@ class LoanRequestFactory
 //            throw new \Exception('Unrecognised checkout_type!');
 //        }
 
-        $loanRequest = new LoanRequest();
+        // deal with checkout_type - only set it for versions < 3.3 or if no version is specified
+        if (
+            !array_key_exists('checkout_version', $components)
+            || (
+                array_key_exists('checkout_version', $components)
+                && $components["checkout_version"] < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED
+            )
+        ) {
+            $loanRequest->setCheckoutType($components["checkout_type"]);
+        }
+
         $loanRequest->setCheckoutType($components['checkout_type']);
 
         if (array_key_exists('id', $components)) $loanRequest->setId($components['id']);
@@ -73,7 +88,10 @@ class LoanRequestFactory
         if (array_key_exists('fulfilled', $components)) $loanRequest->setFulfilled($components['fulfilled']);
         // TODO: Additional Data to implement
         if (
-            $loanRequest->getCheckoutType() == LoanRequestInterface::TYPE_EXTENDED &&
+            (
+                $loanRequest->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED ||
+                $loanRequest->getCheckoutType() == LoanRequestInterface::TYPE_EXTENDED
+            ) &&
             array_key_exists('order_items', $components) &&
             is_array($components['order_items'])
         ) {

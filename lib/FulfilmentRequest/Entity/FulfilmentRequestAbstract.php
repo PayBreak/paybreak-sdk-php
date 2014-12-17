@@ -59,12 +59,9 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
      */
     public function setCheckoutType($checkoutType)
     {
-        // throwing an exception is bad here ... because new checkoutVersion merchant back offices might
-        // have some requests with the old checkout version
-
-//        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
-//            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
-//        }
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
+        }
         return $this->checkoutType = $checkoutType;
     }
 
@@ -75,9 +72,9 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
      */
     public function getCheckoutType()
     {
-//        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
-//            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
-//        }
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            return 2; // for backwards-compatibility, always return 2 if newer checkout version.
+        }
         return $this->checkoutType;
     }
 
