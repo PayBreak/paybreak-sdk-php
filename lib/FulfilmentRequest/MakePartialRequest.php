@@ -44,13 +44,9 @@ class MakePartialRequest extends MakeRequestAbstract
      */
     public function setLoanRequest(LoanRequestInterface $loanRequest)
     {
-        // can't do this check, since getCheckoutType() is no longer part of loan request
-//        if (
-//              $loanRequest->getCheckoutVersion() < "3.3"
-//           && $loanRequest->getCheckoutType() != LoanRequestInterface::TYPE_EXTENDED
-//        )
-//            throw new \Exception('Checkout type not supported!');
-
+        if ($loanRequest->getCheckoutType() != LoanRequestInterface::TYPE_EXTENDED) {
+            throw new \Exception('Checkout type not supported!');
+        }
         return parent::setLoanRequest($loanRequest);
     }
 

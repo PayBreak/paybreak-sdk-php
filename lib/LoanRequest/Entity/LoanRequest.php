@@ -418,9 +418,6 @@ class LoanRequest implements LoanRequestInterface
      */
     public function getCheckoutType()
     {
-        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
-            return 2; // for backwards-compatibility, always return 2 if newer checkout version.
-        }
         return $this->checkoutType;
     }
 
