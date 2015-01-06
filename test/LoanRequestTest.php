@@ -101,11 +101,6 @@ class LoanRequestTest extends TestCase {
         $this->loanRequest->setCheckoutVersion(3.2);
         $this->loanRequest->setCheckoutType(1);
         $this->assertEquals(1, $this->loanRequest->getCheckoutType());
-
-        // exception expected here
-        $this->setExpectedException('Exception');
-        $this->loanRequest->setCheckoutVersion(3.3);
-        $this->loanRequest->getCheckoutType();
     }
 
     /**
