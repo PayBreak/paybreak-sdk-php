@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\FulfilmentRequest\Entity;
 
+use PayBreak\Sdk\LoanRequest\Entity\LoanRequestInterface;
 use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
 
 /**
@@ -55,12 +56,21 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
      *
      * @param  int $checkoutType
      * @return int
+     * @throws \Exception
      * @deprecated
      */
     public function setCheckoutType($checkoutType)
     {
+        if ($this->getCheckoutVersion() !== NULL) {
+
+            throw new \Exception('Checkout Version MUST be set first.');
+        }
+
         if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
-            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
+            throw new \Exception(
+                'checkoutType is not supported in versions ' .
+                ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED . '+'
+            );
         }
         return $this->checkoutType = $checkoutType;
     }
@@ -73,7 +83,7 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
     public function getCheckoutType()
     {
         if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
-            return 2; // for backwards-compatibility, always return 2 if newer checkout version.
+            return LoanRequestInterface::TYPE_EXTENDED;
         }
         return $this->checkoutType;
     }

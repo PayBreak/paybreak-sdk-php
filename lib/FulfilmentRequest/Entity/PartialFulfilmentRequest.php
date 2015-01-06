@@ -40,7 +40,6 @@ class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements Fulf
      */
     public function addFulfilmentItem(OrderItem $item)
     {
-        // update the amount every time an order item is added.
         return $this->fulfilmentItems[$item->getSku()] = $item;
     }
 
