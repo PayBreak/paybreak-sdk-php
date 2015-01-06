@@ -61,13 +61,12 @@ class MakePartialRequest extends MakeRequestAbstract
      * @param  int    $quantity
      * @return bool
      */
-    public function addFulfilmentItem($sku, $quantity, $price)
+    public function addFulfilmentItem($sku, $quantity)
     {
         $item = new OrderItem();
 
         $item->setSku($sku);
         $item->setQuantity($quantity);
-        $item->setPrice($price);
 
         return $this->addFulfilmentItemObject($item);
     }
@@ -109,8 +108,7 @@ class MakePartialRequest extends MakeRequestAbstract
             if ($v->getQuantity() > 0) {
                 $ar['order_items'][] = [
                     'sku'       => $k,
-                    'quantity'  => $v->getQuantity(),
-                    'price'     => $v->getPrice()
+                    'quantity'  => $v->getQuantity()
                 ];
             }
         }
