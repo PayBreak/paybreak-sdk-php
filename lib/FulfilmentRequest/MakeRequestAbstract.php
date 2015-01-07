@@ -41,8 +41,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
         ConfigurationInterface $configuration,
         LoanRequestRepositoryInterface $loanRequestRepository,
         FulfilmentRequestRepositoryInterface $fulfilmentRequestRepository
-    )
-    {
+    ) {
         $this->configuration = $configuration;
         $this->loanRequestRepository = $loanRequestRepository;
         $this->fulfilmentRequestRepository = $fulfilmentRequestRepository;
@@ -75,7 +74,11 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     public function setLoanRequest(LoanRequestInterface $loanRequest)
     {
         $this->fulfilmentRequest->setCheckoutVersion($loanRequest->getCheckoutVersion());
-        $this->fulfilmentRequest->setCheckoutType($loanRequest->getCheckoutType());
+
+        if ($loanRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            $this->fulfilmentRequest->setCheckoutType($loanRequest->getCheckoutType());
+        }
+
         $this->fulfilmentRequest->setMerchantInstallation($loanRequest->getMerchantInstallation());
         $this->fulfilmentRequest->setOrderReference($loanRequest->getOrderReference());
         $this->fulfilmentRequest->setOrderAmount($loanRequest->getOrderAmount());
@@ -91,23 +94,26 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
     protected function prepareEssentialRequest(array &$ar)
     {
         if (
-            !$this->fulfilmentRequest->getCheckoutType() ||
+            (
+                $this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED &&
+                !$this->fulfilmentRequest->getCheckoutType()
+            ) ||
             !$this->fulfilmentRequest->getCheckoutVersion() ||
             !$this->fulfilmentRequest->getMerchantInstallation() ||
             !$this->fulfilmentRequest->getOrderReference() ||
             !$this->fulfilmentRequest->getOrderAmount()
-        ){
+        ) {
             throw new \Exception('Unable to prepare fulfilment, not enough data provided.');
         }
 
         $ar = [];
-
         $ar['checkout_version'] = $this->fulfilmentRequest->getCheckoutVersion();
-        $ar['checkout_type'] = $this->fulfilmentRequest->getCheckoutType();
+        if ($this->fulfilmentRequest->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            $ar['checkout_type'] = $this->fulfilmentRequest->getCheckoutType();
+        }
         $ar['merchant_installation'] = $this->fulfilmentRequest->getMerchantInstallation();
         $ar['order_reference'] = $this->fulfilmentRequest->getOrderReference();
         $ar['order_amount'] = $this->fulfilmentRequest->getOrderAmount();
-
         return true;
     }
 
@@ -148,7 +154,7 @@ abstract class MakeRequestAbstract implements MakeRequestInterface
         if (
             $this->fulfilmentRequestRepository->save($this->fulfilmentRequest) &&
             $this->loanRequestRepository->save($this->loanRequest)
-        ){
+        ) {
             return true;
         }
 
