@@ -61,7 +61,7 @@ abstract class FulfilmentRequestAbstract implements FulfilmentRequestInterface
      */
     public function setCheckoutType($checkoutType)
     {
-        if ($this->getCheckoutVersion() !== NULL) {
+        if ($this->getCheckoutVersion() == NULL) {
 
             throw new \Exception('Checkout Version MUST be set first.');
         }
