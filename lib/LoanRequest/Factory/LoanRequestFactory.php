@@ -37,16 +37,6 @@ class LoanRequestFactory
 
         $loanRequest = new LoanRequest();
 
-        // old version that is checkout_type dependent
-//        if ($components['checkout_type'] == LoanRequestInterface::TYPE_SIMPLE) {
-//            $loanRequest = new SimpleLoanRequest();
-//        } elseif ($components['checkout_type'] == LoanRequestInterface::TYPE_EXTENDED) {
-//            $loanRequest = new ExtendedLoanRequest();
-//        } else {
-//            throw new \Exception('Unrecognised checkout_type!');
-//        }
-
-        // deal with checkout_type - only set it for versions < 3.3 or if no version is specified
         if (
             !array_key_exists('checkout_version', $components)
             || (
@@ -56,8 +46,6 @@ class LoanRequestFactory
         ) {
             $loanRequest->setCheckoutType($components["checkout_type"]);
         }
-
-        $loanRequest->setCheckoutType($components['checkout_type']);
 
         if (array_key_exists('id', $components)) $loanRequest->setId($components['id']);
         if (array_key_exists('checkout_version', $components)) $loanRequest->setCheckoutVersion($components['checkout_version']);
