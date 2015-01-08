@@ -11,15 +11,17 @@
 namespace PayBreak\Sdk\LoanRequest\Entity;
 
 use Carbon\Carbon;
+use PayBreak\Sdk\CustomType\OrderItem;
+use PayBreak\Sdk\StandardInterface\ConfigurationInterface;
 
 /**
- * Class LoanRequestAbstract
+ * Class LoanRequest
  *
  * @author WN
  * @author MN
  * @package PayBreak\Sdk\LoanRequest\Entity
  */
-abstract class LoanRequestAbstract implements LoanRequestInterface
+class LoanRequest implements LoanRequestInterface
 {
     protected $id;
     protected $checkoutVersion;
@@ -37,6 +39,9 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     protected $fulfilmentObject;
     protected $deposit;
     protected $loanProducts = [];
+    protected $orderItems = [];
+    protected $checkoutType = 2;
+
 
     /**
      * Entity unique ID
@@ -358,16 +363,79 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
     }
 
     /**
-     * Returns entity as array
+     * Add Order Item
      *
-     * @return array
+     * Adds OrderItem object to Request, updates order amount.
+     *
+     * @param  \PayBreak\Sdk\CustomType\OrderItem $orderItem
+     * @return \PayBreak\Sdk\CustomType\OrderItem
      */
+    public function addOrderItem(OrderItem $orderItem)
+    {
+        $this->orderItems[$orderItem->getSku()] = $orderItem;
+        $this->updateOrderAmount();
+
+        return $orderItem;
+    }
+
+    /**
+     * Update Order Amount
+     *
+     * Updates orderAmount value to be a sum of all items in request (multiplied by quantity of them).
+     * Also returns new orderAmount (in pence).
+     *
+     * @return int
+     */
+    public function updateOrderAmount()
+    {
+        $amount = 0;
+
+        foreach ($this->getOrderItems() as $item) {
+            $amount += $item->getPrice() * $item->getQuantity();
+        }
+
+        return $this->setOrderAmount($amount);
+    }
+
+    /**
+     * @param int $checkoutType The checkout type
+     * @return int
+     * @throws \Exception
+     * @deprecated
+     */
+    public function setCheckoutType($checkoutType)
+    {
+        if ($this->getCheckoutVersion() >= ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            throw new \Exception('checkoutType is not supported in versions '.ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED."+");
+        }
+        return $this->checkoutType = $checkoutType;
+    }
+
+    /**
+     * @return int The checkout type
+     * @throws \Exception
+     * @deprecated
+     */
+    public function getCheckoutType()
+    {
+        return $this->checkoutType;
+    }
+
+    /**
+     * Get Order Items
+     *
+     * @return \PayBreak\Sdk\CustomType\OrderItem[]
+     */
+    public function getOrderItems()
+    {
+        return $this->orderItems;
+    }
+
     public function toArray()
     {
-        return [
+        $ar = [
             'id' => $this->getId(),
             'checkout_version' => $this->getCheckoutVersion(),
-            'checkout_type' => $this->getCheckoutType(),
             'merchant_installation' => $this->getMerchantInstallation(),
             'order_description' => $this->getOrderDescription(),
             'order_reference' => $this->getOrderReference(),
@@ -381,5 +449,13 @@ abstract class LoanRequestAbstract implements LoanRequestInterface
             'fulfilment_object' => $this->getFulfilmentObject(),
             'loan_products' => $this->getLoanProducts()
         ];
+        if ($this->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
+            $ar["checkout_type"] = $this->getCheckoutType();
+        }
+
+        foreach ($this->getOrderItems() as $k => $v) {
+            $ar['order_items'][$k] = $v->toArray();
+        }
+        return $ar;
     }
 }

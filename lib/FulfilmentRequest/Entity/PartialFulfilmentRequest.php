@@ -33,7 +33,7 @@ class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements Fulf
     }
 
     /**
-     * Add Item to Fulfill
+     * Add Item to Fulfil
      *
      * @param  \PayBreak\Sdk\CustomType\OrderItem $item
      * @return \PayBreak\Sdk\CustomType\OrderItem
@@ -44,7 +44,7 @@ class PartialFulfilmentRequest extends FulfilmentRequestAbstract implements Fulf
     }
 
     /**
-     * Get Items to Fulfill
+     * Get Items to Fulfil
      *
      * @return \PayBreak\Sdk\CustomType\OrderItem[]
      */
