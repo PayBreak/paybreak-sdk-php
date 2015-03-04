@@ -1,6 +1,8 @@
 Paybreak PHP SDK
 ================
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PayBreak/paybreak-sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/PayBreak/paybreak-sdk-php/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/PayBreak/paybreak-sdk-php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/PayBreak/paybreak-sdk-php/build-status/master)
+
 The Paybreak PHP SDK allows you to easily generate an array of fields that describe a loan request. When these fields 
 are POSTed to the Paybreak API, we will generate a page for your customer, providing them with options to customise
 their loan package.
