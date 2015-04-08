@@ -41,6 +41,8 @@ class LoanRequest implements LoanRequestInterface
     protected $loanProducts = [];
     protected $orderItems = [];
     protected $checkoutType = 2;
+    protected $productGroupCode;
+    protected $productGroupDescription;
 
 
     /**
@@ -429,6 +431,48 @@ class LoanRequest implements LoanRequestInterface
     public function getOrderItems()
     {
         return $this->orderItems;
+    }
+
+    /**
+     * Set Product Group Code
+     *
+     * @param $code
+     * @return mixed
+     */
+    public function setProductGroupCode($code)
+    {
+        return $this->productGroupCode = $code;
+    }
+
+    /**
+     * Get Product Group Code
+     *
+     * @return mixed
+     */
+    public function getProductGroupCode()
+    {
+        return $this->productGroupCode;
+    }
+
+    /**
+     * Set Product Group Description
+     *
+     * @param $description
+     * @return mixed
+     */
+    public function setProductGroupDescription($description)
+    {
+        return $this->productGroupDescription = $description;
+    }
+
+    /**
+     * Get Product Group Description
+     *
+     * @return mixed
+     */
+    public function getProductGroupDescription()
+    {
+        return $this->productGroupDescription;
     }
 
     public function toArray()
