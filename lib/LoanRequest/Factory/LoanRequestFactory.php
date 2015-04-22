@@ -46,7 +46,8 @@ class LoanRequestFactory
         ) {
             $loanRequest->setCheckoutType($components["checkout_type"]);
         }
-
+        if (array_key_exists('product_group_code', $components)) $loanRequest->setProductGroupCode($components['product_group_code']);
+        if (array_key_exists('product_group_description', $components)) $loanRequest->setProductGroupDescription($components['product_group_description']);
         if (array_key_exists('id', $components)) $loanRequest->setId($components['id']);
         if (array_key_exists('checkout_version', $components)) $loanRequest->setCheckoutVersion($components['checkout_version']);
         if (array_key_exists('merchant_installation', $components)) $loanRequest->setMerchantInstallation($components['merchant_installation']);

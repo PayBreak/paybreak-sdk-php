@@ -1,3 +1,9 @@
+# 0.4.0
+2015-04-22
+
+## Features
+- Added additional fields to *Loan Request*
+
 # 0.3.0
 2015-01-08
 
