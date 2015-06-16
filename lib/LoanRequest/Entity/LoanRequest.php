@@ -43,7 +43,78 @@ class LoanRequest implements LoanRequestInterface
     protected $checkoutType = 2;
     protected $productGroupCode;
     protected $productGroupDescription;
+    protected $loanAmount;
+    protected $subsidy;
+    protected $netSettlement;
 
+    /**
+     * Set Net Settlement
+     *
+     * @author MS
+     * @param int $amount
+     * @return int
+     */
+    public function setNetSettlement($amount)
+    {
+        return $this->netSettlement = $amount;
+    }
+
+    /**
+     * Get Net Settlement
+     *
+     * @author MS
+     * @return int
+     */
+    public function getNetSettlement()
+    {
+        return $this->netSettlement;
+    }
+
+    /**
+     * Set Subsidy
+     *
+     * @author MS
+     * @param int $amount
+     * @return int
+     */
+    public function setSubsidy($amount)
+    {
+        return $this->subsidy = $amount;
+    }
+
+    /**
+     * Get Subsidy
+     *
+     * @author MS
+     * @return int
+     */
+    public function getSubsidy()
+    {
+        return $this->subsidy;
+    }
+
+    /**
+     * Set Loan Amount
+     *
+     * @author MS
+     * @param int $amount
+     * @return int
+     */
+    public function setLoanAmount($amount)
+    {
+        return $this->loanAmount = $amount;
+    }
+
+    /**
+     * Get Loan Amount
+     *
+     * @author MS
+     * @return int
+     */
+    public function getLoanAmount()
+    {
+        return $this->loanAmount;
+    }
 
     /**
      * Entity unique ID
@@ -491,7 +562,10 @@ class LoanRequest implements LoanRequestInterface
             'deposit' => $this->getDeposit(),
             'fulfilment_type' => $this->getFulfilmentType(),
             'fulfilment_object' => $this->getFulfilmentObject(),
-            'loan_products' => $this->getLoanProducts()
+            'loan_products' => $this->getLoanProducts(),
+            'loan_amount' => $this->getLoanAmount(),
+            'subsidy' => $this->getSubsidy(),
+            'net_settlement' => $this->getNetSettlement(),
         ];
         if ($this->getCheckoutVersion() < ConfigurationInterface::VERSION_CHECKOUT_TYPE_REMOVED) {
             $ar["checkout_type"] = $this->getCheckoutType();
