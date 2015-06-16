@@ -56,6 +56,7 @@ class LoanRequestFactory
         if (array_key_exists('order_amount', $components)) $loanRequest->setOrderAmount($components['order_amount']);
         if (array_key_exists('loan_amount', $components)) $loanRequest->setLoanAmount($components['loan_amount']);
         if (array_key_exists('subsidy', $components)) $loanRequest->setSubsidy($components['subsidy']);
+        if (array_key_exists('deposit', $components)) $loanRequest->setDeposit($components['deposit']);
         if (array_key_exists('net_settlement', $components)) $loanRequest->setNetSettlement($components['net_settlement']);
         if (array_key_exists('order_validity', $components)) {
             if ($components['order_validity'] instanceof Carbon) {
