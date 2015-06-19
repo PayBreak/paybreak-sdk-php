@@ -1,3 +1,6 @@
+## Features
+- Added extra fields to loan request Objects, Factories and Repositories for Merchant Back-Office Loan Request Report
+
 # 0.4.0
 2015-04-22
 
