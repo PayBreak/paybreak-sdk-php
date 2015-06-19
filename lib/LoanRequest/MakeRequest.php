@@ -349,6 +349,9 @@ class MakeRequest
         $ar['order_amount'] = $this->loanRequest->getOrderAmount();
         $ar['order_validity'] = date("c", $this->loanRequest->getOrderValidity()->timestamp);
         $ar['order_extendable'] = (int) $this->loanRequest->getOrderExtendable();
+        $ar['loan_amount'] = (int) $this->loanRequest->getLoanAmount();
+        $ar['subsidy'] = (int) $this->loanRequest->getSubsidy();
+        $ar['net_settlement'] = (int) $this->loanRequest->getNetSettlement();
 
         if ($this->additionalData instanceof Entity\AdditionalData)
             $ar['additional_data'] = FieldEncoder::encodeField($this->additionalData->toArray());

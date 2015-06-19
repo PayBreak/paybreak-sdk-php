@@ -40,6 +40,58 @@ interface LoanRequestInterface extends EntityInterface
     const FULFILMENT_TYPE_COLLECT = 2;
 
     /**
+     * Set Net Settlement
+     *
+     * @author MS
+     * @param int $amount
+     * @return int
+     */
+    public function setNetSettlement($amount);
+
+    /**
+     * Get Net Settlement
+     *
+     * @author MS
+     * @return int
+     */
+    public function getNetSettlement();
+
+    /**
+     * Set Loan Amount
+     *
+     * @author MS
+     * @param int $amount
+     * @return int
+     */
+    public function setLoanAmount($amount);
+
+    /**
+     * Get Loan Amount
+     *
+     * @author MS
+     * @return int
+     */
+    public function getLoanAmount();
+
+    /**
+     * Set Subsidy
+     *
+     * @author MS
+     * @param int $amount
+     * @return int
+     */
+    public function setSubsidy($amount);
+
+    /**
+     * Get Subsidy
+     *
+     * @author MS
+     * @return int
+     */
+    public function getSubsidy();
+
+
+    /**
      * Set Checkout Type
      *
      * @param  int $checkoutType
