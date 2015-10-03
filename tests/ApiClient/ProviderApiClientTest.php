@@ -24,7 +24,7 @@ class ProviderApiClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testMake()
     {
-        $this->assertInstanceOf('App\Gateways\ProviderApiClient', ProviderApiClient::make('http://httpbin.org/', 'testToken'));
+        $this->assertInstanceOf('PayBreak\Sdk\ApiClient\ProviderApiClient', ProviderApiClient::make('http://httpbin.org/', 'testToken'));
     }
 
     /**

@@ -34,7 +34,7 @@ class MerchantGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetMerchant()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([]);
 
@@ -51,7 +51,7 @@ class MerchantGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetMerchantException()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willThrowException(new \Exception());
 
@@ -61,14 +61,14 @@ class MerchantGatewayTest extends \PHPUnit_Framework_TestCase
 
         $merchantGateway = new MerchantGateway($mock);
 
-        $this->setExpectedException('App\Exceptions\Exception', 'Problem with get: Merchant data form Provider API');
+        $this->setExpectedException('WNowicki\Generic\Exception', 'Problem with get: Merchant data form Provider API');
 
         $merchantGateway->getMerchant(1, 'xxx');
     }
 
     public function testGetMerchantErrorResponseException()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willThrowException(new ErrorResponseException('Test'));
 
@@ -78,7 +78,7 @@ class MerchantGatewayTest extends \PHPUnit_Framework_TestCase
 
         $merchantGateway = new MerchantGateway($mock);
 
-        $this->setExpectedException('App\Exceptions\Exception', 'Test');
+        $this->setExpectedException('WNowicki\Generic\Exception', 'Test');
 
         $merchantGateway->getMerchant(1, 'xxx');
     }

@@ -30,7 +30,7 @@ class CreditInformationTest extends \PHPUnit_Framework_TestCase
 
     public function testGetInstallation()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([]);
 

@@ -30,7 +30,7 @@ class IpsGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testListIpAddresses()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([['id' => 1]]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
@@ -48,7 +48,7 @@ class IpsGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testStoreIpAddresses()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('post')->willReturn([]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
@@ -62,7 +62,7 @@ class IpsGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testDeleteIpAddresses()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('delete')->willReturn([]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');

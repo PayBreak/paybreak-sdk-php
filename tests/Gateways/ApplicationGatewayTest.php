@@ -30,7 +30,7 @@ class ApplicationGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetApplication()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn(['id' => 123]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
@@ -49,7 +49,7 @@ class ApplicationGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testFulfilApplication()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('post')->willReturn([]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
@@ -63,7 +63,7 @@ class ApplicationGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testCancelApplication()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('post')->willReturn([]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');

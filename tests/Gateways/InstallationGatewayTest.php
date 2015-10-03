@@ -25,7 +25,7 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetInstallation()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([]);
 
@@ -43,7 +43,7 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetInstallationException()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willThrowException(new \Exception());
 
@@ -53,14 +53,14 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
 
         $installationGateway = new InstallationGateway($mock);
 
-        $this->setExpectedException('App\Exceptions\Exception', 'Problem with get: Installation data form Provider API');
+        $this->setExpectedException('WNowicki\Generic\Exception', 'Problem with get: Installation data form Provider API');
 
         $installationGateway->getInstallation(1, 'xxx');
     }
 
     public function testGetInstallationErrorResponseException()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willThrowException(new ErrorResponseException('Test'));
 
@@ -70,14 +70,14 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
 
         $installationGateway = new InstallationGateway($mock);
 
-        $this->setExpectedException('App\Exceptions\Exception', 'Test');
+        $this->setExpectedException('WNowicki\Generic\Exception', 'Test');
 
         $installationGateway->getInstallation(1, 'xxx');
     }
 
     public function testGetInstallationsEmpty()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([]);
 
@@ -93,7 +93,7 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetInstallations()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([
             [

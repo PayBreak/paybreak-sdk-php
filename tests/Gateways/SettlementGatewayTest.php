@@ -30,7 +30,7 @@ class SettlementGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSettlementReports()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([['id' => 1]]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
@@ -44,7 +44,7 @@ class SettlementGatewayTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSingleSettlementReport()
     {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\Gateways\ProviderApiClient');
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
 
         $mockApiClient->expects($this->any())->method('get')->willReturn([['id' => 1]]);
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
