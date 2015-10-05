@@ -7,6 +7,23 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
+## Documentation
+
+## Using the SDK
+
+### Composer
+
+In order to use the SDK, please require it using composer:
+
+`composer require paybreak/paybreak-sdk-php:^4.0`
+
+The major version of the SDK should match that of the API version, which is currently in version `4`
+
+### API Client Factory
+
+To use the paybreak SDK, you'll need to implement your own `ApiClientFactoryInterface` - though this is a trivial task. See our example implementation in the [Basket Repository](https://github.com/PayBreak/basket/blob/master/app/Gateways/ApiClientFactory.php)
+
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
