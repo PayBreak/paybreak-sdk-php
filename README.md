@@ -9,7 +9,7 @@
 
 ## Documentation
 
-## Usage
+## Using the SDK
 
 ### Composer
 
@@ -23,10 +23,12 @@ To use the paybreak SDK, you'll need to implement the `ApiClientFactoryInterface
 
 See our example implementation in the [Basket Repository](https://github.com/PayBreak/basket/blob/master/app/Gateways/ApiClientFactory.php)
 
-1. `composer require paybreak/paybreak-sdk-php:^4.0` // check if  `:^4.0` is working
-2. // implement your `ApiClientFactoryInterface` with your configuration. we can giv a link to baske to show our implementation in Laravel
+### Creating an Application Instance
 3. // show how to create instance of `Application`
+
+### Using the gateways
 4. // show how to use any of gateways
+
 
 ## Contributing
 
