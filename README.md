@@ -7,6 +7,13 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
+## Documentation
+
+1. `composer require paybreak/paybreak-sdk-php:^4.0` // check if  `:^4.0` is working
+2. // implement your `ApiClientFactoryInterface` with your configuration. we can giv a link to baske to show our implementation in Laravel
+3. // show how to create instance of `Application`
+4. // show how to use any of gateways
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
