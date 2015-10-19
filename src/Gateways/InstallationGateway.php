@@ -11,7 +11,7 @@
 namespace PayBreak\Sdk\Gateways;
 
 use PayBreak\Sdk\Entities\InstallationEntity;
-use App\Exceptions\Exception;
+use PayBreak\Sdk\SdkException;
 
 /**
  * Installation Gateway
@@ -25,7 +25,7 @@ class InstallationGateway extends AbstractGateway
      * @param string $id
      * @param string $token
      * @return InstallationEntity
-     * @throws Exception
+     * @throws SdkException
      */
     public function getInstallation($id, $token)
     {
@@ -36,7 +36,7 @@ class InstallationGateway extends AbstractGateway
      * @author WN
      * @param $token
      * @return InstallationEntity[]
-     * @throws Exception
+     * @throws SdkException
      */
     public function getInstallations($token)
     {

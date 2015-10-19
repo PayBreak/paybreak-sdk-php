@@ -11,13 +11,13 @@
 namespace PayBreak\Sdk\Gateways;
 
 use PayBreak\Sdk\Entities\MerchantEntity;
-use App\Exceptions\Exception;
+use PayBreak\Sdk\SdkException;
 
 /**
  * Class MerchantGateway
  *
  * @author WN
- * @package App\Gateways
+ * @package PayBreak\Sdk\Gateways
  */
 class MerchantGateway extends AbstractGateway
 {
@@ -25,7 +25,7 @@ class MerchantGateway extends AbstractGateway
      * @param $id
      * @param $token
      * @return MerchantEntity
-     * @throws Exception
+     * @throws SdkException
      */
     public function getMerchant($id, $token)
     {

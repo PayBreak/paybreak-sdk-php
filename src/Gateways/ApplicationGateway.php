@@ -11,7 +11,7 @@
 namespace PayBreak\Sdk\Gateways;
 
 use PayBreak\Sdk\Entities\ApplicationEntity;
-use App\Exceptions\Exception;
+use PayBreak\Sdk\SdkException;
 use WNowicki\Generic\ApiClient\ErrorResponseException;
 
 /**
@@ -27,7 +27,7 @@ class ApplicationGateway extends AbstractGateway
      * @param int $id
      * @param string $token
      * @return ApplicationEntity
-     * @throws Exception
+     * @throws SdkException
      */
     public function getApplication($id, $token)
     {
@@ -39,7 +39,7 @@ class ApplicationGateway extends AbstractGateway
      * @param ApplicationEntity $application
      * @param string $token
      * @return ApplicationEntity
-     * @throws Exception
+     * @throws SdkException
      */
     public function initialiseApplication(ApplicationEntity $application, $token)
     {
@@ -56,12 +56,12 @@ class ApplicationGateway extends AbstractGateway
         } catch (ErrorResponseException $e) {
 
             $this->logWarning('ApplicationGateway::initialiseApplication[' . $e->getCode() . ']: ' . $e->getMessage());
-            throw new Exception($e->getMessage());
+            throw new SdkException($e->getMessage());
 
         } catch (\Exception $e) {
 
             $this->logError('ApplicationGateway::initialiseApplication[' . $e->getCode() . ']: ' . $e->getMessage());
-            throw new Exception('Problem Initialising Application on Provider API');
+            throw new SdkException('Problem Initialising Application on Provider API');
         }
     }
 
@@ -70,7 +70,7 @@ class ApplicationGateway extends AbstractGateway
      * @param int $id
      * @param string $token
      * @return bool
-     * @throws Exception
+     * @throws SdkException
      */
     public function fulfilApplication($id, $token)
     {
@@ -82,7 +82,7 @@ class ApplicationGateway extends AbstractGateway
      * @param string $description
      * @param string $token
      * @return bool
-     * @throws Exception
+     * @throws SdkException
      */
     public function cancelApplication($id, $description, $token)
     {
@@ -93,11 +93,10 @@ class ApplicationGateway extends AbstractGateway
         );
     }
 
-
     /**
      * @param $token
      * @return array
-     * @throws Exception
+     * @throws SdkException
      */
     public function getPendingCancellations($installationId, $token)
     {
@@ -109,14 +108,13 @@ class ApplicationGateway extends AbstractGateway
         );
     }
 
-
     /**
      * @author WN
      * @param string $action
      * @param array $data
      * @param string $token
      * @return bool
-     * @throws Exception
+     * @throws SdkException
      */
     private function requestAction($action, $data, $token)
     {
