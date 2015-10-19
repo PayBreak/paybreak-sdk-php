@@ -14,7 +14,7 @@ namespace PayBreak\Sdk\ApiClient;
  * Api Client Factory
  *
  * @author WN
- * @package App\Gateways
+ * @package PayBreak\Sdk\ApiClient
  */
 interface ApiClientFactoryInterface
 {

@@ -20,7 +20,7 @@ use Psr\Log\LoggerInterface;
  * Class ProviderApiClient
  *
  * @author WN
- * @package App\Gateways
+ * @package PayBreak\Sdk\ApiClient
  */
 class ProviderApiClient extends AbstractApiClient
 {

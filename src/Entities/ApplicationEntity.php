@@ -58,6 +58,7 @@ class ApplicationEntity extends AbstractEntity
         'fulfilment' => 'PayBreak\Sdk\Entities\Application\FulfilmentEntity',
         'applicant' => 'PayBreak\Sdk\Entities\Application\ApplicantEntity',
         'finance' => 'PayBreak\Sdk\Entities\Application\FinanceEntity',
+        'finance' => 'PayBreak\Sdk\Entities\Application\CancellationEntity',
         'metadata' => self::TYPE_ARRAY,
         'resume_url' => self::TYPE_STRING,
     ];

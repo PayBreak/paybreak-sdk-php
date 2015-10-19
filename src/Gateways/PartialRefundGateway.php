@@ -11,7 +11,7 @@
 namespace PayBreak\Sdk\Gateways;
 
 use PayBreak\Sdk\Entities\PartialRefundEntity;
-use App\Exceptions\Exception;
+use PayBreak\Sdk\SdkException;
 use WNowicki\Generic\ApiClient\ErrorResponseException;
 
 /**
@@ -27,7 +27,7 @@ class PartialRefundGateway extends AbstractGateway
      * @author LH
      * @param $token
      * @return array
-     * @throws Exception
+     * @throws SdkException
      */
     public function listPartialRefunds($token)
     {
@@ -45,7 +45,7 @@ class PartialRefundGateway extends AbstractGateway
      * @param $token
      * @param $id
      * @return static
-     * @throws Exception
+     * @throws SdkException
      */
     public function getPartialRefund($token, $id)
     {
@@ -59,7 +59,7 @@ class PartialRefundGateway extends AbstractGateway
      * @param $refundAmount
      * @param $effectiveDate
      * @param $description
-     * @throws Exception
+     * @throws SdkException
      */
     public function requestPartialRefund($token, $id, $refundAmount, $effectiveDate, $description)
     {
@@ -78,12 +78,12 @@ class PartialRefundGateway extends AbstractGateway
         } catch (ErrorResponseException $e) {
 
             $this->logWarning('PartialRefundGateway::requestPartialRefund[' . $e->getCode() . ']: ' . $e->getMessage());
-            throw new Exception($e->getMessage());
+            throw new SdkException($e->getMessage());
 
         } catch (\Exception $e) {
 
             $this->logError('PartialRefundGateway::requestPartialRefund[' . $e->getCode() . ']: ' . $e->getMessage());
-            throw new Exception('Problem requesting a partial refund on Provider API');
+            throw new SdkException('Problem requesting a partial refund on Provider API');
         }
     }
 }
