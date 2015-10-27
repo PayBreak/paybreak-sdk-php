@@ -38,6 +38,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method Application\ApplicantEntity|null getApplicant()
  * @method $this setFinance(Application\FinanceEntity $finance)
  * @method Application\FinanceEntity|null getFinance()
+ * @method $this setCancellation(Application\CancellationEntity $cancellation)
+ * @method Application\CancellationEntity|null getCancellation()
  * @method $this setMetadata(array $metadata)
  * @method array|null getMetadata()
  * @method $this setResumeUrl(string $resumeUrl)
@@ -58,6 +60,7 @@ class ApplicationEntity extends AbstractEntity
         'fulfilment' => 'PayBreak\Sdk\Entities\Application\FulfilmentEntity',
         'applicant' => 'PayBreak\Sdk\Entities\Application\ApplicantEntity',
         'finance' => 'PayBreak\Sdk\Entities\Application\FinanceEntity',
+        'cancellation' => 'PayBreak\Sdk\Entities\Application\CancellationEntity',
         'metadata' => self::TYPE_ARRAY,
         'resume_url' => self::TYPE_STRING,
     ];

@@ -10,7 +10,7 @@
 
 namespace PayBreak\Sdk\Gateways;
 
-use App\Exceptions\Exception;
+use PayBreak\Sdk\SdkException;
 use Carbon\Carbon;
 
 /**
@@ -45,7 +45,7 @@ class SettlementGateway extends AbstractGateway
      * @param string $token
      * @param int $settlementId
      * @return array
-     * @throws Exception
+     * @throws SdkException
      */
     public function getSingleSettlementReport($token, $settlementId)
     {

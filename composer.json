@@ -10,7 +10,8 @@
     "require": {
         "php": ">=5.5",
         "psr/log": "~1.0",
-        "wnowicki/generic": "~0.0"
+        "wnowicki/generic": "~0.0",
+        "nesbot/carbon": "~1.19"
     },
     "require-dev": {
         "phpunit/phpunit" : "4.*",
