@@ -114,4 +114,36 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(1, $response);
         $this->assertInstanceOf('PayBreak\Sdk\Entities\InstallationEntity', $response[0]);
     }
+
+    public function testGetProductGroups()
+    {
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
+
+        $mockApiClient->expects($this->any())->method('get')->willReturn([]);
+
+        $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
+
+        $mock->expects($this->any())->method('makeApiClient')->willReturn($mockApiClient);
+
+        $installationGateway = new InstallationGateway($mock);
+
+        $this->assertInternalType('array', $installationGateway->getProductGroups('xxxx', 'xxxx'));
+
+    }
+
+    public function testListProducts()
+    {
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
+
+        $mockApiClient->expects($this->any())->method('get')->willReturn([]);
+
+        $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
+
+        $mock->expects($this->any())->method('makeApiClient')->willReturn($mockApiClient);
+
+        $installationGateway = new InstallationGateway($mock);
+
+        $this->assertInternalType('array', $installationGateway->listProducts('xxxx', 'xxxx', 'xxxx'));
+
+    }
 }

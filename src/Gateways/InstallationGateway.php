@@ -60,6 +60,7 @@ class InstallationGateway extends AbstractGateway
     }
 
     /**
+     * @author EB
      * @param string $extId
      * @param string $token
      * @return array
@@ -70,6 +71,7 @@ class InstallationGateway extends AbstractGateway
     }
 
     /**
+     * @author EB
      * @param string $extId
      * @param string $token
      * @param string $productGroup
