@@ -58,4 +58,29 @@ class InstallationGateway extends AbstractGateway
     {
         return $this->patchDocument('/v4/installations/' . $id, $token, 'updateInstallation', $body);
     }
+
+    /**
+     * @param string $extId
+     * @param string $token
+     * @return array
+     */
+    public function getProductGroups($extId, $token)
+    {
+        return $this->fetchDocument('/v4/installations/' . $extId . '/product-groups/', $token, 'listProductGroups');
+    }
+
+    /**
+     * @param string $extId
+     * @param string $token
+     * @param string $productGroup
+     * @return array
+     */
+    public function listProducts($extId, $token, $productGroup)
+    {
+        return $this->fetchDocument(
+            '/v4/installations/' . $extId . '/product-groups/' . $productGroup . '/products',
+            $token,
+            'listProducts'
+        );
+    }
 }
