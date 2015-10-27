@@ -74,18 +74,4 @@ class ApplicationGatewayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($applicationGateway->cancelApplication(1, 'Description', 'xxxx'));
     }
-
-    public function testGetPendingCancellations()
-    {
-        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
-
-        $mockApiClient->expects($this->any())->method('post')->willReturn([]);
-        $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
-
-        $mock->expects($this->any())->method('makeApiClient')->willReturn($mockApiClient);
-
-        $applicationGateway = new ApplicationGateway($mock);
-
-        assertInternalType('array', $rtn = $applicationGateway->getPendingCancellations('TestInstall', 'mytoken'));
-    }
 }
