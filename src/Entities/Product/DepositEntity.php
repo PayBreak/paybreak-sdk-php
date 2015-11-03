@@ -29,9 +29,9 @@ use WNowicki\Generic\AbstractEntity;
 class DepositEntity extends AbstractEntity
 {
     protected $properties = [
-        'minimum_percentage' => self::TYPE_INT,
-        'maximum_percentage' => self::TYPE_INT,
-        'minimum_amount' => self::TYPE_INT,
-        'maximum_amount' => self::TYPE_INT,
+        'minimum_percentage',
+        'maximum_percentage',
+        'minimum_amount',
+        'maximum_amount',
     ];
 }
