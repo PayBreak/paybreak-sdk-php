@@ -15,7 +15,7 @@ use PayBreak\Sdk\Gateways\ProductGateway;
 
 
 /**
- * Installation Entity Test
+ * Group Entity Test
  *
  * @author WN, EB
  * @package Tests\Basket\Entities
@@ -28,6 +28,84 @@ class GroupEntityTest extends \PHPUnit_Framework_TestCase
         $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
 
         $this->assertInstanceOf('PayBreak\Sdk\Gateways\ProductGateway', new ProductGateway($mock));
+    }
+
+    public function testMakeEmpty()
+    {
+        $this->assertInstanceOf('WNowicki\Generic\Contracts\Entity', GroupEntity::make([]));
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\GroupEntity', GroupEntity::make([]));
+    }
+
+    public function testToArray()
+    {
+        $this->assertInternalType('array', GroupEntity::make([])->toArray());
+    }
+
+    public function testSetId()
+    {
+        $entity = new GroupEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\GroupEntity', $entity->setId('BNPL'));
+    }
+
+    public function testGetId()
+    {
+        $entity = new GroupEntity();
+
+        $entity->setId('BNPL');
+
+        $this->assertSame('BNPL', $entity->getId());
+    }
+
+    public function testSetName()
+    {
+        $entity = new GroupEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\GroupEntity', $entity->setName('Buy Now Pay Later'));
+    }
+
+    public function testGetName()
+    {
+        $entity = new GroupEntity();
+
+        $entity->setId('Buy Now Pay Later');
+
+        $this->assertSame('Buy Now Pay Later', $entity->getName());
+    }
+
+    public function testProducts()
+    {
+        $entity = new GroupEntity();
+
+        $products = $entity->getProducts();
+
+        $products[0] = new ProductEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\ProductEntity', $products[0]);
+    }
+
+    public function testSetProductsName()
+    {
+        $entity = new GroupEntity();
+
+        $products = $entity->getProducts();
+
+        $products[0] = new ProductEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\ProductEntity', $products[0]->setName('Buy Now Pay Later'));
+    }
+
+    public function testGetProductsName()
+    {
+        $entity = new GroupEntity();
+
+        $products = $entity->getProducts();
+
+        $products[0] = new ProductEntity();
+
+        $products[0]->setName('Buy Now Pay Later');
+
+        $this->assertSame('Buy Now Pay Later', $products[0]->getName());
     }
 
     public function testGroupEntity()
@@ -44,7 +122,6 @@ class GroupEntityTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertInstanceOf('PayBreak\Sdk\Entities\GroupEntity', $groupEntity);
-
     }
 
     public function testGroupEntityWithWrongData()
