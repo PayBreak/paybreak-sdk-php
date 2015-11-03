@@ -9,7 +9,7 @@
  */
 namespace PayBreak\Sdk\Gateways;
 
-use App\Exceptions\Exception;
+use PayBreak\Sdk\SdkException;
 use PayBreak\Sdk\Entities\IpsEntity;
 
 /**
@@ -24,7 +24,7 @@ class IpsGateway extends AbstractGateway
      * @author EB
      * @param string $token
      * @return IpsEntity[]
-     * @throws Exception
+     * @throws SdkException
      */
     public function listIpAddresses($token)
     {
@@ -43,7 +43,7 @@ class IpsGateway extends AbstractGateway
      * @param string $token
      * @param $ip
      * @return array
-     * @throws Exception
+     * @throws SdkException
      */
     public function storeIpAddress($token, $ip)
     {

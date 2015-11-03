@@ -14,7 +14,7 @@ namespace PayBreak\Sdk\Gateways;
  * Credit Info Gateway
  *
  * @author WN
- * @package App\Basket\Gateways
+ * @package PayBreak\Sdk\Gateways
  */
 class CreditInfoGateway extends AbstractGateway
 {
