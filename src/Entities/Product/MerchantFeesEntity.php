@@ -16,8 +16,8 @@ use WNowicki\Generic\AbstractEntity;
  * Merchant Fees Entity
  *
  * @author EB
- * @method $this setPercentage(float $percentage)
- * @method float|null getPercentage()
+ * @method $this setPercentage(int $percentage)
+ * @method int|null getPercentage()
  * @method $this setMinimumAmount(int $minimumAmount)
  * @method int|null getMinimumAmount()
  * @method $this setMaximumAmount(int $maximumAmount)
@@ -29,7 +29,7 @@ use WNowicki\Generic\AbstractEntity;
 class MerchantFeesEntity extends AbstractEntity
 {
     protected $properties = [
-        'percentage' => self::TYPE_FLOAT,
+        'percentage',
         'minimum_amount' => self::TYPE_INT,
         'maximum_amount' => self::TYPE_INT,
         'cancellation' => self::TYPE_INT,

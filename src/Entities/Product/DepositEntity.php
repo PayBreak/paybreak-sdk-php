@@ -16,10 +16,10 @@ use WNowicki\Generic\AbstractEntity;
  * Deposit Entity
  *
  * @author EB
- * @method $this setMinimumPercentage(int $minimumPercentage)
- * @method int|null getMinimumPercentage()
- * @method $this setMaximumPercentage(int $maximumPercentage)
- * @method int|null getMaximumPercentage()
+ * @method $this setMinimumPercentage(float $minimumPercentage)
+ * @method float|null getMinimumPercentage()
+ * @method $this setMaximumPercentage(float $maximumPercentage)
+ * @method float|null getMaximumPercentage()
  * @method $this setMinimumAmount(int $minimumAmount)
  * @method int|null getMinimumAmount()
  * @method $this setMaximumAmount(int $maximumAmount)

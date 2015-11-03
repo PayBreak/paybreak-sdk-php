@@ -53,7 +53,7 @@ class ProductEntity extends AbstractEntity
         'name' => self::TYPE_STRING,
         'holidays' => self::TYPE_INT,
         'payments' => self::TYPE_INT,
-        'per_annum_interest_rate' => self::TYPE_FLOAT,
+        'per_annum_interest_rate',
         'initial_payment_upfront' => self::TYPE_BOOL,
         'customer_service_fee' => self::TYPE_INT,
         'customer_settlement_fee' => self::TYPE_INT,

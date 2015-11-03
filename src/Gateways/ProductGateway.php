@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\Gateways;
 use PayBreak\Sdk\Entities\GroupEntity;
+use PayBreak\Sdk\Entities\ProductEntity;
 
 /**
  * Product Gateway
@@ -26,12 +27,28 @@ class ProductGateway extends AbstractGateway
      */
     public function getProductGroupsWithProducts($extId, $token)
     {
-        return GroupEntity::make(
-            $this->fetchDocument(
+        $response = $this->fetchDocument(
                 '/v4/installations/' . $extId . '/product-groups?with=products',
                 $token,
                 'listGroupsWithProducts'
-            )
         );
+        $rtn = [];
+
+//        echo '<pre>' . print_r($response, true); die();
+
+        foreach($response as &$group) {
+            foreach($group['products'] as &$product) {
+                $product = ProductEntity::make($product);
+            }
+
+////            array_push($rtn, GroupEntity::make($group));
+//            var_dump($group['products'][0]['merchant_fees']['percentage']);
+////            die();
+            $group = GroupEntity::make($group);
+//            var_dump($group);
+
+        }
+
+        return $response;
     }
 }
