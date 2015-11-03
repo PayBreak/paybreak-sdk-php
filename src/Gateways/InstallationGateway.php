@@ -85,13 +85,4 @@ class InstallationGateway extends AbstractGateway
             'listProducts'
         );
     }
-
-    public function getProductGroupsWithProducts($extId, $token)
-    {
-        return $this->fetchDocument(
-            '/v4/installations/' . $extId . '/product-groups?with=products',
-            $token,
-            'listGroupsWithProducts'
-        );
-    }
 }
