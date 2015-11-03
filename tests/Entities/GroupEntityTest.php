@@ -57,8 +57,6 @@ class GroupEntityTest extends \PHPUnit_Framework_TestCase
             ]
         ]);
 
-        var_dump($groupEntity);
-
         $this->assertInstanceOf('PayBreak\Sdk\Entities\GroupEntity', $groupEntity);
     }
 
