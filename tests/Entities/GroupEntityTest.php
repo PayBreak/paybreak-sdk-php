@@ -68,7 +68,7 @@ class GroupEntityTest extends \PHPUnit_Framework_TestCase
     {
         $entity = new GroupEntity();
 
-        $entity->setId('Buy Now Pay Later');
+        $entity->setName('Buy Now Pay Later');
 
         $this->assertSame('Buy Now Pay Later', $entity->getName());
     }
@@ -151,7 +151,7 @@ class GroupEntityTest extends \PHPUnit_Framework_TestCase
 
         $response = $productGateway->getProductGroupsWithProducts('TestInstall', 'mytoken');
 
-        $this->assertInstanceOf('PayBreak\Sdk\Entities\GroupEntity', $response);
+        $this->assertInternalType('array', $response);
 
     }
 }

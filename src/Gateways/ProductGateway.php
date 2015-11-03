@@ -32,21 +32,12 @@ class ProductGateway extends AbstractGateway
                 $token,
                 'listGroupsWithProducts'
         );
-        $rtn = [];
-
-//        echo '<pre>' . print_r($response, true); die();
 
         foreach($response as &$group) {
             foreach($group['products'] as &$product) {
                 $product = ProductEntity::make($product);
             }
-
-////            array_push($rtn, GroupEntity::make($group));
-//            var_dump($group['products'][0]['merchant_fees']['percentage']);
-////            die();
             $group = GroupEntity::make($group);
-//            var_dump($group);
-
         }
 
         return $response;
