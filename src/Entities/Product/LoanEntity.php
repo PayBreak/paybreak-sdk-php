@@ -25,7 +25,7 @@ use WNowicki\Generic\AbstractEntity;
 class LoanEntity extends AbstractEntity
 {
     protected $properties = [
-        'minimum_amount' => self::TYPE_INT,
-        'maximum_amount' => self::TYPE_INT,
+        'minimum_amount',
+        'maximum_amount',
     ];
 }
