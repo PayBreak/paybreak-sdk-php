@@ -35,14 +35,16 @@ use WNowicki\Generic\AbstractEntity;
  * @method int|null getCustomerServiceFee()
  * @method $this setCustomerSettlementFee(int $customerSettlementFee)
  * @method int|null getCustomerSettlementFee()
- * @method $this setLoan(array $loan)
- * @method array|null getLoan()
- * @method $this setDeposit(array $deposit)
- * @method array|null getDeposit()
- * @method $this setMerchantFees(array $merchantFees)
- * @method array|null getMerchantFees()
- * @method $this setOrder(array $order)
- * @method array|null getOrder()
+ * @method $this setLoan(Product\LoanEntity $loanEntity)
+ * @method Product\LoanEntity|null getLoan()
+ * @method $this setDeposit(Product\DepositEntity $depositEntity)
+ * @method Product\DepositEntity|null getDeposit()
+ * @method $this setMerchantFees(Product\MerchantFeesEntity $merchantFeesEntity)
+ * @method Product\MerchantFeesEntity|null getMerchantFees()
+ * @method $this setCommission(Product\CommissionEntity $commission)
+ * @method Product\CommissionEntity|null getCommission()
+ * @method $this setOrder(Product\OrderEntity $orderEntity)
+ * @method Product\OrderEntity|null getOrder()
  * @package PayBreak\Sdk\Entities
  */
 class ProductEntity extends AbstractEntity
@@ -60,6 +62,7 @@ class ProductEntity extends AbstractEntity
         'loan' => 'PayBreak\Sdk\Entities\Product\LoanEntity',
         'deposit' => 'PayBreak\Sdk\Entities\Product\DepositEntity',
         'merchant_fees' => 'PayBreak\Sdk\Entities\Product\MerchantFeesEntity',
+        'commission' => 'PayBreak\Sdk\Entities\Product\CommissionEntity',
         'order' => 'PayBreak\Sdk\Entities\Product\OrderEntity',
     ];
 }
