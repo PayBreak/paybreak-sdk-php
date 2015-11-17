@@ -25,6 +25,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method $this setSubsidyAmount(int $subsidyAmount)
  * @method int|null getSubsidyAmount()
  * @method $this setSettlementNetAmount(int $settlementNetAmount)
+ * @method int|null getCommissionAmount()
+ * @method $this setCommissionAmount(int $commissionAmount)
  * @method int|null getSettlementNetAmount()
  * @method $this setOption(string $option)
  * @method string|null getOption()
@@ -46,9 +48,10 @@ class FinanceEntity extends AbstractEntity
         'order_amount'          => self::TYPE_INT,
         'deposit_amount'        => self::TYPE_INT,
         'subsidy_amount'        => self::TYPE_INT,
+        'commission_amount'     => self::TYPE_INT,
         'settlement_net_amount' => self::TYPE_INT,
         'option'                => self::TYPE_STRING,
-        'option_group'         => self::TYPE_STRING,
+        'option_group'          => self::TYPE_STRING,
         'holiday'               => self::TYPE_INT,
         'payments'              => self::TYPE_INT,
         'term'                  => self::TYPE_INT,
