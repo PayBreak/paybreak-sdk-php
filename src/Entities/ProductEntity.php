@@ -62,7 +62,7 @@ class ProductEntity extends AbstractEntity
         'loan' => 'PayBreak\Sdk\Entities\Product\LoanEntity',
         'deposit' => 'PayBreak\Sdk\Entities\Product\DepositEntity',
         'merchant_fees' => 'PayBreak\Sdk\Entities\Product\MerchantFeesEntity',
-        'commission' => 'PayBreak\Sdk\Entities\Product\MerchantCommissionEntity',
+        'merchant_commission' => 'PayBreak\Sdk\Entities\Product\MerchantCommissionEntity',
         'order' => 'PayBreak\Sdk\Entities\Product\OrderEntity',
     ];
 }
