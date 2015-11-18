@@ -13,18 +13,18 @@ namespace PayBreak\Sdk\Entities\Product;
 use WNowicki\Generic\AbstractEntity;
 
 /**
- * Commission Entity
+ * Merchant Commission Entity
  *
  * @author EB
- * @method $this setMerchantCommission(float $merchantCommission)
- * @method float|null getMerchantCommission()
- * @method $this setMinMerchantCommission(int $maxMerchantCommission)
- * @method int|null getMinMerchantCommission()
- * @method $this setMaxMerchantCommission(int $maxMerchantCommission)
- * @method int|null getMaxMerchantCommission()
+ * @method $this setPercentage(float $merchantCommission)
+ * @method float|null getPercentage()
+ * @method $this setMinimumAmount(int $maxMerchantCommission)
+ * @method int|null getMinimumAmount()
+ * @method $this setMaximumAmount(int $maxMerchantCommission)
+ * @method int|null getMaximumAmount()
  * @package PayBreak\Sdk\Entities
  */
-class CommissionEntity extends AbstractEntity
+class MerchantCommissionEntity extends AbstractEntity
 {
     protected $properties = [
         'merchant_commission',

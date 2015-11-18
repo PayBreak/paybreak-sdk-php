@@ -41,8 +41,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method Product\DepositEntity|null getDeposit()
  * @method $this setMerchantFees(Product\MerchantFeesEntity $merchantFeesEntity)
  * @method Product\MerchantFeesEntity|null getMerchantFees()
- * @method $this setCommission(Product\CommissionEntity $commission)
- * @method Product\CommissionEntity|null getCommission()
+ * @method $this setMerchantCommission(Product\MerchantCommissionEntity $commission)
+ * @method Product\MerchantCommissionEntity|null getMerchantCommission()
  * @method $this setOrder(Product\OrderEntity $orderEntity)
  * @method Product\OrderEntity|null getOrder()
  * @package PayBreak\Sdk\Entities
@@ -62,7 +62,7 @@ class ProductEntity extends AbstractEntity
         'loan' => 'PayBreak\Sdk\Entities\Product\LoanEntity',
         'deposit' => 'PayBreak\Sdk\Entities\Product\DepositEntity',
         'merchant_fees' => 'PayBreak\Sdk\Entities\Product\MerchantFeesEntity',
-        'commission' => 'PayBreak\Sdk\Entities\Product\CommissionEntity',
+        'commission' => 'PayBreak\Sdk\Entities\Product\MerchantCommissionEntity',
         'order' => 'PayBreak\Sdk\Entities\Product\OrderEntity',
     ];
 }
