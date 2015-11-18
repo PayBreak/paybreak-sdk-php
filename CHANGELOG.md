@@ -1,3 +1,9 @@
+# 4.2.1
+2015-11-18
+
+## Bug Fixes
+- Removed types from all abstract entities
+
 # 4.2.0
 2015-11-18
 
