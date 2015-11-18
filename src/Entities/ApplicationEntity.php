@@ -49,19 +49,19 @@ use WNowicki\Generic\AbstractEntity;
 class ApplicationEntity extends AbstractEntity
 {
     protected $properties = [
-        'id' => self::TYPE_INT,
-        'posted_date' => self::TYPE_STRING,
-        'current_status' => self::TYPE_STRING,
+        'id',
+        'posted_date',
+        'current_status',
         'customer' => 'PayBreak\Sdk\Entities\Application\CustomerEntity',
         'application_address' => 'PayBreak\Sdk\Entities\Application\AddressEntity',
-        'installation' => self::TYPE_STRING,
+        'installation',
         'order' => 'PayBreak\Sdk\Entities\Application\OrderEntity',
         'products' => 'PayBreak\Sdk\Entities\Application\ProductsEntity',
         'fulfilment' => 'PayBreak\Sdk\Entities\Application\FulfilmentEntity',
         'applicant' => 'PayBreak\Sdk\Entities\Application\ApplicantEntity',
         'finance' => 'PayBreak\Sdk\Entities\Application\FinanceEntity',
         'cancellation' => 'PayBreak\Sdk\Entities\Application\CancellationEntity',
-        'metadata' => self::TYPE_ARRAY,
-        'resume_url' => self::TYPE_STRING,
+        'metadata',
+        'resume_url',
     ];
 }

@@ -27,8 +27,8 @@ class GroupEntity extends AbstractEntity
     private $products = [];
 
     protected $properties = [
-        'id' => self::TYPE_STRING,
-        'name' => self::TYPE_STRING,
+        'id',
+        'name',
     ];
 
     /**

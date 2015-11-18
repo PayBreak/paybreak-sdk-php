@@ -29,9 +29,9 @@ use WNowicki\Generic\AbstractEntity;
 class OrderEntity extends AbstractEntity
 {
     protected $properties = [
-        'reference'     => self::TYPE_STRING,
-        'amount'        => self::TYPE_INT,
-        'description'   => self::TYPE_STRING,
-        'validity'      => self::TYPE_STRING,
+        'reference',
+        'amount',
+        'description',
+        'validity',
     ];
 }

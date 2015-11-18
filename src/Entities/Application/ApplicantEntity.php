@@ -37,13 +37,13 @@ use WNowicki\Generic\AbstractEntity;
 class ApplicantEntity extends AbstractEntity
 {
     protected $properties = [
-        'title' => self::TYPE_STRING,
-        'first_name' => self::TYPE_STRING,
-        'last_name' => self::TYPE_STRING,
-        'date_of_birth' => self::TYPE_STRING,
-        'email_address' => self::TYPE_STRING,
-        'phone_home' => self::TYPE_STRING,
-        'phone_mobile' => self::TYPE_STRING,
-        'postcode' => self::TYPE_STRING,
+        'title',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'email_address',
+        'phone_home',
+        'phone_mobile',
+        'postcode',
     ];
 }

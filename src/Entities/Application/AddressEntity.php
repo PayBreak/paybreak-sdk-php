@@ -35,12 +35,12 @@ use WNowicki\Generic\AbstractEntity;
 class AddressEntity extends AbstractEntity
 {
     protected $properties = [
-        'abode'             => self::TYPE_STRING,
-        'building_name'     => self::TYPE_STRING,
-        'building_number'   => self::TYPE_STRING,
-        'street'            => self::TYPE_STRING,
-        'locality'          => self::TYPE_STRING,
-        'town'              => self::TYPE_STRING,
-        'postcode'          => self::TYPE_STRING,
+        'abode',
+        'building_name',
+        'building_number',
+        'street',
+        'locality',
+        'town',
+        'postcode',
     ];
 }

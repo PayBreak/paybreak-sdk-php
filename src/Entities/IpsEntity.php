@@ -27,8 +27,8 @@ use WNowicki\Generic\AbstractEntity;
 class IpsEntity extends AbstractEntity
 {
     protected $properties = [
-        'id' => self::TYPE_INT,
-        'ip' => self::TYPE_STRING,
-        'active' => self::TYPE_BOOL,
+        'id',
+        'ip',
+        'active',
     ];
 }

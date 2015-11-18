@@ -36,12 +36,12 @@ use WNowicki\Generic\AbstractEntity;
 class PartialRefundEntity extends AbstractEntity
 {
     protected $properties = [
-        'id' => self::TYPE_INT,
-        'application' => self::TYPE_INT,
-        'status' => self::TYPE_STRING,
-        'refund_amount' => self::TYPE_INT,
-        'effective_date' => self::TYPE_STRING,
-        'requested_date' => self::TYPE_STRING,
-        'description' => self::TYPE_STRING,
+        'id',
+        'application',
+        'status',
+        'refund_amount',
+        'effective_date',
+        'requested_date',
+        'description',
     ];
 }

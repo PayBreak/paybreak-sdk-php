@@ -35,12 +35,12 @@ use WNowicki\Generic\AbstractEntity;
 class CustomerEntity extends AbstractEntity
 {
     protected $properties = [
-        'title'         => self::TYPE_STRING,
-        'first_name'    => self::TYPE_STRING,
-        'last_name'     => self::TYPE_STRING,
-        'email_address' => self::TYPE_STRING,
-        'phone_home'    => self::TYPE_STRING,
-        'phone_mobile'  => self::TYPE_STRING,
-        'postcode'      => self::TYPE_STRING,
+        'title',
+        'first_name',
+        'last_name',
+        'email_address',
+        'phone_home',
+        'phone_mobile',
+        'postcode',
     ];
 }
