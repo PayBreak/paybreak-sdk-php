@@ -44,16 +44,16 @@ use WNowicki\Generic\AbstractEntity;
 class FinanceEntity extends AbstractEntity
 {
     protected $properties = [
-        'loan_amount'           => self::TYPE_INT,
-        'order_amount'          => self::TYPE_INT,
-        'deposit_amount'        => self::TYPE_INT,
-        'subsidy_amount'        => self::TYPE_INT,
-        'commission_amount'     => self::TYPE_INT,
-        'settlement_net_amount' => self::TYPE_INT,
-        'option'                => self::TYPE_STRING,
-        'option_group'          => self::TYPE_STRING,
-        'holiday'               => self::TYPE_INT,
-        'payments'              => self::TYPE_INT,
-        'term'                  => self::TYPE_INT,
+        'loan_amount',
+        'order_amount',
+        'deposit_amount',
+        'subsidy_amount',
+        'commission_amount',
+        'settlement_net_amount',
+        'option',
+        'option_group',
+        'holiday',
+        'payments',
+        'term',
     ];
 }

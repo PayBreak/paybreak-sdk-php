@@ -31,10 +31,10 @@ use WNowicki\Generic\AbstractEntity;
 class CancellationEntity extends AbstractEntity
 {
     protected $properties = [
-        'requested'         => self::TYPE_BOOL,
-        'effective_date'    => self::TYPE_STRING,
-        'requested_date'    => self::TYPE_STRING,
-        'description'       => self::TYPE_STRING,
-        'fee_amount'        => self::TYPE_INT,
+        'requested',
+        'effective_date',
+        'requested_date',
+        'description',
+        'fee_amount',
     ];
 }

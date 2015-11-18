@@ -25,7 +25,7 @@ use WNowicki\Generic\AbstractEntity;
 class FulfilmentEntity extends AbstractEntity
 {
     protected $properties = [
-        'method'    => self::TYPE_STRING,
-        'location'  => self::TYPE_STRING,
+        'method',
+        'location',
     ];
 }

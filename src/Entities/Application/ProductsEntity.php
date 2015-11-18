@@ -27,8 +27,8 @@ use WNowicki\Generic\AbstractEntity;
 class ProductsEntity extends AbstractEntity
 {
     protected $properties = [
-        'group'     => self::TYPE_STRING,
-        'options'   => self::TYPE_ARRAY,
-        'default'   => self::TYPE_STRING,
+        'group',
+        'options',
+        'default',
     ];
 }
