@@ -27,8 +27,8 @@ use WNowicki\Generic\AbstractEntity;
 class MerchantCommissionEntity extends AbstractEntity
 {
     protected $properties = [
-        'merchant_commission',
-        'min_merchant_commission' => self::TYPE_INT,
-        'max_merchant_commission' => self::TYPE_INT,
+        'percentage',
+        'minimum_amount' => self::TYPE_INT,
+        'maxiumum_amount' => self::TYPE_INT,
     ];
 }
