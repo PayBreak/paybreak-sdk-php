@@ -29,6 +29,6 @@ class MerchantCommissionEntity extends AbstractEntity
     protected $properties = [
         'percentage',
         'minimum_amount' => self::TYPE_INT,
-        'maxiumum_amount' => self::TYPE_INT,
+        'maximum_amount' => self::TYPE_INT,
     ];
 }
