@@ -1,3 +1,10 @@
+# 4.2.0
+2015-11-18
+
+## Features
+- Added Commission Entity
+- Added Commission to Finance Entity
+
 # 4.1.1
 2015-11-03
 
