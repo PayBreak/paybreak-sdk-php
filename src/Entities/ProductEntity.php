@@ -50,9 +50,9 @@ use WNowicki\Generic\AbstractEntity;
 class ProductEntity extends AbstractEntity
 {
     protected $properties = [
-        'id' => self::TYPE_STRING,
-        'product_group' => self::TYPE_STRING,
-        'name' => self::TYPE_STRING,
+        'id',
+        'product_group',
+        'name',
         'holidays',
         'payments',
         'per_annum_interest_rate',
