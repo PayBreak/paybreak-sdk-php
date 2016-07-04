@@ -55,9 +55,9 @@ class ProductGateway extends AbstractGateway
     {
         return $this->postDocument(
             '/v4/installations/' . $installation . '/products/' . $product . '/get-credit-information',
+            $params,
             $token,
-            'CreditInfo',
-            $params
+            'CreditInfo'
         );
     }
 }
