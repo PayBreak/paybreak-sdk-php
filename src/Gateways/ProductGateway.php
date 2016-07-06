@@ -42,4 +42,22 @@ class ProductGateway extends AbstractGateway
 
         return $response;
     }
+
+    /**
+     * @author WN
+     * @param string $installation
+     * @param string $product
+     * @param string $token
+     * @param array $params
+     * @return array
+     */
+    public function getCreditInfo($installation, $product, $token, array $params)
+    {
+        return $this->postDocument(
+            '/v4/installations/' . $installation . '/products/' . $product . '/get-credit-information',
+            $params,
+            $token,
+            'CreditInfo'
+        );
+    }
 }
