@@ -1,3 +1,9 @@
+# 4.3.0
+2016-07-06
+
+## Features
+- Get `Credit Info` call for a Product
+
 # 4.2.1
 2015-11-18
 
