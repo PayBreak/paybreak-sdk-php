@@ -1,3 +1,6 @@
+## Features
+- Get Credit Info for a Product
+
 # 4.2.1
 2015-11-18
 
