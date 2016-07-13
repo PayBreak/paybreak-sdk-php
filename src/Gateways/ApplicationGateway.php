@@ -121,11 +121,11 @@ class ApplicationGateway extends AbstractGateway
      */
     public function getMerchantPayments($application, $token, $filterParams = [])
     {
-        return $this->fetchDocument(
+        return $this->postDocument(
             'applications/' . $application . '/get-merchant-payments',
+            $filterParams,
             $token,
-            'Merchant Payments',
-            $filterParams
+            'Merchant Payments'
         );
     }
 
@@ -141,14 +141,14 @@ class ApplicationGateway extends AbstractGateway
      */
     public function addMerchantPayment($application, \DateTime $effectiveDate, $amount, $token)
     {
-        return $this->fetchDocument(
+        return $this->postDocument(
             'applications/' . $application . '/add-merchant-payment',
-            $token,
-            'Pending Cancellations',
             [
                 'amount' => $amount,
                 'effective_date' => $effectiveDate->format('Y-m-d'),
-            ]
+            ],
+            $token,
+            'Add Merchant Payment'
         );
     }
 
