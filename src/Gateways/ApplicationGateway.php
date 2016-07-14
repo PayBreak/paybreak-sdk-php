@@ -119,7 +119,7 @@ class ApplicationGateway extends AbstractGateway
      * @param array $filterParams
      * @return array
      */
-    public function getMerchantPayments($application, $token, $filterParams = [])
+    public function getMerchantPayments($application, $token, array $filterParams = [])
     {
         return $this->postDocument(
             'applications/' . $application . '/get-merchant-payments',
