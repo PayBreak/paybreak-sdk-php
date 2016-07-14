@@ -111,7 +111,7 @@ class ApplicationGateway extends AbstractGateway
     /**
      * Get Merchant Payments. Filter Params can accept
      * - since, until : (string - ISO8601 Date Part Only)
-     * - limit, offset : (int)
+     * - count, offset : (int)
      *
      * @author SL
      * @param $application
@@ -122,7 +122,7 @@ class ApplicationGateway extends AbstractGateway
     public function getMerchantPayments($application, $token, array $filterParams = [])
     {
         return $this->postDocument(
-            'applications/' . $application . '/get-merchant-payments',
+            '/v4/applications/' . $application . '/get-merchant-payments',
             $filterParams,
             $token,
             'Merchant Payments'
@@ -142,7 +142,7 @@ class ApplicationGateway extends AbstractGateway
     public function addMerchantPayment($application, \DateTime $effectiveDate, $amount, $token)
     {
         return $this->postDocument(
-            'applications/' . $application . '/add-merchant-payment',
+            '/v4/applications/' . $application . '/add-merchant-payment',
             [
                 'amount' => $amount,
                 'effective_date' => $effectiveDate->format('Y-m-d'),
