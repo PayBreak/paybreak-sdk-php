@@ -109,6 +109,23 @@ class ApplicationGateway extends AbstractGateway
     }
 
     /**
+     * @author EB
+     * @param $installationId
+     * @param $application
+     * @param $token
+     * @return array
+     */
+    public function getApplicationCreditInfo($installationId, $application, $token)
+    {
+        return $this->postDocument(
+            'v4/installations/' . $installationId . '/applications/' . $application . '/get-credit-information',
+            [],
+            $token,
+            'Application Credit Information'
+        );
+    }
+
+    /**
      * @author WN
      * @param string $action
      * @param array $data
