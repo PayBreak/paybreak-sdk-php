@@ -1,5 +1,6 @@
 ## Features
 - Get Credit Info for a Product
+- Added `getApplicationCreditInfo` call on `ApplicationGateway` (126121685)
 
 # 4.2.1
 2015-11-18
