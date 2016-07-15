@@ -149,6 +149,8 @@ class ApplicationGateway extends AbstractGateway
             ],
             $token,
             'Add Merchant Payment'
+        );
+    }
 
     /**
      * @author EB
