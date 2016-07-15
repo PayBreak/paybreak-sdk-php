@@ -109,6 +109,50 @@ class ApplicationGateway extends AbstractGateway
     }
 
     /**
+     * Get Merchant Payments. Filter Params can accept
+     * - since, until : (string - ISO8601 Date Part Only)
+     * - count, offset : (int)
+     *
+     * @author SL
+     * @param $application
+     * @param $token
+     * @param array $filterParams
+     * @return array
+     */
+    public function getMerchantPayments($application, $token, array $filterParams = [])
+    {
+        return $this->postDocument(
+            '/v4/applications/' . $application . '/get-merchant-payments',
+            $filterParams,
+            $token,
+            'Merchant Payments'
+        );
+    }
+
+    /**
+     * Add a Merchant Payment to the given application. Amount should be supplied in pence.
+     *
+     * @author SL
+     * @param string $application
+     * @param \DateTime $effectiveDate
+     * @param int $amount
+     * @param string $token
+     * @return array
+     */
+    public function addMerchantPayment($application, \DateTime $effectiveDate, $amount, $token)
+    {
+        return $this->postDocument(
+            '/v4/applications/' . $application . '/add-merchant-payment',
+            [
+                'amount' => $amount,
+                'effective_date' => $effectiveDate->format('Y-m-d'),
+            ],
+            $token,
+            'Add Merchant Payment'
+        );
+    }
+
+    /**
      * @author WN
      * @param string $action
      * @param array $data
