@@ -149,6 +149,21 @@ class ApplicationGateway extends AbstractGateway
             ],
             $token,
             'Add Merchant Payment'
+
+    /**
+     * @author EB
+     * @param $installationId
+     * @param $application
+     * @param $token
+     * @return array
+     */
+    public function getApplicationCreditInfo($installationId, $application, $token)
+    {
+        return $this->postDocument(
+            'v4/installations/' . $installationId . '/applications/' . $application . '/get-credit-information',
+            [],
+            $token,
+            'Application Credit Information'
         );
     }
 

@@ -1,5 +1,9 @@
+# 4.4.0
+2016-07-15
+
 ## Features
 - Add gateway calls for *Merchant Payments* (125524631)
+- Added `getApplicationCreditInfo` call on `ApplicationGateway` (126121685)
 
 # 4.3.0
 2016-07-06
