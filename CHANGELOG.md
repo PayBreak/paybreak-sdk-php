@@ -1,3 +1,6 @@
+## Features
+- Add gateway calls for *Merchant Payments* (125524631)
+
 # 4.3.0
 2016-07-06
 
