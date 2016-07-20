@@ -1,3 +1,9 @@
+# 4.4.1
+2016-07-20
+
+## Features
+- Changed `Merchant Payments` URL's
+
 # 4.4.0
 2016-07-15
 
