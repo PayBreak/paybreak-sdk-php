@@ -109,23 +109,23 @@ class ApplicationGateway extends AbstractGateway
     }
 
     /**
-     * Get Merchant Payments. Filter Query can accept
+     * Get Merchant Payments. Filter Params can accept
      * - since, until : (string - ISO8601 Date Part Only)
      * - count, offset : (int)
      *
      * @author SL
      * @param $application
      * @param $token
-     * @param array $query
+     * @param array $filterParams
      * @return array
      */
-    public function getMerchantPayments($application, $token, array $query = [])
+    public function getMerchantPayments($application, $token, array $filterParams = [])
     {
         return $this->fetchDocument(
             '/v4/applications/' . $application . '/merchant-payments',
             $token,
             'Merchant Payments',
-            $query
+            $filterParams
         );
     }
 
