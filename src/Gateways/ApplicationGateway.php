@@ -182,8 +182,7 @@ class ApplicationGateway extends AbstractGateway
         return $this->fetchDocument(
             '/v4/applications/' . $application . '/status-history',
             $token,
-            'Application Status History',
-            []
+            'Application Status History'
         );
     }
 
