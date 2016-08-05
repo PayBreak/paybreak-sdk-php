@@ -10,6 +10,7 @@
 
 namespace Tests\Basket\Gateways;
 
+use Carbon\Carbon;
 use PayBreak\Sdk\Entities\ApplicationEntity;
 use PayBreak\Sdk\Gateways\ApplicationGateway;
 use WNowicki\Generic\ApiClient\ErrorResponseException;
@@ -177,5 +178,56 @@ class ApplicationGatewayTest extends \PHPUnit_Framework_TestCase
         $applicationGateway = new ApplicationGateway($mock);
 
         $this->assertSame([], $applicationGateway->getPendingCancellations(1, 'token'));
+    }
+
+    /**
+     * @author SL
+     */
+    public function testGetMerchantPayments()
+    {
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
+
+        $mockApiClient->expects($this->any())->method('get')->willReturn([]);
+        $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
+
+        $mock->expects($this->any())->method('makeApiClient')->willReturn($mockApiClient);
+
+        $applicationGateway = new ApplicationGateway($mock);
+
+        $this->assertSame([], $applicationGateway->getMerchantPayments(121231, 'token'));
+    }
+
+    /**
+     * @author SL
+     */
+    public function testAddMerchantPayment()
+    {
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
+
+        $mockApiClient->expects($this->any())->method('post')->willReturn([]);
+        $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
+
+        $mock->expects($this->any())->method('makeApiClient')->willReturn($mockApiClient);
+
+        $applicationGateway = new ApplicationGateway($mock);
+
+        $this->assertSame([], $applicationGateway->addMerchantPayment(12341234, Carbon::now(), 5200, 'token'));
+    }
+
+    /**
+     * @author SL
+     */
+    public function testGetApplicationHistory()
+    {
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
+
+        $mockApiClient->expects($this->any())->method('get')->willReturn([]);
+        $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
+
+        $mock->expects($this->any())->method('makeApiClient')->willReturn($mockApiClient);
+
+        $applicationGateway = new ApplicationGateway($mock);
+
+        $this->assertSame([], $applicationGateway->getApplicationHistory(1213231, 'token'));
     }
 }
