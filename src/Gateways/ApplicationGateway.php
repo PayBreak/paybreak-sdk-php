@@ -170,6 +170,23 @@ class ApplicationGateway extends AbstractGateway
     }
 
     /**
+     * Get application history
+     *
+     * @author SL
+     * @param $application
+     * @param $token
+     * @return array
+     */
+    public function getApplicationHistory($application, $token)
+    {
+        return $this->fetchDocument(
+            '/v4/applications/' . $application . '/status-history',
+            $token,
+            'Application Status History'
+        );
+    }
+
+    /**
      * @author WN
      * @param string $action
      * @param array $data
