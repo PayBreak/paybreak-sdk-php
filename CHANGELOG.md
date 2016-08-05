@@ -1,3 +1,6 @@
+## Features
+- Add 'Get Application History' method to `ApplicationGateway` (126577079)
+
 # 4.4.1
 2016-07-20
 
