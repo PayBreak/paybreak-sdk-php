@@ -11,6 +11,7 @@
 namespace PayBreak\Sdk\Entities;
 
 use WNowicki\Generic\AbstractEntity;
+use WNowicki\Generic\Exception;
 
 /**
  * Group Entity
@@ -48,6 +49,29 @@ class GroupEntity extends AbstractEntity
     }
 
     /**
+     * @author EB, WN
+     * @param array $products
+     * @return $this
+     */
+    public function setProducts(array $products)
+    {
+        $this->products = [];
+
+        foreach ($products as $product) {
+            if (is_array($product)) {
+                $this->addProduct(ProductEntity::make($product));
+                continue;
+            }
+
+            if ($product instanceof ProductEntity) {
+                $this->addProduct($product);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Make Entity
      *
      * @author WN
@@ -58,16 +82,9 @@ class GroupEntity extends AbstractEntity
     {
         $entity = parent::make($components);
 
-        if (array_key_exists('products', $components)) {
-            foreach ($components['products'] as $product) {
-                if (is_array($product)) {
-                    $entity->addProduct(ProductEntity::make($product));
-                    continue;
-                }
-                if ($product instanceof ProductEntity) {
-                    $entity->addProduct($product);
-                }
-            }
+        if (array_key_exists('products', $components) && is_array($components['products'])) {
+
+            $entity->setProducts($components['products']);
         }
 
         return $entity;
