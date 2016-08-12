@@ -60,4 +60,28 @@ class ProductGateway extends AbstractGateway
             'CreditInfo'
         );
     }
+
+    /**
+     * @param string $extId
+     * @param string $productGroup
+     * @param string $token
+     * @return array
+     * @author SL
+     */
+    public function getProductsByGroup($extId, $productGroup, $token)
+    {
+        $response = $this->fetchDocument(
+            '/v4/installations/' . $extId . '/product-groups/' . $productGroup . '/products',
+            $token,
+            'getProductsByGroup'
+        );
+
+        $products = [];
+
+        foreach($response as $flexibleFinanceProduct) {
+            $products[] = ProductEntity::make($flexibleFinanceProduct);
+        }
+
+        return $products;
+    }
 }
