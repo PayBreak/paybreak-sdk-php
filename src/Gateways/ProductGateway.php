@@ -68,7 +68,7 @@ class ProductGateway extends AbstractGateway
      * @return array
      * @author SL
      */
-    public function getProductsByGroup($extId, $productGroup, $token)
+    public function getProductsInGroup($extId, $productGroup, $token)
     {
         $response = $this->fetchDocument(
             '/v4/installations/' . $extId . '/product-groups/' . $productGroup . '/products',
@@ -78,8 +78,8 @@ class ProductGateway extends AbstractGateway
 
         $products = [];
 
-        foreach($response as $flexibleFinanceProduct) {
-            $products[] = ProductEntity::make($flexibleFinanceProduct);
+        foreach($response as $product) {
+            $products[] = ProductEntity::make($product);
         }
 
         return $products;
