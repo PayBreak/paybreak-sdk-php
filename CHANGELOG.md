@@ -1,5 +1,6 @@
 ## Features
 - Add 'Get Application History' method to `ApplicationGateway` (126577079)
+- Add method to get *Products* by *Group*
 
 # 4.5.0
 2016-08-11
