@@ -1,6 +1,12 @@
 ## Features
 - Add 'Get Application History' method to `ApplicationGateway` (126577079)
 
+# 4.5.0
+2016-08-11
+
+## Features
+- Added `GroupEntity:: setProducts(array)` (127177411)
+
 # 4.4.1
 2016-07-20
 
