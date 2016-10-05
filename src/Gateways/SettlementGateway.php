@@ -51,4 +51,16 @@ class SettlementGateway extends AbstractGateway
     {
         return $this->fetchDocument('/v4/settlement-reports/' . $settlementId, $token, 'Settlement Report');
     }
+
+    /**
+     * @author EA
+     * @param string $token
+     * @param int $settlementId
+     * @return array
+     * @throws SdkException
+     */
+    public function getSingleAggregateSettlementReport($token, $settlementId)
+    {
+        return $this->fetchDocument('/v4/aggregate-settlement-reports/' . $settlementId, $token, 'Settlement Report');
+    }
 }
