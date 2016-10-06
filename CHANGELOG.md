@@ -1,3 +1,6 @@
+## Features
+- Adding *Aggregate Settlement* api call (130356905)
+
 # 4.6.0
 2016-08-15
 
