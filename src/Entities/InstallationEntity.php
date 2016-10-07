@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\Entities;
 
+use PayBreak\Sdk\Entities\Installation\FeaturesEntity;
 use WNowicki\Generic\AbstractEntity;
 
 /**
@@ -36,5 +37,6 @@ class InstallationEntity extends AbstractEntity
          'return_url',
          'notification_url',
          'default_product',
+        'features' => FeaturesEntity::class,
     ];
 }
