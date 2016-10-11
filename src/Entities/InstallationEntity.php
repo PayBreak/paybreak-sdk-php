@@ -17,15 +17,15 @@ use WNowicki\Generic\AbstractEntity;
  * Installation Entity
  *
  * @author WN
- * @method $this setId($id)
+ * @method $this setId(int $id)
  * @method string|null getId()
- * @method $this setName($name)
+ * @method $this setName(string $name)
  * @method string|null getName()
- * @method $this setReturnUrl($returnUrl)
+ * @method $this setReturnUrl(string $returnUrl)
  * @method string|null getReturnUrl()
- * @method $this setNotificationUrl($notificationUrl)
+ * @method $this setNotificationUrl(string $notificationUrl)
  * @method string|null getNotificationUrl()
- * @method $this setDefaultProduct($defaultProduct)
+ * @method $this setDefaultProduct(string $defaultProduct)
  * @method string|null getDefaultProduct()
  * @method $this setFeatures(FeaturesEntity $features)
  * @method FeaturesEntity|null getFeatures()
