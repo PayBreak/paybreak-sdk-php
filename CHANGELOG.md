@@ -1,3 +1,6 @@
+# 4.7.0
+2016-10-12
+
 ## Features
 - Adding *Aggregate Settlement* api call (130356905)
 - Added `FeaturesEntity` (131806137)
