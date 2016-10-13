@@ -22,9 +22,9 @@ class ProfileGateway extends AbstractGateway
 {
     /**
      * @author EB
-     * @param $application
+     * @param int $application
      * @param array $personal
-     * @param $token
+     * @param string $token
      * @return array
      */
     public function createPersonal($application, array $personal, $token)
