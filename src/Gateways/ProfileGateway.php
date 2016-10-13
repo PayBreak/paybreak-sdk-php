@@ -10,7 +10,7 @@
 
 namespace PayBreak\Sdk\Gateways;
 
-use App\Gateways\Entities\Profile\PersonalEntity;
+use PayBreak\Sdk\Entities\Profile\PersonalEntity;
 
 /**
  * Class ProfileGateway
@@ -22,9 +22,9 @@ class ProfileGateway extends AbstractGateway
 {
     /**
      * @author EB
-     * @param int $application
+     * @param $application
      * @param array $personal
-     * @param string $token
+     * @param $token
      * @return array
      */
     public function createPersonal($application, array $personal, $token)
