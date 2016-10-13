@@ -25,7 +25,7 @@ use WNowicki\Generic\AbstractEntity;
  *
  * @package App\Gateways\Entities\Profile
  */
-class Personal extends AbstractEntity
+class PersonalEntity extends AbstractEntity
 {
     protected $properties = [
         'email' => self::TYPE_STRING,
