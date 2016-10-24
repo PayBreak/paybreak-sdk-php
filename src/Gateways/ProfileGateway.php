@@ -32,7 +32,7 @@ class ProfileGateway extends AbstractGateway
         $entity = PersonalEntity::make($personal);
 
         return $this->postDocument(
-            '/v4/applications/' . $application . '/profile/personal',
+            '/v4/applications/' . $application . '/user',
             $entity->toArray(),
             $token,
             'Personal'
