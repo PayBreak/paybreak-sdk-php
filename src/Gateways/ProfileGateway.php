@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\Gateways;
 
+use PayBreak\Sdk\Entities\Profile\EmploymentEntity;
 use PayBreak\Sdk\Entities\Profile\FinancialEntity;
 use PayBreak\Sdk\Entities\Profile\PersonalEntity;
 
@@ -56,6 +57,25 @@ class ProfileGateway extends AbstractGateway
             $entity->toArray(),
             $token,
             'Personal'
+        );
+    }
+
+    /**
+     * @author EA
+     * @param $user
+     * @param array $employment
+     * @param $token
+     * @return array
+     */
+    public function setEmployment($user, array $employment, $token)
+    {
+        $entity = EmploymentEntity::make($employment);
+
+        return $this->postDocument(
+            '/v4/users/' . $user . '/employment',
+            $entity->toArray(),
+            $token,
+            'Set Employment'
         );
     }
 }
