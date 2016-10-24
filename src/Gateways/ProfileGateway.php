@@ -62,7 +62,7 @@ class ProfileGateway extends AbstractGateway
 
     /**
      * @author EA
-     * @param $user
+     * @param int $user
      * @param array $employment
      * @param $token
      * @return array

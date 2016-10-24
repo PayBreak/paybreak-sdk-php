@@ -16,8 +16,6 @@ use WNowicki\Generic\AbstractEntity;
  * Employment Entity
  *
  * @author EA
- * @method $this setUser(int $user)
- * @method int|null getUser()
  * @method $this setEmploymentStatus(int $employmentStatus)
  * @method int|null getEmploymentStatus()
  * @method $this setEmploymentStart(string $employmentStart)
