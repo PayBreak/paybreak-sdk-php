@@ -16,11 +16,11 @@ use WNowicki\Generic\AbstractEntity;
  * Employment Entity
  *
  * @author EA
- * @method $this setEmploymentStatus(int $employmentStatus)
+ * @method setEmploymentStatus(int $employmentStatus)
  * @method int|null getEmploymentStatus()
- * @method $this setEmploymentStart(string $employmentStart)
+ * @method setEmploymentStart(string $employmentStart)
  * @method string|null getEmploymentStart()
- * @method $this setEmploymentPhone(string $employmentPhone)
+ * @method setEmploymentPhone(string $employmentPhone)
  * @method string|null getEmploymentPhone()
  *
  * @package PayBreak\Sdk\Entities\Profile;
