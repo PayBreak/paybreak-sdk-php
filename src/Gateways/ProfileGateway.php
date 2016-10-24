@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\Gateways;
 
+use PayBreak\Sdk\Entities\Profile\AddressEntity;
 use PayBreak\Sdk\Entities\Profile\EmploymentEntity;
 use PayBreak\Sdk\Entities\Profile\FinancialEntity;
 use PayBreak\Sdk\Entities\Profile\PersonalEntity;
@@ -76,6 +77,25 @@ class ProfileGateway extends AbstractGateway
             $entity->toArray(),
             $token,
             'Set Employment'
+        );
+    }
+
+    /**
+     * @author EA
+     * @param $application
+     * @param array $address
+     * @param $token
+     * @return array
+     */
+    public function addAddress($application, array $address, $token)
+    {
+        $entity = AddressEntity::make($address);
+
+        return $this->postDocument(
+            '/v4/users/' . $application . '/address',
+            $entity->toArray(),
+            $token,
+            'Add Address'
         );
     }
 }
