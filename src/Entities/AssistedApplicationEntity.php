@@ -14,21 +14,14 @@ namespace PayBreak\Sdk\Entities;
  * Assisted Application Entity
  *
  * @author WN
- * @method $this setPersonal(string $personal)
- * @method string|null getPersonal()
- * @method $this setAddress(string $address)
- * @method string|null getAddress()
- * @method $this setEmployment(string $employment)
- * @method string|null getEmployment()
- * @method $this setFinancial(string $financial)
- * @method string|null getFinancial()
  * @method $this setEmail(string $email)
  * @method string|null getEmail()
  * @package PayBreak\Sdk\Entities
  */
 class AssistedApplicationEntity extends ApplicationEntity
 {
-    protected $properties = [
-        'email' => 'email',
-    ];
+    protected $properties =
+        [
+            'email' => 'email',
+        ];
 }

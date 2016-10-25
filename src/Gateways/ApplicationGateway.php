@@ -223,13 +223,6 @@ class ApplicationGateway extends AbstractGateway
             $application->setResumeUrl($response['url']);
             $application->setUser($response['user']);
 
-            if (isset($response['profile'])) {
-                $application->setPersonal($response['personal']);
-                $application->setAddress($response['address']);
-                $application->setEmployment($response['employment']);
-                $application->setFinance($response['financial']);
-            }
-
             return $application;
 
         } catch (ErrorResponseException $e) {
