@@ -28,7 +28,7 @@ class DictionaryGateway extends AbstractGateway
         return $this->fetchDocument(
             '/v4/dictionaries/employment-status',
             $token,
-            'Dictionary Employment Status '
+            'Dictionary Employment Status'
         );
     }
 
@@ -42,7 +42,7 @@ class DictionaryGateway extends AbstractGateway
         return $this->fetchDocument(
             '/v4/dictionaries/marital-status',
             $token,
-            'Dictionary Martial Status '
+            'Dictionary Martial Status'
         );
     }
 
@@ -56,7 +56,7 @@ class DictionaryGateway extends AbstractGateway
         return $this->fetchDocument(
             '/v4/dictionaries/residential-status',
             $token,
-            'Dictionary Residential Status '
+            'Dictionary Residential Status'
         );
     }
 }
