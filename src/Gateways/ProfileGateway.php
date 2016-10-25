@@ -82,17 +82,17 @@ class ProfileGateway extends AbstractGateway
 
     /**
      * @author EA
-     * @param $application
+     * @param $user
      * @param array $address
      * @param $token
      * @return array
      */
-    public function addAddress($application, array $address, $token)
+    public function addAddress($user, array $address, $token)
     {
         $entity = AddressEntity::make($address);
 
         return $this->postDocument(
-            '/v4/users/' . $application . '/address',
+            '/v4/users/' . $user . '/address',
             $entity->toArray(),
             $token,
             'Add Address'
