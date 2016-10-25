@@ -11,6 +11,11 @@
 namespace PayBreak\Sdk\Gateways;
 
 use PayBreak\Sdk\Entities\ApplicationEntity;
+use PayBreak\Sdk\Entities\AssistedApplicationEntity;
+use PayBreak\Sdk\Entities\Profile\AddressEntity;
+use PayBreak\Sdk\Entities\Profile\EmploymentEntity;
+use PayBreak\Sdk\Entities\Profile\FinancialEntity;
+use PayBreak\Sdk\Entities\Profile\PersonalEntity;
 use PayBreak\Sdk\SdkException;
 use WNowicki\Generic\ApiClient\ErrorResponseException;
 
@@ -198,5 +203,44 @@ class ApplicationGateway extends AbstractGateway
     {
         $this->postDocument($action, $data, $token, 'Application');
         return true;
+    }
+
+    /**
+     * @author EA
+     * @param AssistedApplicationEntity $application
+     * @param string $token
+     * @return ApplicationEntity
+     * @throws SdkException
+     */
+    public function initialiseAssistedApplication(AssistedApplicationEntity $application, $token)
+    {
+        $api = $this->getApiFactory()->makeApiClient($token);
+
+        try {
+            $response = $api->post('/v4/initialize-assisted-application', $application->toArray(true));
+
+            $application->setId($response['id']);
+            $application->setResumeUrl($response['url']);
+            $application->setUser($response['user']);
+
+            if (isset($response['profile'])) {
+                $application->setPersonal($response['personal']);
+                $application->setAddress($response['address']);
+                $application->setEmployment($response['employment']);
+                $application->setFinance($response['financial']);
+            }
+
+            return $application;
+
+        } catch (ErrorResponseException $e) {
+
+            $this->logWarning('ApplicationGateway::initialiseAssistedApplication[' . $e->getCode() . ']: ' . $e->getMessage());
+            throw new SdkException($e->getMessage());
+
+        } catch (\Exception $e) {
+
+            $this->logError('ApplicationGateway::initialiseAssistedApplication[' . $e->getCode() . ']: ' . $e->getMessage());
+            throw new SdkException('Problem Initialising Assisted Application on Provider API');
+        }
     }
 }
