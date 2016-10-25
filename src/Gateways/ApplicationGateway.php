@@ -219,7 +219,7 @@ class ApplicationGateway extends AbstractGateway
         try {
             $response = $api->post('/v4/initialize-assisted-application', $application->toArray(true));
 
-            $application->setId($response['id']);
+            $application->setId($response['application']);
             $application->setResumeUrl($response['url']);
             $application->setUser($response['user']);
 
