@@ -14,8 +14,8 @@ namespace PayBreak\Sdk\Entities;
  * Assisted Application Entity
  *
  * @author EA, EB, SL
- * @method $this setUser(string $user)
- * @method string|null getUser()
+ * @method $this setUser(int $user)
+ * @method int|null getUser()
  * @method $this setEmail(string $email)
  * @method string|null getEmail()
  * @package PayBreak\Sdk\Entities
@@ -38,6 +38,6 @@ class AssistedApplicationEntity extends ApplicationEntity
         'metadata',
         'resume_url',
         'email' => self::TYPE_STRING,
-        'user' => self::TYPE_STRING,
+        'user',
     ];
 }
