@@ -30,6 +30,10 @@ use WNowicki\Generic\AbstractEntity;
  * @method setPhoneMobile($phoneMobile)
  * @method string|null getPhoneHome()
  * @method setPhoneHome($phoneHome)
+ * @method int|null getNumberOfDependents()
+ * @method setNumberOfDependents($numberOfDependents)
+ * @method int|null getMaritalStatus()
+ * @method setMaritalStatus($maritalStatus)
  *
  * @package PayBreak\Sdk\Entities\Profile;
  */
@@ -43,5 +47,7 @@ class PersonalEntity extends AbstractEntity
         'date_of_birth' => self::TYPE_STRING,
         'phone_mobile' => self::TYPE_STRING,
         'phone_home' => self::TYPE_STRING,
+        'number_of_dependents' => self::TYPE_INT,
+        'marital_status' => self::TYPE_INT,
     ];
 }
