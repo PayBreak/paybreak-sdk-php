@@ -87,7 +87,7 @@ class ProfileGateway extends AbstractGateway
      * @param $token
      * @return array
      */
-    public function addAddress($user, array $address, $token)
+    public function setAddress($user, array $address, $token)
     {
         $entity = AddressEntity::make($address);
 
@@ -95,7 +95,7 @@ class ProfileGateway extends AbstractGateway
             '/v4/users/' . $user . '/address',
             $entity->toArray(),
             $token,
-            'Add Address'
+            'Set Address'
         );
     }
 }
