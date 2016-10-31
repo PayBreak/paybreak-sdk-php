@@ -24,6 +24,6 @@ use WNowicki\Generic\AbstractEntity;
 class FeaturesEntity extends AbstractEntity
 {
     protected $properties = [
-        'assisted_journey'
+        'assisted_journey' => self::TYPE_BOOL,
     ];
 }
