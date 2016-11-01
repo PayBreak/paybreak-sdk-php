@@ -43,8 +43,27 @@ class ProfileGateway extends AbstractGateway
     }
 
     /**
+     * @author EA
+     * @param int $user
+     * @param array $personal
+     * @param $token
+     * @return array
+     */
+    public function SetPersonal($user, array $personal, $token)
+    {
+        $entity = PersonalEntity::make($personal);
+
+        return $this->postDocument(
+            '/v4/users/' . $user . '/personal',
+            $entity->toArray(),
+            $token,
+            'Set Personal'
+        );
+    }
+
+    /**
      * @author EB
-     * @param $user
+     * @param int $user
      * @param array $financial
      * @param $token
      * @return array
@@ -57,7 +76,7 @@ class ProfileGateway extends AbstractGateway
             '/v4/users/' . $user . '/financial',
             $entity->toArray(),
             $token,
-            'Personal'
+            'Set Financial'
         );
     }
 
