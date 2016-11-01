@@ -49,7 +49,7 @@ class ProfileGateway extends AbstractGateway
      * @param $token
      * @return array
      */
-    public function SetPersonal($user, array $personal, $token)
+    public function setPersonal($user, array $personal, $token)
     {
         $entity = PersonalEntity::make($personal);
 
