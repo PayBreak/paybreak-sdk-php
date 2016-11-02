@@ -11,11 +11,6 @@
 namespace PayBreak\Sdk\Gateways;
 
 use PayBreak\Sdk\Entities\ApplicationEntity;
-use PayBreak\Sdk\Entities\AssistedApplicationEntity;
-use PayBreak\Sdk\Entities\Profile\AddressEntity;
-use PayBreak\Sdk\Entities\Profile\EmploymentEntity;
-use PayBreak\Sdk\Entities\Profile\FinancialEntity;
-use PayBreak\Sdk\Entities\Profile\PersonalEntity;
 use PayBreak\Sdk\SdkException;
 use WNowicki\Generic\ApiClient\ErrorResponseException;
 
