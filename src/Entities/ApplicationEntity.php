@@ -15,7 +15,7 @@ use WNowicki\Generic\AbstractEntity;
 /**
  * Application Entity
  *
- * @author WN
+ * @author WN, EB
  * @method $this setId(int $id)
  * @method int|null getId()
  * @method $this setPostedDate(string $postedDate)
@@ -44,6 +44,10 @@ use WNowicki\Generic\AbstractEntity;
  * @method array|null getMetadata()
  * @method $this setResumeUrl(string $resumeUrl)
  * @method string|null getResumeUrl()
+ * @method $this setUser(int $user)
+ * @method int|null getUser()
+ * @method $this setEmail(string $email)
+ * @method string|null getEmail()
  * @package PayBreak\Sdk\Entities
  */
 class ApplicationEntity extends AbstractEntity
@@ -63,5 +67,7 @@ class ApplicationEntity extends AbstractEntity
         'cancellation' => 'PayBreak\Sdk\Entities\Application\CancellationEntity',
         'metadata',
         'resume_url',
+        'email' => self::TYPE_STRING,
+        'user' => self::TYPE_INT,
     ];
 }
