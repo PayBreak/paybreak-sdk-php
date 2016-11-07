@@ -1,3 +1,7 @@
+## Features
+- Added `Entities` for profile updates (133243285)
+- Added `Gateways` to get dictionaries (133243285)
+
 # 4.7.0
 2016-10-12
 
