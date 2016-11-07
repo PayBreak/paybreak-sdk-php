@@ -66,6 +66,38 @@ class ApplicationGateway extends AbstractGateway
     }
 
     /**
+     * @author EA, EB
+     * @param ApplicationEntity $application
+     * @param string $token
+     * @return ApplicationEntity
+     * @throws SdkException
+     */
+    public function initialiseAssistedApplication(ApplicationEntity $application, $token)
+    {
+        $api = $this->getApiFactory()->makeApiClient($token);
+
+        try {
+            $response = $api->post('/v4/initialize-assisted-application', $application->toArray(true));
+
+            $application->setId($response['application']);
+            $application->setResumeUrl($response['url']);
+            $application->setUser($response['user']);
+
+            return $application;
+
+        } catch (ErrorResponseException $e) {
+
+            $this->logWarning('ApplicationGateway::initialiseAssistedApplication[' . $e->getCode() . ']: ' . $e->getMessage());
+            throw new SdkException($e->getMessage());
+
+        } catch (\Exception $e) {
+
+            $this->logError('ApplicationGateway::initialiseAssistedApplication[' . $e->getCode() . ']: ' . $e->getMessage());
+            throw new SdkException('Problem Initialising Assisted Application on Provider API');
+        }
+    }
+
+    /**
      * @author WN
      * @param int $id
      * @param string $token
