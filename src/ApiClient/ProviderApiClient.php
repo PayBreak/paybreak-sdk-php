@@ -66,6 +66,10 @@ class ProviderApiClient extends AbstractApiClient
             return null;
         }
 
+        if (strpos($response->getHeaderLine('Content-Type'),'text/csv') !== false) {
+            return $response->getBody()->getContents();
+        }
+
         if (($responseBody = json_decode($response->getBody()->getContents(), true)) !== null) {
             return $responseBody;
         }
