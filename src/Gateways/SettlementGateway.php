@@ -56,11 +56,12 @@ class SettlementGateway extends AbstractGateway
      * @author EA
      * @param string $token
      * @param int $settlementId
+     * @param bool $csv
      * @return array
      * @throws SdkException
      */
-    public function getSingleAggregateSettlementReport($token, $settlementId)
+    public function getSingleAggregateSettlementReport($token, $settlementId, $csv = false)
     {
-        return $this->fetchDocument('/v4/aggregate-settlement-reports/' . $settlementId, $token, 'Settlement Report');
+        return $this->fetchDocument('/v4/aggregate-settlement-reports/' . $settlementId . ($csv == true ? '.csv' : ''), $token, 'Aggregate Settlement Report');
     }
 }
