@@ -52,7 +52,7 @@ class ProviderCsvApiClient extends ProviderApiClient
      * @throws ErrorResponseException
      * @throws \Exception
      */
-    public function post($uri, array $body = [], array $query = [])
+    public function get($uri, array $body = [], array $query = [])
     {
         return $this->send((new Request('POST', $uri . '.csv')), $body, $query);
     }
