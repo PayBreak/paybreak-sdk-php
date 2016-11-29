@@ -11,7 +11,6 @@
 namespace PayBreak\Sdk\ApiClient;
 
 use Psr\Http\Message\ResponseInterface;
-use WNowicki\Generic\ApiClient\AbstractApiClient;
 use WNowicki\Generic\ApiClient\ErrorResponseException;
 use WNowicki\Generic\ApiClient\WrongResponseException;
 use Psr\Log\LoggerInterface;
@@ -24,6 +23,26 @@ use Psr\Log\LoggerInterface;
  */
 class ProviderCsvApiClient extends ProviderApiClient
 {
+    /**
+     * @author WN
+     * @param string $baseUrl
+     * @param string $token
+     * @param LoggerInterface $logger
+     * @return ProviderApiClient
+     */
+    public static function make($baseUrl, $token = '', LoggerInterface $logger = null)
+    {
+        $ar = [];
+        $ar['base_uri'] = $baseUrl;
+
+        if ($token != '') {
+
+            $ar['headers'] = ['Authorization' => 'ApiToken token="' . $token . '"'];
+        }
+
+        return new self($ar, $logger);
+    }
+
     /**
      * @author EA
      * @param ResponseInterface $response
@@ -54,6 +73,6 @@ class ProviderCsvApiClient extends ProviderApiClient
      */
     public function get($uri, array $body = [], array $query = [])
     {
-        return $this->send((new Request('POST', $uri . '.csv')), $body, $query);
+        return parent::get($uri . '.csv', $body, $query);
     }
 }
