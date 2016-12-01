@@ -1,3 +1,9 @@
+# 4.9.0
+2016-11-30
+
+### Features
+- Including *Aggregate Settlement Report* `csv` API call (134525555)
+
 # 4.8.0
 2016-11-07
 
