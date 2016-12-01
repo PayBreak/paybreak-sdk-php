@@ -100,21 +100,46 @@ class ProfileGateway extends AbstractGateway
     }
 
     /**
-     * @author EA
+     * @author EB
      * @param $user
-     * @param array $address
-     * @param $token
+     * @param string $token
      * @return array
      */
-    public function setAddress($user, array $address, $token)
+    public function getAddresses($user, $token)
     {
-        $entity = AddressEntity::make($address);
+        return $this->fetchDocument('/v4/users/' . $user . '/address', $token, 'Fetch Addresses');
+    }
 
+    /**
+     * @author EB
+     * @param $user
+     * @param array $address
+     * @param string $token
+     * @return array
+     */
+    public function addAddress($user, array $address, $token)
+    {
         return $this->postDocument(
             '/v4/users/' . $user . '/address',
-            $entity->toArray(),
+            AddressEntity::make($address)->toArray(),
             $token,
-            'Set Address'
+            'Add Address'
+        );
+    }
+
+    /**
+     * @author EB
+     * @param $user
+     * @param $address
+     * @param string $token
+     * @return array
+     */
+    public function removeAddress($user, $address, $token)
+    {
+        return $this->deleteDocument(
+            '/v4/users/' . $user . '/address/' . $address,
+            $token,
+            'Remove Address'
         );
     }
 }
