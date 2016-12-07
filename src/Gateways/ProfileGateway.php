@@ -107,7 +107,7 @@ class ProfileGateway extends AbstractGateway
      */
     public function getAddresses($user, $token)
     {
-        return $this->fetchDocument('/v4/users/' . $user . '/address', $token, 'Fetch Addresses');
+        return $this->fetchDocument('/v4/users/' . $user . '/addresses', $token, 'Fetch Addresses');
     }
 
     /**
