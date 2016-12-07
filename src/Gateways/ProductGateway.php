@@ -84,4 +84,21 @@ class ProductGateway extends AbstractGateway
 
         return $products;
     }
+
+    /**
+     * author EA
+     * @param string $installation
+     * @param string $token
+     * @param array $params
+     * @return array
+     */
+    public function orderProducts($installation, $token, array $params)
+    {
+        return $this->postDocument(
+            '/v4/installations/' . $installation . 'products/set-product-order',
+            $params,
+            $token,
+            'orderProducts'
+        );
+    }
 }
