@@ -20,6 +20,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method string|null getMethod()
  * @method $this setLocation(string $location)
  * @method string|null getLocation()
+ * @method $this setReference(string $reference)
+ * @method string|null getReference()
  * @package PayBreak\Sdk\Entities
  */
 class FulfilmentEntity extends AbstractEntity
@@ -27,5 +29,6 @@ class FulfilmentEntity extends AbstractEntity
     protected $properties = [
         'method',
         'location',
+        'reference',
     ];
 }
