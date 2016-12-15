@@ -1,10 +1,12 @@
+## Features
+- Added *Fulfilment Reference* to fulfilment call (135529307)
+
 # 4.10.0
 2016-12-12
 
 ## Features
 - Added API call pass-throughs for `show`, `add` and `remove` addresses (134691997)
 - Removed `setAddress` pass-through (134691997)
-- Added *Fulfilment Reference* to fulfilment call (135529307)
 
 # 4.9.0
 2016-11-30
