@@ -98,15 +98,16 @@ class ApplicationGateway extends AbstractGateway
     }
 
     /**
-     * @author WN
+     * @author WN, EB
      * @param int $id
      * @param string $token
+     * @param string $reference
      * @return bool
      * @throws SdkException
      */
-    public function fulfilApplication($id, $token)
+    public function fulfilApplication($id, $token, $reference = null)
     {
-        return $this->requestAction('/v4/applications/' . $id . '/fulfil', [], $token);
+        return $this->requestAction('/v4/applications/' . $id . '/fulfil', ['reference' => $reference], $token);
     }
 
     /**
