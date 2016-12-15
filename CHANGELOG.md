@@ -1,6 +1,3 @@
-# 4.10.0
-2016-12-12
-
 ## Features
 - Added *Fulfilment Reference* to fulfilment call (135529307)
 
