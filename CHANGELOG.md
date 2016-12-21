@@ -1,3 +1,7 @@
+## Features 
+- Added `listProducts` API (132143811)
+- Added `orderProducts ` API (132143811)
+
 # 4.11.0
 2016-12-15
 
