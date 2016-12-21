@@ -28,9 +28,9 @@ class ProductGateway extends AbstractGateway
     public function getProductGroupsWithProducts($extId, $token)
     {
         $response = $this->fetchDocument(
-                '/v4/installations/' . $extId . '/product-groups?with=products',
-                $token,
-                'listGroupsWithProducts'
+            '/v4/installations/' . $extId . '/product-groups?with=products',
+            $token,
+            'listGroupsWithProducts'
         );
 
         foreach($response as &$group) {
@@ -74,6 +74,46 @@ class ProductGateway extends AbstractGateway
             '/v4/installations/' . $extId . '/product-groups/' . $productGroup . '/products',
             $token,
             'getProductsByGroup'
+        );
+
+        $products = [];
+
+        foreach($response as $product) {
+            $products[] = ProductEntity::make($product);
+        }
+
+        return $products;
+    }
+
+    /**
+     * author EA
+     * @param string $installation
+     * @param string $token
+     * @param array $params
+     * @return array
+     */
+    public function orderProducts($installation, $token, array $params)
+    {
+        return $this->postDocument(
+            '/v4/installations/' . $installation . '/products/set-product-order',
+            $params,
+            $token,
+            'orderProducts'
+        );
+    }
+
+    /**
+     * author EA
+     * @param string $installation
+     * @param string $token
+     * @return array
+     */
+    public function getProducts($installation, $token)
+    {
+        $response = $this->fetchDocument(
+            '/v4/installations/' . $installation . '/products',
+            $token,
+            'listProducts'
         );
 
         $products = [];
