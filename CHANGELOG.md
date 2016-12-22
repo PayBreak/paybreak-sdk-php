@@ -1,6 +1,10 @@
+# 4.12.0
+2016-12-22
+
 ## Features 
 - Added `listProducts` API (132143811)
 - Added `orderProducts ` API (132143811)
+- Added `hold` field on `OrderEntity` (131613483)
 
 # 4.11.0
 2016-12-15
