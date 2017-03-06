@@ -127,6 +127,28 @@ class ApplicationGateway extends AbstractGateway
     }
 
     /**
+     * @author JH
+     * @param int $installation
+     * @param int $application
+     * @param int $amount
+     * @param string $description
+     * @param string $token
+     * @return array
+     */
+    public function amendOrder($installation, $application, $amount, $description, $token)
+    {
+        return $this->postDocument(
+            'v4/installations/' . $installation . '/applications/' . $application . '/get-credit-information',
+            [
+                'amount' => $amount,
+                'description' => $description,
+            ],
+            $token,
+            'Amend Order'
+        );
+    }
+
+    /**
      * @param $token
      * @return array
      * @throws SdkException
