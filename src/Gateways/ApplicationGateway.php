@@ -138,7 +138,7 @@ class ApplicationGateway extends AbstractGateway
     public function amendOrder($installationId, $application, $amount, $description, $token)
     {
         return $this->postDocument(
-            '/v4/installations/' . $installationId . '/applications/' . $application . '/amend-order',
+            '/v4/installations/' . $installationId . '/applications/' . $application . '/amend',
             [
                 'amount' => $amount,
                 'description' => $description,
