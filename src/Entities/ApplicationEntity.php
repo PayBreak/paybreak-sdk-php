@@ -46,10 +46,10 @@ use WNowicki\Generic\AbstractEntity;
  * @method string|null getResumeUrl()
  * @method $this setUser(int $user)
  * @method int|null getUser()
- * @method $this setIsRegulated(bool $isRegulated)
- * @method int|null getIsRegulated()
  * @method $this setEmail(string $email)
  * @method string|null getEmail()
+ * @method $this setIsRegulated(bool $isRegulated)
+ * @method int|null getIsRegulated()
  * @package PayBreak\Sdk\Entities
  */
 class ApplicationEntity extends AbstractEntity
