@@ -48,6 +48,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method int|null getUser()
  * @method $this setEmail(string $email)
  * @method string|null getEmail()
+ * @method $this setIsRegulated(bool $isRegulated)
+ * @method int|null getIsRegulated()
  * @package PayBreak\Sdk\Entities
  */
 class ApplicationEntity extends AbstractEntity
@@ -69,5 +71,6 @@ class ApplicationEntity extends AbstractEntity
         'resume_url',
         'email' => self::TYPE_STRING,
         'user' => self::TYPE_INT,
+        'is_regulated' => self::TYPE_BOOL,
     ];
 }
