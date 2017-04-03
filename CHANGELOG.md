@@ -1,3 +1,6 @@
+## Features
+- Added document gateway to enable downloading the agreement and pre-agreement of an application
+
 # 4.12.0
 2016-12-22
 
