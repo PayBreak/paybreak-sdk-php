@@ -11,9 +11,9 @@
 namespace PayBreak\Sdk\ApiClient;
 
 use Psr\Http\Message\ResponseInterface;
-use WNowicki\Generic\ApiClient\AbstractApiClient;
-use WNowicki\Generic\ApiClient\ErrorResponseException;
-use WNowicki\Generic\ApiClient\WrongResponseException;
+use PayBreak\ApiClient\AbstractApiClient;
+use PayBreak\ApiClient\ErrorResponseException;
+use PayBreak\ApiClient\WrongResponseException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -33,15 +33,13 @@ class ProviderApiClient extends AbstractApiClient
      */
     public static function make($baseUrl, $token = '', LoggerInterface $logger = null)
     {
-        $ar = [];
-        $ar['base_uri'] = $baseUrl;
+        $headers = [];
 
         if ($token != '') {
-
-            $ar['headers'] = ['Authorization' => 'ApiToken token="' . $token . '"'];
+            $headers['Authorization'] = "ApiToken token=\"" . $token . "\"";
         }
 
-        return new self($ar, $logger);
+        return new self(['base_uri' => $baseUrl], $logger, $headers);
     }
 
     /**
