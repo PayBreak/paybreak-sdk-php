@@ -12,7 +12,7 @@ namespace PayBreak\Sdk\Gateways;
 
 use PayBreak\Sdk\Entities\ApplicationEntity;
 use PayBreak\Sdk\SdkException;
-use WNowicki\Generic\ApiClient\ErrorResponseException;
+use PayBreak\ApiClient\ErrorResponseException;
 
 /**
  * Application Gateway

@@ -11,7 +11,7 @@
 namespace Tests\Basket\Gateways;
 
 use PayBreak\Sdk\Gateways\MerchantGateway;
-use WNowicki\Generic\ApiClient\ErrorResponseException;
+use PayBreak\ApiClient\ErrorResponseException;
 
 /**
  * Merchant Gateway Test
