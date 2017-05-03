@@ -1,3 +1,9 @@
+# 4.14.0
+2017-05-03
+
+### Features
+- Use `PayBreak\ApiClient` instead of `Wnowicki\Generic\ApiClient` (143560655)
+
 # 4.13.0
 2017-04-03
 
