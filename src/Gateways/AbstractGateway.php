@@ -14,7 +14,7 @@ use PayBreak\Sdk\ApiClient\ApiClientFactoryInterface;
 use Psr\Log\LoggerInterface;
 use WNowicki\Generic\Logger\PsrLoggerTrait;
 use WNowicki\Generic\Exception;
-use WNowicki\Generic\ApiClient\ErrorResponseException;
+use PayBreak\ApiClient\ErrorResponseException;
 
 /**
  * Abstract Gateway
