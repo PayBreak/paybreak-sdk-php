@@ -10,10 +10,7 @@
 
 namespace PayBreak\Sdk\ApiClient;
 
-use Psr\Http\Message\ResponseInterface;
-use PayBreak\ApiClient\AbstractApiClient;
-use PayBreak\ApiClient\ErrorResponseException;
-use PayBreak\ApiClient\WrongResponseException;
+use PayBreak\ApiClient\ApiClient;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -22,7 +19,7 @@ use Psr\Log\LoggerInterface;
  * @author WN
  * @package PayBreak\Sdk\ApiClient
  */
-class ProviderApiClient extends AbstractApiClient
+class ProviderApiClient extends ApiClient
 {
     /**
      * @author WN
@@ -40,48 +37,5 @@ class ProviderApiClient extends AbstractApiClient
         }
 
         return new self(['base_uri' => $baseUrl], $logger, $headers);
-    }
-
-    /**
-     * @author WN
-     * @param array $body
-     * @return array
-     */
-    protected function processRequestBody(array $body)
-    {
-        return ['json' => $body];
-    }
-
-    /**
-     * @author WN
-     * @param ResponseInterface $response
-     * @return array
-     * @throws WrongResponseException
-     */
-    protected function processResponse(ResponseInterface $response)
-    {
-        if ($response->getStatusCode() == 204) {
-            return null;
-        }
-
-        if (($responseBody = json_decode($response->getBody()->getContents(), true)) !== null) {
-            return $responseBody;
-        }
-
-        throw new WrongResponseException('Response body was malformed JSON', $response->getStatusCode());
-    }
-
-    /**
-     * @author WN
-     * @param ResponseInterface $response
-     * @throws ErrorResponseException
-     */
-    protected function processErrorResponse(ResponseInterface $response)
-    {
-        if (($responseBody = json_decode($response->getBody()->getContents(), true)) &&
-            array_key_exists('message', $responseBody)
-        ) {
-            throw new ErrorResponseException($responseBody['message'], $response->getStatusCode());
-        }
     }
 }
