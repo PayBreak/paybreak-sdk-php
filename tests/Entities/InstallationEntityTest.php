@@ -10,6 +10,7 @@
 
 namespace Tests\Basket\Entities;
 
+use PayBreak\Sdk\Entities\Installation\FeaturesEntity;
 use PayBreak\Sdk\Entities\InstallationEntity;
 
 /**
@@ -119,6 +120,20 @@ class InstallationEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('Test Name', $entity->getDefaultProduct());
     }
 
+    public function testGetFeatures()
+    {
+        $properties = [
+            'features' => [
+                'merchant_liable' => true,
+            ]
+        ];
+
+        $installationEntity = InstallationEntity::make($properties);
+
+        $this->assertInstanceOf(FeaturesEntity::class, $installationEntity->getFeatures());
+        $this->assertSame($installationEntity->toArray(true), $properties);
+    }
+
     public function testToArrayData()
     {
         $properties = [
@@ -127,8 +142,11 @@ class InstallationEntityTest extends \PHPUnit_Framework_TestCase
             'return_url' => 'http://test.com/fsbgdf',
             'notification_url' => 'http://test.com/ukykutj',
             'default_product' => 'WWW-34',
+            'features' => [
+                'merchant_liable' => true,
+            ],
         ];
 
-        $this->assertSame($properties, InstallationEntity::make($properties)->toArray());
+        $this->assertSame($properties, InstallationEntity::make($properties)->toArray(true));
     }
 }
