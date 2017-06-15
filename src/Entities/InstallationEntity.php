@@ -26,6 +26,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method string|null getNotificationUrl()
  * @method $this setDefaultProduct(string $defaultProduct)
  * @method string|null getDefaultProduct()
+ * @method $this setFeatures(Installation\FeaturesEntity $featuresEntity)
+ * @method Installation\FeaturesEntity|null getFeatures()
  * @package PayBreak\Sdk\Entities
  */
 class InstallationEntity extends AbstractEntity
@@ -36,5 +38,6 @@ class InstallationEntity extends AbstractEntity
         'return_url',
         'notification_url',
         'default_product',
+        'features' => 'PayBreak\Sdk\Entities\Installation\FeaturesEntity',
     ];
 }
