@@ -34,6 +34,37 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
     /**
      * @author GK
      */
+    public function testGetAvailableDocuments()
+    {
+        $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
+
+        $mockApiClient->expects($this->any())->method('get')->willReturn(
+            [
+                "agreement",
+                "pre-agreement",
+                "adequate-explanation"
+            ]
+        );
+
+        $mock = $this->getMock('PayBreak\Sdk\ApiClient\ApiClientFactoryInterface');
+
+        $mock->expects($this->any())->method('makeApiClient')->willReturn($mockApiClient);
+
+        $documentGateway = new DocumentGateway($mock);
+
+        $this->assertEquals(
+            [
+                "agreement",
+                "pre-agreement",
+                "adequate-explanation"
+            ],
+            $documentGateway->getAvailableDocuments('xxx', 'yyy', 123)
+        );
+    }
+
+    /**
+     * @author GK
+     */
     public function testGetAgreementPdf()
     {
         $mockApiClient = $this->getMock('PayBreak\Sdk\ApiClient\ProviderApiClient');
