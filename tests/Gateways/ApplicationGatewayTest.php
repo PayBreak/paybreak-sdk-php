@@ -13,7 +13,7 @@ namespace Tests\Basket\Gateways;
 use Carbon\Carbon;
 use PayBreak\Sdk\Entities\ApplicationEntity;
 use PayBreak\Sdk\Gateways\ApplicationGateway;
-use WNowicki\Generic\ApiClient\ErrorResponseException;
+use PayBreak\ApiClient\ErrorResponseException;
 
 /**
  * Application Gateway Test

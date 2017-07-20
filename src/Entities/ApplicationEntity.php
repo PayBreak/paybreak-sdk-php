@@ -50,6 +50,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method string|null getEmail()
  * @method $this setIsRegulated(bool $isRegulated)
  * @method int|null getIsRegulated()
+ * @method $this setMerchantLiableAt(string $merchantLiableAt)
+ * @method string|null getMerchantLiableAt()
  * @package PayBreak\Sdk\Entities
  */
 class ApplicationEntity extends AbstractEntity
@@ -72,5 +74,6 @@ class ApplicationEntity extends AbstractEntity
         'email' => self::TYPE_STRING,
         'user' => self::TYPE_INT,
         'is_regulated' => self::TYPE_BOOL,
+        'merchant_liable_at',
     ];
 }

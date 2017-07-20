@@ -11,7 +11,7 @@
 namespace Tests\Basket\Gateways;
 
 use PayBreak\Sdk\Gateways\InstallationGateway;
-use WNowicki\Generic\ApiClient\ErrorResponseException;
+use PayBreak\ApiClient\ErrorResponseException;
 
 class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
 {
