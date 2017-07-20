@@ -86,4 +86,5 @@ class DocumentGateway extends AbstractGateway
         );
 
         return $document['pdf'];
+    }
 }
