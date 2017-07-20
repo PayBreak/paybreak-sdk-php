@@ -1,3 +1,6 @@
+# 4.15.0
+2017-07-20
+
 ## Features
 - Add `getAvailableDocuments` and `getAdequateExplanation` to the **DocumentGateway**
 
