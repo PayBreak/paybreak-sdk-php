@@ -69,4 +69,21 @@ class DocumentGateway extends AbstractGateway
 
         return $document['pdf'];
     }
+
+    /**
+     * @author GK
+     * @param string $token
+     * @param string $installation
+     * @param int $application
+     * @return array
+     */
+    public function getAdequateExplanation($token, $installation, $application)
+    {
+        $document = $this->fetchDocument(
+            '/v4/installations/' . $installation . '/applications/' . $application . '/adequate-explanation',
+            $token,
+            'Adequate Explanation Pdf'
+        );
+
+        return $document['pdf'];
 }
