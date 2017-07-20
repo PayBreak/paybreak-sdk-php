@@ -1,13 +1,16 @@
+## Features
+- Add `getAvailableDocuments` and `getAdequateExplanation` to the **DocumentGateway**
+
 # 4.14.1
 2017-06-15
 
-### Features
+## Features
 - Added `Liability` concept on `Application` and `Installation` entity (147092245)
 
 # 4.14.0
 2017-05-03
 
-### Features
+## Features
 - Use `PayBreak\ApiClient` instead of `Wnowicki\Generic\ApiClient` (143560655)
 
 # 4.13.0
