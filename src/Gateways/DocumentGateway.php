@@ -25,6 +25,22 @@ class DocumentGateway extends AbstractGateway
      * @param int $application
      * @return array
      */
+    public function getAvailableDocuments($token, $installation, $application)
+    {
+        return $this->fetchDocument(
+            '/v4/installations/' . $installation . '/applications/' . $application . '/documents',
+            $token,
+            'Documents'
+        );
+    }
+
+    /**
+     * @author GK
+     * @param string $token
+     * @param string $installation
+     * @param int $application
+     * @return array
+     */
     public function getAgreementPdf($token, $installation, $application)
     {
         $document = $this->fetchDocument(
