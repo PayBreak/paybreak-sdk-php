@@ -34,7 +34,7 @@ class DocumentGateway extends AbstractGateway
                 'Documents'
             );
         } catch (\Exception $e) {
-            $this->logWarning('Could not fetch document: ' . $e->getMessage());
+            $this->logWarning('Could not fetch documents for [' . $application . ']: ' . $e->getMessage());
             return [];
         }
     }
