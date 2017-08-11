@@ -19,7 +19,7 @@ namespace PayBreak\Sdk\Gateways;
 class DocumentGateway extends AbstractGateway
 {
     /**
-     * @author GK
+     * @author GK, EB
      * @param string $token
      * @param string $installation
      * @param int $application
@@ -27,11 +27,15 @@ class DocumentGateway extends AbstractGateway
      */
     public function getAvailableDocuments($token, $installation, $application)
     {
-        return $this->fetchDocument(
-            '/v4/installations/' . $installation . '/applications/' . $application . '/documents',
-            $token,
-            'Documents'
-        );
+        try {
+            return $this->fetchDocument(
+                '/v4/installations/' . $installation . '/applications/' . $application . '/documents',
+                $token,
+                'Documents'
+            );
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 
     /**
