@@ -1,3 +1,9 @@
+# 4.15.1
+2017-08-11
+
+## Bug Fixes
+- Added exception handling on `getAvailableDocuments` (150168401)
+
 # 4.15.0
 2017-07-20
 
