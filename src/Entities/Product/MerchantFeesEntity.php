@@ -24,8 +24,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method int|null getMaximumAmount()
  * @method $this setCancellation(int $cancellation)
  * @method int|null getCancellation()
- * @method $this setLiabilityClawback(int $liabilityClawback)
- * @method int|null getLiabilityClawback()
+ * @method $this setClawbackSubsidyRefundPercentage(float $clawbackSubsidyRefundPercentage)
+ * @method float|null getClawbackSubsidyRefundPercentage()
  * @package PayBreak\Sdk\Entities
  */
 class MerchantFeesEntity extends AbstractEntity
@@ -35,6 +35,6 @@ class MerchantFeesEntity extends AbstractEntity
         'minimum_amount',
         'maximum_amount',
         'cancellation',
-        'liability_clawback',
+        'clawback_subsidy_refund_percentage',
     ];
 }
