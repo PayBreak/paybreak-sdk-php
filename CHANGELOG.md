@@ -1,4 +1,5 @@
-# Unreleased
+# 4.16.0
+2017-11-01
 
 ## Added
 - Added field to **MerchantFeesEntity** to allow `clawback_subsidy_refund_percentage` to pass through (152104370)
