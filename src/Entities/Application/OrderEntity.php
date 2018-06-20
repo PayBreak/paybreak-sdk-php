@@ -38,6 +38,7 @@ class OrderEntity extends AbstractEntity
         'description',
         'validity',
         'deposit_amount',
-        'hold'
+        'hold',
+        'hold_reason',
     ];
 }
