@@ -1,17 +1,19 @@
+## Added
+- hold_reasons order property (#157963651)
 ## Changed
-- Scrutinizer config (154392323) (153057789)
+- Scrutinizer config (#154392323) (#153057789)
 
 # 4.16.0
 2017-11-01
 
 ## Added
-- Added field to **MerchantFeesEntity** to allow `clawback_subsidy_refund_percentage` to pass through (152104370)
+- Added field to **MerchantFeesEntity** to allow `clawback_subsidy_refund_percentage` to pass through (#152104370)
 
 # 4.15.1
 2017-08-11
 
 ## Bug Fixes
-- Added exception handling on `getAvailableDocuments` (150168401)
+- Added exception handling on `getAvailableDocuments` (#150168401)
 
 # 4.15.0
 2017-07-20
