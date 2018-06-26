@@ -28,6 +28,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method int|null getDepositAmount()
  * @method $this setHold(string $hold)
  * @method string|null getHold()
+ * @method $this setHoldReasons(string $holdReasons)
+ * @method array|null getHoldReasons()
  * @package PayBreak\Sdk\Entities
  */
 class OrderEntity extends AbstractEntity
@@ -38,6 +40,7 @@ class OrderEntity extends AbstractEntity
         'description',
         'validity',
         'deposit_amount',
-        'hold'
+        'hold',
+        'hold_reasons',
     ];
 }
