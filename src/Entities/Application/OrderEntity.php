@@ -28,7 +28,7 @@ use WNowicki\Generic\AbstractEntity;
  * @method int|null getDepositAmount()
  * @method $this setHold(string $hold)
  * @method string|null getHold()
- * @method $this setHoldReason(string $hold)
+ * @method $this setHoldReasons(string $holdReasons)
  * @method array|null getHoldReasons()
  * @package PayBreak\Sdk\Entities
  */
