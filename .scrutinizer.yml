@@ -28,3 +28,8 @@ build:
     tests:
         override:
             - php-scrutinizer-run
+            -
+                command: phpunit --coverage-clover=my-coverage-file
+                coverage:
+                    file: my-coverage-file
+                    format: php-clover
