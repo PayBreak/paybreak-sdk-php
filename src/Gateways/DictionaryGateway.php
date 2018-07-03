@@ -71,7 +71,7 @@ class DictionaryGateway extends AbstractGateway
             '/v4/dictionaries/upload-document-types',
             $token,
             'Dictionary Document Upload Types'
-        )
+        );
     }
 }
 
