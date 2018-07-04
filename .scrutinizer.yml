@@ -18,9 +18,11 @@ checks:
         fix_doc_comments: true
 
 tools:
-    external_code_coverage:
-        timeout: 600
-        runs: 2
+    php_code_sniffer:
+      config:
+        standard: "PSR1,PSR2"
+    php_cs_fixer:
+      config: { level: psr2 }
 
 build:
     environment:
