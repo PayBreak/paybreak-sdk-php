@@ -28,7 +28,7 @@ class SupportingDocumentGateway extends AbstractGateway
      * @param string $path
      * @return array
      */
-    public function getAvailableDocuments($token, $installation, $application, $category, $filename, $path)
+    public function addDocument($token, $installation, $application, $category, $filename, $path)
     {
         return $this->postDocument(
             '/v4/installations/' . $installation . '/applications/' . $application . '/supporting-documents',
