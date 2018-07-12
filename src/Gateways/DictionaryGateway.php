@@ -59,4 +59,18 @@ class DictionaryGateway extends AbstractGateway
             'Dictionary Residential Status'
         );
     }
+
+    /**
+     * @author EB
+     * @param $token
+     * @return array
+     */
+    public function getUploadDocumentTypes($token)
+    {
+        return $this->fetchDocument(
+            '/v4/dictionaries/upload-document-types',
+            $token,
+            'Dictionary Document Upload Types'
+        );
+    }
 }
