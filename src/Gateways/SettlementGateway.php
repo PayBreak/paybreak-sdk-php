@@ -42,6 +42,27 @@ class SettlementGateway extends AbstractGateway
     }
 
     /**
+     * @author GK
+     * @param string $token
+     * @param Carbon $since
+     * @param Carbon $until
+     * @return array
+     */
+    public function getAggregateSettlementReports($token, Carbon $since, Carbon $until)
+    {
+        return $this->fetchDocument(
+            '/v4/period-aggregate-settlement-reports',
+            $token,
+            'Settlement',
+            [
+                'since' => $since->format('Y-m-d'),
+                'until' => $until->format('Y-m-d'),
+            ]
+        );
+    }
+
+    /**
+     * @author WN
      * @param string $token
      * @param int $settlementId
      * @return array
