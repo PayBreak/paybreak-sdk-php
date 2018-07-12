@@ -1,7 +1,10 @@
+# 4.18.0
+2018-07-12
+
 ## Added
 - `getAggregateSettlementReports` call to the settlement gateway (#157183787)
 
-### Changes
+## Changes
 - Fixed code standards (#156436834)
 
 # 4.17.0
