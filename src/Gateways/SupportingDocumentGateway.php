@@ -36,7 +36,6 @@ class SupportingDocumentGateway extends AbstractGateway
                 'category' => $category,
                 'filename' => $filename,
                 'path' => $path,
-
             ],
             $token,
             'Supporting documents'
