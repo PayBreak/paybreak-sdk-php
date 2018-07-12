@@ -128,7 +128,6 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
         $installationGateway = new InstallationGateway($mock);
 
         $this->assertInternalType('array', $installationGateway->getProductGroups('xxxx', 'xxxx'));
-
     }
 
     public function testListProducts()
@@ -144,6 +143,5 @@ class InstallationGatewayTest extends \PHPUnit_Framework_TestCase
         $installationGateway = new InstallationGateway($mock);
 
         $this->assertInternalType('array', $installationGateway->listProducts('xxxx', 'xxxx', 'xxxx'));
-
     }
 }

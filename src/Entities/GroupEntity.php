@@ -83,7 +83,6 @@ class GroupEntity extends AbstractEntity
         $entity = parent::make($components);
 
         if (array_key_exists('products', $components) && is_array($components['products'])) {
-
             $entity->setProducts($components['products']);
         }
 
@@ -103,7 +102,6 @@ class GroupEntity extends AbstractEntity
 
         if ($recursively) {
             foreach ($this->getProducts() as $product) {
-
                 $ar['products'][] = $product->toArray();
             }
         }

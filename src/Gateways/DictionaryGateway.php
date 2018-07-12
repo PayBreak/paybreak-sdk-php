@@ -60,4 +60,3 @@ class DictionaryGateway extends AbstractGateway
         );
     }
 }
-

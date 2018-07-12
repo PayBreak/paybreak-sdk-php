@@ -9,6 +9,7 @@
 */
 
 namespace PayBreak\Sdk\Gateways;
+
 use PayBreak\Sdk\Entities\GroupEntity;
 use PayBreak\Sdk\Entities\ProductEntity;
 
@@ -33,8 +34,8 @@ class ProductGateway extends AbstractGateway
             'listGroupsWithProducts'
         );
 
-        foreach($response as &$group) {
-            foreach($group['products'] as &$product) {
+        foreach ($response as &$group) {
+            foreach ($group['products'] as &$product) {
                 $product = ProductEntity::make($product);
             }
             $group = GroupEntity::make($group);
@@ -78,7 +79,7 @@ class ProductGateway extends AbstractGateway
 
         $products = [];
 
-        foreach($response as $product) {
+        foreach ($response as $product) {
             $products[] = ProductEntity::make($product);
         }
 
@@ -118,7 +119,7 @@ class ProductGateway extends AbstractGateway
 
         $products = [];
 
-        foreach($response as $product) {
+        foreach ($response as $product) {
             $products[] = ProductEntity::make($product);
         }
 
