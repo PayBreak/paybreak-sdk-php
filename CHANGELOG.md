@@ -1,3 +1,6 @@
+## Added
+- `getAggregateSettlementReports` call to the settlement gateway (#157183787)
+
 # 4.17.0
 2018-06-26
 
