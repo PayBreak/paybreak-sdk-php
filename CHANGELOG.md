@@ -1,3 +1,7 @@
+### Added
+- Added API call support for adding an uploaded document from a retailer  (#158623202)
+- Added API call support for retrieving a dictionary of document types (#158623202)
+
 ### Changed
 - Features entity `collect_fulfilment` accessor methods
 
