@@ -74,14 +74,10 @@ class PartialRefundGateway extends AbstractGateway
                     'description' => $description,
                 ]
             );
-
         } catch (ErrorResponseException $e) {
-
             $this->logWarning('PartialRefundGateway::requestPartialRefund[' . $e->getCode() . ']: ' . $e->getMessage());
             throw new SdkException($e->getMessage());
-
         } catch (\Exception $e) {
-
             $this->logError('PartialRefundGateway::requestPartialRefund[' . $e->getCode() . ']: ' . $e->getMessage());
             throw new SdkException('Problem requesting a partial refund on Provider API');
         }

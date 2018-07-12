@@ -64,10 +64,8 @@ abstract class AbstractGateway
     {
         try {
             return $this->makeRequest($type, $documentPath, $token, $query, $body);
-
         } catch (ErrorResponseException $e) {
             throw new Exception($e->getMessage());
-
         } catch (\Exception $e) {
             $this->logError(
                 $documentName . 'Gateway::' . $type .' '. $documentName . '[' . $e->getCode() . ']: ' . $e->getMessage()
@@ -89,7 +87,7 @@ abstract class AbstractGateway
     {
         $api = $this->getApiFactory()->makeApiClient($token);
 
-        switch($type) {
+        switch ($type) {
             case 'post':
                 return $api->post($documentPath, $body, $query);
             case 'delete':
@@ -164,13 +162,9 @@ abstract class AbstractGateway
             }
 
             return $rtn;
-
         } catch (ErrorResponseException $e) {
-
             throw new Exception($e->getMessage());
-
         } catch (\Exception $e) {
-
             $this->logError('Couldn\'t fetch collection of [' . $entity . ']: [' . $e->getCode() . ']: ' . $e->getMessage());
             throw new Exception('Problem fetching collection of [' . $entity . '] form Provider API');
         }

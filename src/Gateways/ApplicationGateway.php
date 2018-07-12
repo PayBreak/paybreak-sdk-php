@@ -52,14 +52,10 @@ class ApplicationGateway extends AbstractGateway
             $application->setResumeUrl($response['url']);
 
             return $application;
-
         } catch (ErrorResponseException $e) {
-
             $this->logWarning('ApplicationGateway::initialiseApplication[' . $e->getCode() . ']: ' . $e->getMessage());
             throw new SdkException($e->getMessage());
-
         } catch (\Exception $e) {
-
             $this->logError('ApplicationGateway::initialiseApplication[' . $e->getCode() . ']: ' . $e->getMessage());
             throw new SdkException('Problem Initialising Application on Provider API');
         }
@@ -84,14 +80,10 @@ class ApplicationGateway extends AbstractGateway
             $application->setUser($response['user']);
 
             return $application;
-
         } catch (ErrorResponseException $e) {
-
             $this->logWarning('ApplicationGateway::initialiseAssistedApplication[' . $e->getCode() . ']: ' . $e->getMessage());
             throw new SdkException($e->getMessage());
-
         } catch (\Exception $e) {
-
             $this->logError('ApplicationGateway::initialiseAssistedApplication[' . $e->getCode() . ']: ' . $e->getMessage());
             throw new SdkException('Problem Initialising Assisted Application on Provider API');
         }

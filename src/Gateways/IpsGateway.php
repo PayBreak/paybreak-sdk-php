@@ -28,7 +28,7 @@ class IpsGateway extends AbstractGateway
      */
     public function listIpAddresses($token)
     {
-        $response = $this->fetchDocument('/v4/ip-addresses',$token, 'ips');
+        $response = $this->fetchDocument('/v4/ip-addresses', $token, 'ips');
         $rtn = [];
 
         foreach ($response as $ip) {

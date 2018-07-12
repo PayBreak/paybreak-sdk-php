@@ -18,5 +18,4 @@ namespace PayBreak\Sdk\Gateways;
  */
 class SettlementCsvGateway extends SettlementGateway
 {
-
 }

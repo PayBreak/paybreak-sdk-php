@@ -9,10 +9,10 @@
  */
 
 namespace Tests\Basket\Entities;
+
 use PayBreak\Sdk\Entities\GroupEntity;
 use PayBreak\Sdk\Entities\ProductEntity;
 use PayBreak\Sdk\Gateways\ProductGateway;
-
 
 /**
  * Group Entity Test
@@ -152,6 +152,5 @@ class GroupEntityTest extends \PHPUnit_Framework_TestCase
         $response = $productGateway->getProductGroupsWithProducts('TestInstall', 'mytoken');
 
         $this->assertInternalType('array', $response);
-
     }
 }
