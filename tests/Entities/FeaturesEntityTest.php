@@ -13,7 +13,7 @@ namespace Tests\Basket\Entities;
 use PayBreak\Sdk\Entities\Installation\FeaturesEntity;
 
 /**
- * Merchant Entity Test
+ * Features Entity Test
  *
  * @author EA
  * @package Tests\Basket\Entities
