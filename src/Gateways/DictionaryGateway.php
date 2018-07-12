@@ -74,4 +74,3 @@ class DictionaryGateway extends AbstractGateway
         );
     }
 }
-
