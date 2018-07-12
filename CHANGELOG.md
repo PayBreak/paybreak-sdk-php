@@ -1,7 +1,17 @@
+### Added
+- Added API call support for adding an uploaded document from a retailer  (#158623202)
+- Added API call support for retrieving a dictionary of document types (#158623202)
+
+### Changed
+- Features entity `collect_fulfilment` accessor methods
+
+# 4.18.0
+2018-07-12
+
 ## Added
 - `getAggregateSettlementReports` call to the settlement gateway (#157183787)
 
-### Changes
+## Changes
 - Fixed code standards (#156436834)
 
 # 4.17.0

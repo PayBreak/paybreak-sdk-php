@@ -18,11 +18,14 @@ use WNowicki\Generic\AbstractEntity;
  * @author EB
  * @method $this setMerchantLiable(bool $merchantLiable)
  * @method bool|null getMerchantLiable()
+ * @method $this setCollectFulfilment(bool $collectFulfilment)
+ * @method bool|null getCollectFulfilment()
  * @package PayBreak\Sdk\Entities
  */
 class FeaturesEntity extends AbstractEntity
 {
     protected $properties = [
         'merchant_liable',
+        'collect_fulfilment',
     ];
 }
