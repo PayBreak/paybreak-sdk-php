@@ -1,3 +1,6 @@
+### Changed
+- Features entity `collect_fulfilment` accessor methods
+
 # 4.18.0
 2018-07-12
 
