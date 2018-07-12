@@ -36,8 +36,10 @@ class FeaturesEntityTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeEmpty()
     {
-        $this->assertInstanceOf('WNowicki\Generic\Contracts\Entity', FeaturesEntity::make([]));
-        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', FeaturesEntity::make([]));
+        $fulfilmentEntity = FeaturesEntity::make([]);
+        
+        $this->assertInstanceOf('WNowicki\Generic\Contracts\Entity', $fulfilmentEntity);
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', $fulfilmentEntity);
     }
 
     /**
