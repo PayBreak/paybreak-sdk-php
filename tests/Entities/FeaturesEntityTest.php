@@ -1,0 +1,94 @@
+<?php
+/*
+ * This file is part of the PayBreak/basket package.
+ *
+ * (c) PayBreak <dev@paybreak.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Tests\Basket\Entities;
+
+use PayBreak\Sdk\Entities\Installation\FeaturesEntity;
+
+/**
+ * Merchant Entity Test
+ *
+ * @author EA
+ * @package Tests\Basket\Entities
+ */
+class FeaturesEntityTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @author EA
+     */
+    public function testInstance()
+    {
+        $entity = new FeaturesEntity();
+
+        $this->assertInstanceOf('WNowicki\Generic\Contracts\Entity', $entity);
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', $entity);
+    }
+
+    /**
+     * @author EA
+     */
+    public function testMakeEmpty()
+    {
+        $this->assertInstanceOf('WNowicki\Generic\Contracts\Entity', FeaturesEntity::make([]));
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', FeaturesEntity::make([]));
+    }
+
+    /**
+     * @author EA
+     */
+    public function testToArray()
+    {
+        $this->assertInternalType('array', FeaturesEntity::make([])->toArray());
+    }
+
+    /**
+     * @author EA
+     */
+    public function testSetMerchantLiable()
+    {
+        $entity = new FeaturesEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', $entity->setMerchantLiable(true));
+    }
+
+    /**
+     * @author EA
+     */
+    public function testGetMerchantLiable()
+    {
+        $entity = new FeaturesEntity();
+
+        $entity->setMerchantLiable(true);
+
+        $this->assertSame(true, $entity->getMerchantLiable());
+    }
+
+    /**
+     * @author EA
+     */
+    public function testSetCollectFulfilment()
+    {
+        $entity = new FeaturesEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', $entity->setCollectFulfilment(true));
+    }
+
+    /**
+     * @author EA
+     */
+    public function testGetCollectFulfilment()
+    {
+        $entity = new FeaturesEntity();
+
+        $entity->setCollectFulfilment(false);
+
+        $this->assertSame(false, $entity->getCollectFulfilment());
+    }
+}
