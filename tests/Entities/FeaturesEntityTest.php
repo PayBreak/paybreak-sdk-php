@@ -93,4 +93,26 @@ class FeaturesEntityTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(false, $entity->getCollectFulfilment());
     }
+
+    /**
+     * @author EB
+     */
+    public function testSetUploadDocuments()
+    {
+        $entity = new FeaturesEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', $entity->setUploadDocuments(true));
+    }
+
+    /**
+     * @author EB
+     */
+    public function testGetUploadDocuments()
+    {
+        $entity = new FeaturesEntity();
+
+        $entity->setUploadDocuments(false);
+
+        $this->assertSame(false, $entity->getUploadDocuments());
+    }
 }
