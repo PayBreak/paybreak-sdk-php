@@ -1,3 +1,9 @@
+# 4.19.1
+2018-07-12
+
+### Added
+- Added feature flag for upload documents (#159017282)
+
 # 4.19.0
 2018-07-12
 
