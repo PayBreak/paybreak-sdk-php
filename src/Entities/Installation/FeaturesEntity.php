@@ -20,6 +20,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method bool|null getMerchantLiable()
  * @method $this setCollectFulfilment(bool $collectFulfilment)
  * @method bool|null getCollectFulfilment()
+ * @method $this setUploadDocuments(bool $uploadDocuments)
+ * @method bool|null getUploadDocuments()
  * @package PayBreak\Sdk\Entities
  */
 class FeaturesEntity extends AbstractEntity
@@ -27,5 +29,6 @@ class FeaturesEntity extends AbstractEntity
     protected $properties = [
         'merchant_liable',
         'collect_fulfilment',
+        'upload_documents',
     ];
 }
