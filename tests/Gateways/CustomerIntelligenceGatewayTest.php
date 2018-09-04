@@ -69,7 +69,7 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
 
         $customerIntelligenceGateway = new CustomerIntelligenceGateway($mockApiClientFactory);
 
-        $result = $customerIntelligenceGateway->getLeadScore(
+        $result = $customerIntelligenceGateway->performLeadScore(
             $mockInstallationEntity,
             $requestBody,
             $token
