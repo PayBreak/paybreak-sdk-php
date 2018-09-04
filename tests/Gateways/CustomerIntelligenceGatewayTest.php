@@ -12,7 +12,6 @@ namespace Tests\Basket\Gateways;
 
 use PayBreak\Sdk\ApiClient\ApiClientFactoryInterface;
 use PayBreak\Sdk\ApiClient\ProviderApiClient;
-use PayBreak\Sdk\Entities\InstallationEntity;
 use PayBreak\Sdk\Gateways\CustomerIntelligenceGateway;
 
 /**
@@ -63,14 +62,10 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
             ->with($token)
             ->willReturn($mockApiClient);
 
-        $mockInstallationEntity = $this->getMock(InstallationEntity::class);
-        $mockInstallationEntity->expects($this->any())->method('__call')
-            ->with('getId')->willReturn(1);
-
         $customerIntelligenceGateway = new CustomerIntelligenceGateway($mockApiClientFactory);
 
         $result = $customerIntelligenceGateway->performLeadScore(
-            $mockInstallationEntity,
+            '1',
             $requestBody,
             $token
         );

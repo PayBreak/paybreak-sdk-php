@@ -2,8 +2,6 @@
 
 namespace PayBreak\Sdk\Gateways;
 
-use PayBreak\Sdk\Entities\InstallationEntity;
-
 /**
  * Customer Intelligence Gateway
  *
@@ -13,15 +11,15 @@ class CustomerIntelligenceGateway extends AbstractGateway
 {
     /**
      * @author GK
-     * @param InstallationEntity $installationEntity
-     * @param $token
+     * @param string $installation
+     * @param string $token
      * @return array
      * @throws \WNowicki\Generic\Exception
      */
-    public function performLeadScore(InstallationEntity $installationEntity, $body, $token)
+    public function performLeadScore($installation, $body, $token)
     {
         return $this->postDocument(
-            '/v4/installations/' . $installationEntity->getId() . '/lead-score',
+            '/v4/installations/' . $installation . '/lead-score',
             $body,
             $token,
             'LeadScore'
