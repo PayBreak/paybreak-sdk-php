@@ -33,6 +33,8 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetCustomerIntelligence()
     {
+        $limit = 10;
+        $offset = 4;
         $token = 'token';
         $expectedResponse = [
             'Api response'
@@ -41,7 +43,7 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
         $mockApiClient = $this->getMock(ProviderApiClient::class);
         $mockApiClient->expects($this->any())->method('get')
             ->with(
-                '/v4/installations/1/lead-score',
+                '/v4/installations/1/lead-score?offset=' . $offset . '&limit=' . $limit,
                 []
             )->willReturn($expectedResponse);
 
@@ -54,7 +56,9 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
 
         $result = $customerIntelligenceGateway->getCustomerIntelligence(
             '1',
-            $token
+            $token,
+            $limit,
+            $offset
         );
 
         $this->assertEquals($expectedResponse, $result);
