@@ -17,7 +17,7 @@ class CustomerIntelligenceGateway extends AbstractGateway
      * @return array
      * @throws \WNowicki\Generic\Exception
      */
-    public function performLeadScore($installation, $body, $token)
+    public function performLeadScore($installation, array $body, $token)
     {
         return $this->postDocument(
             '/v4/installations/' . $installation . '/lead-score',
