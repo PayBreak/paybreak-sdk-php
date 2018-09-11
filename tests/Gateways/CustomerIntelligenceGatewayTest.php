@@ -31,6 +31,38 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
     /**
      * @author GK
      */
+    public function testGetCustomerIntelligence()
+    {
+        $token = 'token';
+        $expectedResponse = [
+            'Api response'
+        ];
+
+        $mockApiClient = $this->getMock(ProviderApiClient::class);
+        $mockApiClient->expects($this->any())->method('get')
+            ->with(
+                '/v4/installations/1/lead-score',
+                []
+            )->willReturn($expectedResponse);
+
+        $mockApiClientFactory = $this->getMock(ApiClientFactoryInterface::class);
+        $mockApiClientFactory->expects($this->any())->method('makeApiClient')
+            ->with($token)
+            ->willReturn($mockApiClient);
+
+        $customerIntelligenceGateway = new CustomerIntelligenceGateway($mockApiClientFactory);
+
+        $result = $customerIntelligenceGateway->getCustomerIntelligence(
+            '1',
+            $token
+        );
+
+        $this->assertEquals($expectedResponse, $result);
+    }
+
+    /**
+     * @author GK
+     */
     public function testPerformLeadScore()
     {
         $token = 'token';

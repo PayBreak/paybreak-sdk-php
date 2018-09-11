@@ -19,6 +19,22 @@ class CustomerIntelligenceGateway extends AbstractGateway
 {
     /**
      * @author GK
+     * @param $installation
+     * @param $token
+     * @return array
+     * @throws \WNowicki\Generic\Exception
+     */
+    public function getCustomerIntelligence($installation, $token)
+    {
+        return $this->fetchDocument(
+            '/v4/installations/' . $installation . '/lead-score',
+            $token,
+            'LeadScore'
+        );
+    }
+
+    /**
+     * @author GK
      * @param string $installation
      * @param array $body
      * @param string $token
