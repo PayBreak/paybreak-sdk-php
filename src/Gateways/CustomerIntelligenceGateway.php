@@ -12,6 +12,7 @@ class CustomerIntelligenceGateway extends AbstractGateway
     /**
      * @author GK
      * @param string $installation
+     * @param array $body
      * @param string $token
      * @return array
      * @throws \WNowicki\Generic\Exception
