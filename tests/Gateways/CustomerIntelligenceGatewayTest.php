@@ -31,7 +31,7 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
     /**
      * @author GK
      */
-    public function testGetLeadScore()
+    public function testPerformLeadScore()
     {
         $token = 'token';
         $expectedResponse = [
