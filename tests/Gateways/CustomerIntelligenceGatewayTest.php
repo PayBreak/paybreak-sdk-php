@@ -57,8 +57,8 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
         $result = $customerIntelligenceGateway->getCustomerIntelligence(
             '1',
             $token,
-            $limit,
-            $offset
+            $offset,
+            $limit
         );
 
         $this->assertEquals($expectedResponse, $result);
