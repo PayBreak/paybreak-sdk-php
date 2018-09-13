@@ -1,3 +1,6 @@
+### Added
+- CustomerIntelligenceGateway with LeadScore support (#160168488)
+
 # 4.19.1
 2018-07-12
 
