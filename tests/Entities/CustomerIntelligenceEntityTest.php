@@ -27,7 +27,7 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
         $entity = new CustomerIntelligenceEntity();
 
         $this->assertInstanceOf('WNowicki\Generic\Contracts\Entity', $entity);
-        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\CustomerIntelligenceEntity', $entity);
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity', $entity);
     }
 
     /**
@@ -38,7 +38,7 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
         $fulfilmentEntity = CustomerIntelligenceEntity::make([]);
         
         $this->assertInstanceOf('WNowicki\Generic\Contracts\Entity', $fulfilmentEntity);
-        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\CustomerIntelligenceEntity', $fulfilmentEntity);
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity', $fulfilmentEntity);
     }
 
     /**
@@ -52,12 +52,12 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
     /**
      * @author WN
      */
-    public function testSetMerchantLiable()
+    public function testSetLeadScore()
     {
         $entity = new CustomerIntelligenceEntity();
 
         $this->assertInstanceOf(
-            'PayBreak\Sdk\Entities\Installation\CustomerIntelligenceEntity',
+            'PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity',
             $entity->setLeadScoreId(5)
         );
     }
@@ -65,7 +65,7 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
     /**
      * @author WN
      */
-    public function testGetMerchantLiable()
+    public function testGetLeadScore()
     {
         $entity = new CustomerIntelligenceEntity();
 
