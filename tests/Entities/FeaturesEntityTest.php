@@ -115,4 +115,26 @@ class FeaturesEntityTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(false, $entity->getUploadDocuments());
     }
+
+    /**
+     * @author EB
+     */
+    public function testSetLeadScore()
+    {
+        $entity = new FeaturesEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', $entity->setLeadScore(true));
+    }
+
+    /**
+     * @author EB
+     */
+    public function testGetLeadScore()
+    {
+        $entity = new FeaturesEntity();
+
+        $entity->setLeadScore(false);
+
+        $this->assertSame(false, $entity->getLeadScore());
+    }
 }
