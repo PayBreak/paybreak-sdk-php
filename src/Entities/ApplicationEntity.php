@@ -10,6 +10,7 @@
 
 namespace PayBreak\Sdk\Entities;
 
+use PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity;
 use WNowicki\Generic\AbstractEntity;
 
 /**
@@ -75,5 +76,6 @@ class ApplicationEntity extends AbstractEntity
         'user' => self::TYPE_INT,
         'is_regulated' => self::TYPE_BOOL,
         'merchant_liable_at',
+        'customer_intelligence' => CustomerIntelligenceEntity::class,
     ];
 }
