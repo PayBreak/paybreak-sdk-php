@@ -22,6 +22,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method bool|null getCollectFulfilment()
  * @method $this setUploadDocuments(bool $uploadDocuments)
  * @method bool|null getUploadDocuments()
+ * @method $this setLeadScore(bool $leadScore)
+ * @method bool|null getLeadScore()
  * @package PayBreak\Sdk\Entities
  */
 class FeaturesEntity extends AbstractEntity
@@ -30,5 +32,6 @@ class FeaturesEntity extends AbstractEntity
         'merchant_liable',
         'collect_fulfilment',
         'upload_documents',
+        'lead_score',
     ];
 }
