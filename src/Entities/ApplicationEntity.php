@@ -53,6 +53,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method int|null getIsRegulated()
  * @method $this setMerchantLiableAt(string $merchantLiableAt)
  * @method string|null getMerchantLiableAt()
+ * @method $this setCustomerIntelligence(CustomerIntelligenceEntity $customerIntelligence)
+ * @method CustomerIntelligenceEntity|null getCustomerIntelligence()
  * @package PayBreak\Sdk\Entities
  */
 class ApplicationEntity extends AbstractEntity
