@@ -2,6 +2,7 @@
 - CustomerIntelligenceGateway with LeadScore support (#160168488)
 - getLeadScore api endpoint (#160168479)
 - Customer Intelligence (160168501)
+- Added `lead_score` to Feature Entity (#160168389)
 
 # 4.19.1
 2018-07-12
