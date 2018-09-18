@@ -1,3 +1,6 @@
+# 4.20.0
+2018-09-18
+
 ### Added
 - CustomerIntelligenceGateway with LeadScore support (#160168488)
 - getLeadScore api endpoint (#160168479)
