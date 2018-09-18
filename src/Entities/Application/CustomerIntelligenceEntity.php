@@ -13,22 +13,15 @@ namespace PayBreak\Sdk\Entities\Application;
 use WNowicki\Generic\AbstractEntity;
 
 /**
- * Products Entity
+ * Customer Intelligence Entity
  *
  * @author WN
- * @method $this setGroup(string $group)
- * @method string|null getGroup()
- * @method $this setOptions(array $options)
- * @method array|null getOptions()
- * @method $this setDefault(string $default)
- * @method string|null getDefault()
- * @package PayBreak\Sdk\Entities
+ * @method $this setLeadScoreId(int $leadScoreId)
+ * @method int|null getLeadScoreId()
  */
-class ProductsEntity extends AbstractEntity
+class CustomerIntelligenceEntity extends AbstractEntity
 {
     protected $properties = [
-        'group',
-        'options',
-        'default',
+        'lead_score_id' => self::TYPE_INT,
     ];
 }

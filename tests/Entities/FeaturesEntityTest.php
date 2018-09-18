@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the PayBreak/basket package.
+ * This file is part of the PayBreak/paybreak-sdk-php package.
  *
  * (c) PayBreak <dev@paybreak.com>
  *
@@ -114,5 +114,27 @@ class FeaturesEntityTest extends \PHPUnit_Framework_TestCase
         $entity->setUploadDocuments(false);
 
         $this->assertSame(false, $entity->getUploadDocuments());
+    }
+
+    /**
+     * @author EB
+     */
+    public function testSetLeadScore()
+    {
+        $entity = new FeaturesEntity();
+
+        $this->assertInstanceOf('PayBreak\Sdk\Entities\Installation\FeaturesEntity', $entity->setLeadScore(true));
+    }
+
+    /**
+     * @author EB
+     */
+    public function testGetLeadScore()
+    {
+        $entity = new FeaturesEntity();
+
+        $entity->setLeadScore(false);
+
+        $this->assertSame(false, $entity->getLeadScore());
     }
 }

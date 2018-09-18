@@ -1,6 +1,6 @@
 <?php
 /*
-* This file is part of the PayBreak/basket package.
+* This file is part of the PayBreak/paybreak-sdk-php package.
 *
 * (c) PayBreak <dev@paybreak.com>
 *
