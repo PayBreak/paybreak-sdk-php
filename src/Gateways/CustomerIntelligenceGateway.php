@@ -52,4 +52,22 @@ class CustomerIntelligenceGateway extends AbstractGateway
             'LeadScore'
         );
     }
+
+    /**
+     * @author GK
+     * @param string $installation
+     * @param array $body
+     * @param string $token
+     * @return array
+     * @throws \WNowicki\Generic\Exception
+     */
+    public function performPreApproval($installation, array $body, $token)
+    {
+        return $this->postDocument(
+            '/v4/installations/' . $installation . '/pre-approval',
+            $body,
+            $token,
+            'PreApproval'
+        );
+    }
 }
