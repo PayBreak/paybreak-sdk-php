@@ -34,6 +34,23 @@ class CustomerIntelligenceGateway extends AbstractGateway
             'LeadScore'
         );
     }
+    /**
+     * @author GK
+     * @param string $installation
+     * @param string $token
+     * @param int $offset
+     * @param int $limit
+     * @return array
+     * @throws \WNowicki\Generic\Exception
+     */
+    public function listPreApprovals($installation, $token, $offset = 0, $limit = 20)
+    {
+        return $this->fetchDocument(
+            '/v4/installations/' . $installation . '/pre-approval?offset=' . $offset . '&limit=' . $limit,
+            $token,
+            'PreApproval'
+        );
+    }
 
     /**
      * @author GK
