@@ -26,7 +26,7 @@ class CustomerIntelligenceGateway extends AbstractGateway
      * @return array
      * @throws \WNowicki\Generic\Exception
      */
-    public function getCustomerIntelligence($installation, $token, $offset = 0, $limit = 20)
+    public function listLeadScores($installation, $token, $offset = 0, $limit = 20)
     {
         return $this->fetchDocument(
             '/v4/installations/' . $installation . '/lead-score?offset=' . $offset . '&limit=' . $limit,
