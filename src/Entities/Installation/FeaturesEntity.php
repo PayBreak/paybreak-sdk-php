@@ -24,6 +24,8 @@ use WNowicki\Generic\AbstractEntity;
  * @method bool|null getUploadDocuments()
  * @method $this setLeadScore(bool $leadScore)
  * @method bool|null getLeadScore()
+ * @method $this setPreApproval(bool $preApproval)
+ * @method bool|null getPreApproval()
  * @package PayBreak\Sdk\Entities
  */
 class FeaturesEntity extends AbstractEntity
@@ -33,5 +35,6 @@ class FeaturesEntity extends AbstractEntity
         'collect_fulfilment',
         'upload_documents',
         'lead_score',
+        'pre_approval',
     ];
 }
