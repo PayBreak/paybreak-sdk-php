@@ -1,6 +1,7 @@
 # Unreleased
 ### Added
 - Added `pre_approval` to Feature Entity (#160613522)
+- perform PreApproval Customer Intelligence action (#160613620)
 
 # 4.20.0
 2018-09-18
