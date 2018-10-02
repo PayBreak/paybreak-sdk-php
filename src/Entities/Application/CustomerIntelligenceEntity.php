@@ -18,10 +18,13 @@ use WNowicki\Generic\AbstractEntity;
  * @author WN
  * @method $this setLeadScoreId(int $leadScoreId)
  * @method int|null getLeadScoreId()
+ * @method $this setPreApprovalId(int $preApprovalId)
+ * @method int|null getPreApprovalId()
  */
 class CustomerIntelligenceEntity extends AbstractEntity
 {
     protected $properties = [
         'lead_score_id' => self::TYPE_INT,
+        'pre_approval_id' => self::TYPE_INT,
     ];
 }
