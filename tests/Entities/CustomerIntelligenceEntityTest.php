@@ -50,6 +50,23 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @author GK
+     */
+    public function testToArrayWhenDataIsProvided()
+    {
+        $this->assertEquals(
+            [
+                'lead_score_id' => 2,
+                'pre_approval_id' => 3,
+            ],
+            CustomerIntelligenceEntity::make([
+                'lead_score_id' => 2,
+                'pre_approval_id' => 3,
+            ])->toArray()
+        );
+    }
+
+    /**
      * @author WN
      */
     public function testSetLeadScore()
@@ -72,5 +89,30 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
         $entity->setLeadScoreId(6);
 
         $this->assertSame(6, $entity->getLeadScoreId());
+    }
+
+    /**
+     * @author GK
+     */
+    public function testSetPreApprovalScore()
+    {
+        $entity = new CustomerIntelligenceEntity();
+
+        $this->assertInstanceOf(
+            'PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity',
+            $entity->setPreApprovalId(5)
+        );
+    }
+
+    /**
+     * @author GK
+     */
+    public function testGetPreApprovalScore()
+    {
+        $entity = new CustomerIntelligenceEntity();
+
+        $entity->setPreApprovalId(7);
+
+        $this->assertSame(7, $entity->getPreApprovalId());
     }
 }
