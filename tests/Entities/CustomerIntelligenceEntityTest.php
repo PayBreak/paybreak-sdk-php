@@ -73,4 +73,29 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(6, $entity->getLeadScoreId());
     }
+
+    /**
+     * @author GK
+     */
+    public function testSetEmailAddress()
+    {
+        $entity = new CustomerIntelligenceEntity();
+
+        $this->assertInstanceOf(
+            'PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity',
+            $entity->setEmailAddress('test@email.com')
+        );
+    }
+
+    /**
+     * @author GK
+     */
+    public function testGetEmailAddress()
+    {
+        $entity = new CustomerIntelligenceEntity();
+
+        $entity->setEmailAddress('test@email.com');
+
+        $this->assertSame('test@email.com', $entity->getEmailAddress());
+    }
 }
