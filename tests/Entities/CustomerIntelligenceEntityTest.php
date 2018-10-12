@@ -50,6 +50,50 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @author GK
+     */
+    public function testToArrayWhenDataIsProvided()
+    {
+        $this->assertEquals(
+            [
+                'email_address' => 'test@email.com',
+                'lead_score_id' => 2,
+                'pre_approval_id' => 3,
+            ],
+            CustomerIntelligenceEntity::make([
+                'email_address' => 'test@email.com',
+                'lead_score_id' => 2,
+                'pre_approval_id' => 3,
+            ])->toArray()
+        );
+    }
+
+    /**
+     * @author GK
+     */
+    public function testSetEmailAddress()
+    {
+        $entity = new CustomerIntelligenceEntity();
+
+        $this->assertInstanceOf(
+            'PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity',
+            $entity->setEmailAddress('test@email.com')
+        );
+    }
+
+    /**
+     * @author GK
+     */
+    public function testGetEmailAddress()
+    {
+        $entity = new CustomerIntelligenceEntity();
+
+        $entity->setEmailAddress('test@email.com');
+
+        $this->assertSame('test@email.com', $entity->getEmailAddress());
+    }
+
+    /**
      * @author WN
      */
     public function testSetLeadScore()
@@ -77,25 +121,25 @@ class CustomerIntelligenceEntityTest extends \PHPUnit_Framework_TestCase
     /**
      * @author GK
      */
-    public function testSetEmailAddress()
+    public function testSetPreApprovalScore()
     {
         $entity = new CustomerIntelligenceEntity();
 
         $this->assertInstanceOf(
             'PayBreak\Sdk\Entities\Application\CustomerIntelligenceEntity',
-            $entity->setEmailAddress('test@email.com')
+            $entity->setPreApprovalId(5)
         );
     }
 
     /**
      * @author GK
      */
-    public function testGetEmailAddress()
+    public function testGetPreApprovalScore()
     {
         $entity = new CustomerIntelligenceEntity();
 
-        $entity->setEmailAddress('test@email.com');
+        $entity->setPreApprovalId(7);
 
-        $this->assertSame('test@email.com', $entity->getEmailAddress());
+        $this->assertSame(7, $entity->getPreApprovalId());
     }
 }

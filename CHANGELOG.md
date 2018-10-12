@@ -1,3 +1,6 @@
+### Added
+- Get pre-approval call (#160763347)
+
 # 4.21.0
 2018-09-28
 
