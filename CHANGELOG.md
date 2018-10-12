@@ -1,3 +1,6 @@
+# 4.22.0
+2018-10-12
+
 ### Added
 - Get pre-approval call (#160763347)
 - email address to customer intelligence entity (#161087428)
