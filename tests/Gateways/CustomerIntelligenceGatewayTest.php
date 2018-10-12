@@ -173,4 +173,37 @@ class CustomerIntelligenceGatewayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expectedResponse, $result);
     }
+
+    /**
+     * @author GK
+     */
+    public function testGetPreApproval()
+    {
+        $token = 'token';
+        $expectedResponse = [
+            'Api response'
+        ];
+
+        $mockApiClient = $this->getMock(ProviderApiClient::class);
+        $mockApiClient->expects($this->any())->method('get')
+            ->with(
+                '/v4/installations/4/pre-approval/20',
+                []
+            )->willReturn($expectedResponse);
+
+        $mockApiClientFactory = $this->getMock(ApiClientFactoryInterface::class);
+        $mockApiClientFactory->expects($this->any())->method('makeApiClient')
+            ->with($token)
+            ->willReturn($mockApiClient);
+
+        $customerIntelligenceGateway = new CustomerIntelligenceGateway($mockApiClientFactory);
+
+        $result = $customerIntelligenceGateway->getPreApproval(
+            '4',
+            '20',
+            $token
+        );
+
+        $this->assertEquals($expectedResponse, $result);
+    }
 }

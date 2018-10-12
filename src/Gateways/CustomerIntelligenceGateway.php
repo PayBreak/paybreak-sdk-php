@@ -87,4 +87,38 @@ class CustomerIntelligenceGateway extends AbstractGateway
             'PreApproval'
         );
     }
+
+    /**
+     * @author GK
+     * @param string $installation
+     * @param int $leadScoreId
+     * @param string $token
+     * @return array
+     * @throws \WNowicki\Generic\Exception
+     */
+    public function getLeadScore($installation, $leadScoreId, $token)
+    {
+        return $this->fetchDocument(
+            '/v4/installations/' . $installation . '/lead-score/' . $leadScoreId,
+            $token,
+            'LeadScore'
+        );
+    }
+
+    /**
+     * @author GK
+     * @param string $installation
+     * @param int $preApprovalId
+     * @param string $token
+     * @return array
+     * @throws \WNowicki\Generic\Exception
+     */
+    public function getPreApproval($installation, $preApprovalId, $token)
+    {
+        return $this->fetchDocument(
+            '/v4/installations/' . $installation . '/pre-approval/' . $preApprovalId,
+            $token,
+            'PreApproval'
+        );
+    }
 }
