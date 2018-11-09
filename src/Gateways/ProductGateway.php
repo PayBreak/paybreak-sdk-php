@@ -125,4 +125,22 @@ class ProductGateway extends AbstractGateway
 
         return $products;
     }
+
+    /**
+     * author GK
+     * @param string $installation
+     * @param string $product
+     * @param string $token
+     * @return ProductEntity
+     */
+    public function getProduct($installation, $product, $token)
+    {
+        $response = $this->fetchDocument(
+            '/v4/installations/' . $installation . '/products/' . $product,
+            $token,
+            'getProduct'
+        );
+
+        return ProductEntity::make($response);
+    }
 }
